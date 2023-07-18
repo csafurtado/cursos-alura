@@ -1,6 +1,6 @@
-<h1>Anotações</h1>
+<h1>Formação HTML/CSS</h1>
 
-<h2>Curso 1:</h2>
+<h2>HTML e CSS: ambientes de desenvolvimento, estrutura de arquivos e tags HTML e CSS: ambientes de desenvolvimento, estrutura de arquivos e tags</h2>
 
 * Colocar sempre o \<!DOCTYPE html> dentro dos arquivos .html, para evitar de serem renderizados no modo Quirk
 

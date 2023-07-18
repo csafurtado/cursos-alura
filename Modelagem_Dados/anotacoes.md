@@ -1,6 +1,6 @@
-*MODELAGEM DE DADOS*
+<h1>Modelagem de Dados</h1>
 
-**Curso 1**
+<h2>Entidades, relacionamentos e atributos Modelagem de banco de dados: entidades, relacionamentos e atributos</h2>
 
 * A entrevista é essencial para se construir um projeto de BD coerente com a necessidade do cliente. Antes porém, o responsável pelo projeto deve entender o contexto da situação, para que as perguntas relativas à construção do sistema sejam pertinentes e essenciais ao projeto.
 

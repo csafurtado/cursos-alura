@@ -1,7 +1,5 @@
 <h1>Engenharia de Software</h1>
 
-<h2>Curso 1:</h2>
-
 **RECOMENDAÇÃO DE LIVRO**: Domain-Driven Design - Eric Evans
 
 * Arquitetura: Visão de mais alto nível da aplicação. Separação de camadas, pastas da aplicação.
