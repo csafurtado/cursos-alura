@@ -9,3 +9,7 @@
 * \<meta name="viewport"> é uma tag que coloca a meta informação  para definir a largura que será renderizada na página
 
 * \<button> pode ser utilizada para ações como envios de formulários, a tag \<a> não possui essa funcionalidade, já que seu papel é apenas redirecionar o usuário para diferentes urls.
+
+* O CSS nasceu para estilizar elementos HTML de forma separada por um arquivo .css
+
+* 

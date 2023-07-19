@@ -1,0 +1,13 @@
+* { /* Selecoina todos os elementos dentro da página HTML */
+    margin: 0;
+}
+
+body {
+    background-color: rgb(18, 19, 94);
+    color: rgb(202, 202, 202);
+}
+
+.titulo-destaque {
+    color: #22D4FD
+}
+
