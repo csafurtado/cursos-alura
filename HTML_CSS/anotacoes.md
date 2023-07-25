@@ -12,4 +12,11 @@
 
 * O CSS nasceu para estilizar elementos HTML de forma separada por um arquivo .css
 
-* 
+* A tag \<strong> é uma tag na qual define um elemento como algo que precisa de atenção, deixando o texto dentro dela em negrito.
+
+* Sites para escolha de paleta de cores:
+    * Color Tool, Adobe Color, Color Hunt, Coolors...
+
+* Existe uma técnica que chama 'reset CSS' que consiste em criar um arquivo .css que padronize a formatação de páginas HTML em diferentes navegadores através de um 'reset agressivo' da sua estilização. É uma boa prática em todo projeto web.
+
+* O modelo padrão de posicionamento de elementos HTML é o *box position*. 

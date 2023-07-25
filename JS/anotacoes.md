@@ -6,29 +6,34 @@
 
 * É convenção utilizar o nome "main" para o arquivo .js principal.
 
-* A tag \<strong> é uma tag na qual define um elemento como algo que precisa de atenção, deixando o texto dentro dela em negrito.
-
 * O HTML é chamado linha por linha, e não tudo de uma vez, logo, deve-se ter cuidado aonde colocar um script ou algo do tipo, primordialmente pensando em ser logo antes do fechamento de \<body>.
 
 * Os navegadores possuem uma política em que bloqueiam a execução de mídias quando a página acaba de carregar, antes do usuário interagir com a página.
 
-* Sites para escolha de paleta de cores:
-    * Color Tool, Adobe Color, Color Hunt, Coolors...
+* Para selecionar um elemento que tenha um atributo sem ser class (exemplo de um input com type button), usa-se:
+```js
+document.querySelector('input[type=button]')
+```
 
-* Existe uma técnica que chama 'reset CSS' que consiste em criar um arquivo .css que padronize a formatação de páginas HTML em diferentes navegadores através de um 'reset agressivo' da sua estilização. É uma boa prática em todo projeto web.
+* **const** \<nome_var>: Define uma variável \<nome_var> como constante.
 
-* O modelo padrão de posicionamento de elementos HTML é o *box position*.
+* Ao colocar parênteses de uma função quando ela aparece no código (fora de sua definição), ela é chamada imediatamente. Isso pode causar alguns comportamentos inesperados no site e até exceções. Para evitar isso, pode-se criar _funções anônimas_.
+```js
+let i=0
+while (i < listaTeclas.length) {
+    // Isso fará com que o som fosse tocado ao carregar a página, caso não houvesse a excessão do DOM
+    listaTeclas[i].onclick = tocaSom(id); 
 
-* Fluxo para definição de cardinalidade pode variar a ordem: Entidade -> relacionamento -> cardinalidade, Entidade -> cardinalidade -> relacionamento
+    // Isso fará que seja criado uma função anônima, mas não na hora
+    listaTeclas[i].onclick = function () {
+        tocaSom(id);
+    }
+}
+```
 
-* Tipos de restrições de relacionamentos entre entidades:
-    * **Restrição total:** Ocorre quando todas as instâncias de uma entidade X precisam estar obrigatoriamente relacionadas a alguma instância da entidade Y. Exemplo sendo que um colaborador, para trabalhar numa empresa, deve estar associado a algum departamento. (relacionamento 'associar')
+* É possível utilizar variáveis dentro de uma string em JS. Ao invés de usar aspas simples ou duplas como normalmente é feito, é utilizado _crase_. Com isso, é possível passar o valor de uma variável dentro da string.
 
-    * **Restrição parcial:** Ocorre o contrário da restrição total, em que uma entidade X não precisa estar obrigatóriamente associada a outra Y. No mesmo exemplo anterior, um empregado deve sim estar associado a um departamento, e todo departamento deve ter um empregado como gerente. Logo, somente um empregado deve ser gerente, não todos. (relacionamento 'gerencia')
+```js
+idAudio = `#som_${variavel}` // Chama-se template string
 
-* Todo relacionamento muitos-para-muitos pode ser entendido como uma entidade. Essas entidades denominam-se associativas, pois elas representam um fato, um relacionamento muitos-para-muitos.
-
-* Todo relacionamento com uma entidade fraca é um relacionamento fraco.
-
-
-
+```
