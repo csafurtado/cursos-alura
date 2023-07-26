@@ -35,5 +35,4 @@ while (i < listaTeclas.length) {
 
 ```js
 idAudio = `#som_${variavel}` // Chama-se template string
-
 ```
