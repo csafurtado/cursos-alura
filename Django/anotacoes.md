@@ -79,3 +79,52 @@ def index(request):
     return render(request, 'index.html')
 ```
 
+* Por boas práticas, é ideal deixar uma apsta de templates para todo o projeto, onde todas as suas aplicações irão carregar seus templates específicos
+```
+nome_projeto/templates/nome_app
+```
+
+* Para arquivos estáticos (arquivos que não são modificados dinamicamente pelo servidor web como imagens, estilos, scripts JS), precisa-se setar também um caminho para estes. Por padrão, já existe a STATIC_URL, uma variável em **settings.py** que contém o caminho da pasta static.
+
+* A pasta _static_ deverá ser criada manualmente dentro do app base (_setup_ no caso) e deve-se colocar
+
+```python
+
+STATIC_URL = 'static/'
+
+// Diretório normal de onde estão todos os arquivos
+// estáticos da aplicação
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'setup/static'),
+    // Pode-se criar outras pastas static dentro de
+    // outros apps, basta adicionar o caminho aqui
+]
+
+// Caminho de onde o Django automáticamente irá
+// manipular a localização de cada arquivo estático
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+```
+
+* Com o _STATIC_ROOT_, mesmo se houverem arquivos de nomes iguais em statics de outros apps, eles não serão confundidos, pois o Django saberá a que app cada um pertence.
+
+* Para que o Django endereçe de fato os arquivos estáticos dentro da aplicação após seguir o passo anterior, basta digitar:
+
+```python
+python manage.py collectstatic
+```
+
+* A partir daí, o Django criará uma pasta _static_ na base do projeto mesmo, sendo esta que será usada pelos templates da aplicação.
+
+* Agora para usar os arquivos estáticos nos templates, podemos trocar as referências diretas para esses arquivos pela tag:
+
+```python
+// No arquivo template
+{% load static %} // Colocada no topo do arquivo de template
+{% static 'caminho/absoluto/anterior' %}
+
+// No views.py
+def view_tal(request):
+    return render(request, 'nome_app/template_tal.html')
+```
+
+* Saber entender o que é o Jinja2 (parece que é de onde vem as tags do Django)

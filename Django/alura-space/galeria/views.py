@@ -1,6 +1,7 @@
-from django.shortcuts import render     # Renderizador de um arquivo HTML
-from django.http import HttpResponse    # lib responsável por lidar com repsostas HTTP
+from django.shortcuts import render
 
-# Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'galeria/index.html')
+
+def imagem(request):
+    return render(request, 'galeria/imagem.html')
