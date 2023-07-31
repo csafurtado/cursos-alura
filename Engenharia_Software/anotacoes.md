@@ -40,7 +40,7 @@
 
         * Domínio principal e subdomínios: Domínio mais importante da aplicação e o que não é tão relevante.
 
-        *...
+        * e outros...
 
     * Padrões táticos (blocos de construção):
         * Entidades
@@ -48,10 +48,51 @@
         * Eventos
         * Módulos
         * Serviços (classe que representa uma AÇÃO)
-        *...
+        * e outros...
     <br>
     * Arquitetura em camadas:
     <img src="camadas_arquitetura.png">
+<br><br>
 
-    -- parou em "O que é mensageria?"" --
+* **Serviço de Mensageria:**
+
+    * Mensageria é um conceito que define que sistemas distribuídos possam se comunicar por meio de _mensagens_ (eventos), sendo estas gerenciadas por um servidor/módulo de mensagem específico chamado _Message Broker_. Este é um intermediário que lidará com requisições de um sistema A para um B.
+
+    * Lida com mensagens assíncronas, que não necessitam de um retorno imediato por parte de quem tá recebendo a mensagem (servidor). 
+
+    * Arquitetura Publisher/Subscriber (Pub/Sub):
+    <img src="mensageria_pub-sub.png">
+<br><br>
     
+* **Modelagem de eventos:**
+
+    * É a forma como um sistema é descrito usando como exemplo como a informação dentro deles se modofica com o tempo.
+
+    * Pode ser iniciada por um brainstorm dentre todas as partes envolvidas no projeto, sugerindo as ações que ocorrem dentro do escopo do projeto, em que são priorizados eventos que modifiquem o estado do sistema.
+
+    * Depois, os eventos serão organizados em uma ordem cronológica, podendo ter interfaces ou telas pra cada evento.
+
+    * Logo após, seraão identificadas as entradas que são necessárias para que cada evento ocorra. Também serão identificadas as saídas após a ocorrência do evento.
+
+    * A estrutura da empresa irá seguir também a estrutura do sistema (lei de Conway).
+
+    * A próxima etapa é criar cenários em que os eventos ocorrem
+
+* **Arquitetura orientada a eventos:**
+
+    * Rever vídeo
+
+* **APIs e Arquitetura REST:**
+
+    * São serviços e rotinas que uma aplicação disponibiliza através de uma interface da qual mostra como utilizar desses serviços sem saber maiores detalhes sobre como são implmentados.
+
+    * APIs mais comuns:
+        * **APIs de código fonte:** Disponibiliza uma função de alguma lib ou classe através de uma função.
+
+        * **APIs WEB:** Diponibilzação de serviços web que retornam dados atrvés de funções.
+            * RPC (Remote Procedure Call): Faz uma requisição diretamente para uma URL com os argumentos nela mesma.
+            * Soap: Faz requisições utilizando XML para facilitar requisições RPC.
+            * REST: Utiliza o HTTP como ele deveria ser usado, utilizando os métodos GET, POST, etc como eles foram pensados para serem feitos.
+
+ 
+
