@@ -17,7 +17,7 @@ body {
 }
 
 .apresentacao {
-    margin: 10%;
+    margin: 10% 15%; /* Margem superior/inferior e margem esquerda/direita */
     display: flex;
     align-items: center; /* Alinha os itens para ficar alinhados ao centro um do outro */
     justify-content: space-between; /* O espaçamento entre os itens será igual para cada um */
@@ -25,6 +25,9 @@ body {
 
 .apresentacao__conteudo {
     width: 615px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
 .apresentacao__conteudo__titulo {
@@ -36,3 +39,23 @@ body {
     font-size: 24px;
     font-family: 'Montserrat', sans-serif;
 }
+
+.apresentacao__links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.apresentacao__links__link {
+    background-color: #22D4FD;
+    width: 280px;
+    text-align: center;
+    border-radius: 16px;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 21.5px 0;
+    text-decoration: none; /* Retira o sublinhado do texto de um elemento <a>*/
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ENTENDER O PQ QUE A IMAGEM ESTÁ SEM MARGEM ESQUERDA EM COMPARAÇÂO COM O ORIGINAL */

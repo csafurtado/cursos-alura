@@ -29,6 +29,8 @@
 
 * Para poder aplicar a propriedade de flexbox em um elemento, precisa-se observar o agrupamento dos elementos que se deseja organizar e verificar qual é o elemento que contém tais elementos, e assim, aplicar no elemento-pai a propriedade de flexbox.
 
+* Ao definir o valor da propriedade display de um elemento como flex, criamos um contêiner flex, ou seja, passamos a utilizar o Flexbox. A partir desse ponto, todos os elementos que estão dentro do contêiner são chamados de elementos-filhos e apresentarão comportamentos padronizados.
+
 * Quando é criado um elemento dentro de outro que tenha uma classe, é uma boa prática colocar o nome da classe pai dentro do nome que a classe filho terá.
 
 * É possível importar fontes para textos HTML da internet, como por exemplo, a partir do Google Fonts. Para isso:
@@ -37,3 +39,13 @@
     * Importar a aplicação, podendo escolher a opção por importar para o CSS ou para o HTML. No caso do CSS, copiar apenas o que está dentro da tag \<style>.
 
     * Importa também o que será colocado na propriedade _font-family_, disponibilizado na própria página da fonte.
+
+* As divs são usadas para separar conteúdo mais visual, não semântico, como em uma \<section> por exemplo.
+
+* Documentação para ajudar na estilização do CSS:
+    * <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS Tricks</a>
+    * <a href="https://www.alura.com.br/artigos/css-guia-do-flexbox?_gl=1*mwk7i3*_ga*MTQxODYwMjU3My4xNjg0NDQyMTc2*_ga_59FP0KYKSM*MTY5MDk4MTc2Ny4yMS4xLjE2OTA5ODM2NDguMC4wLjA.*_fplc*NTR5T3YlMkZCeXAwaFdHOHhzUGx2c3U2N29TMEw0Vm8lMkJtUUpUQ0lrV3BWMzVXaGRuOUFJRXJoVm0lMkIwYmJGemxmREE1TkZnZmt2R2slMkJ4ajg1MW0wNSUyQmtGMHZqNWNqNjZRRTl0TnpvSEpPUlVlbWpNc0g3U0FQRTdGak9yQ1RjUSUzRCUzRA..">Flexbox CSS: Guia Completo, Elementos e Exemplos</a>
+
+* Para fazer espaçamento enter vários elementos de uma tag que tenha display flex, pode-se verificar a propriedade _gap_.
+
+* 
