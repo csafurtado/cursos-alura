@@ -17,5 +17,20 @@ while(i < listaTeclas.length){
         tocaSom(idAudio);
     }
 
+    // Quando uma tecla do teclado estiver sendo pressionada, no caso as teclas de espaço e enter
+    tecla.onkeydown = function (evento) {
+        console.log(evento.code);
+        if (evento.code === "Space" || evento.key === "Enter"){     // Operador "===" compara valor e tipo das variáveis
+            tecla.classList.add('ativa');
+        }
+    }
+
+    // Quando uma tecla do teclado for soltada, no caso as teclas de espaço e enter
+    tecla.onkeydown = function (evento) {
+        if (evento.code === "Space" || evento.key === "Enter"){
+            tecla.classList.remove('ativa');
+        }
+    }
+
     i++;
 }

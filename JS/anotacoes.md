@@ -18,6 +18,9 @@ document.querySelector('input[type=button]')
 * **const** \<nome_var>: Define uma variável \<nome_var> como constante.
 
 * Ao colocar parênteses de uma função quando ela aparece no código (fora de sua definição), ela é chamada imediatamente. Isso pode causar alguns comportamentos inesperados no site e até exceções. Para evitar isso, pode-se criar _funções anônimas_.
+
+* A diferença entre criar uma função anônima para um evento e colocar uma função direto no evento é que a função anônima irá executar o que está dentro dela quando o evento ocorrer, enquanto que se fizer diretamente, o retorno da função em questão será retornado para a variável .onclick, .onkey, etc, sem que a função em questão seja executada.
+
 ```js
 let i=0
 while (i < listaTeclas.length) {
@@ -36,3 +39,15 @@ while (i < listaTeclas.length) {
 ```js
 idAudio = `#som_${variavel}` // Chama-se template string
 ```
+
+* elemento_botão:active é uma _pseudoclasse_, na qual representa o estilo quando o botão está sendo pressionado.
+
+* Para saber qual tecla foi pressionada durante um evento, pode-se pagar os atributos 'code' ou 'key' dentro do evento
+
+```js
+teste.onclick = function (evento) {
+    console.log(evento.code, evento.key);
+}
+```
+
+* 
