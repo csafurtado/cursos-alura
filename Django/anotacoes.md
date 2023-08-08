@@ -128,3 +128,62 @@ def view_tal(request):
 ```
 
 * Saber entender o que é o Jinja2 (parece que é de onde vem as tags do Django)
+
+* É possível de colocar referências de urls que já estão cadastradas na aplicação dentro de elementos \<a> da aplicação. Isso é possível através da propriedade _name_, no registro de uma url.
+
+```python
+# Em arquivos urls.py
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('galeria.urls'), name='o_que_quiser'),
+]
+```
+
+```html
+<!-- No template desejado -->
+<a href="{% url 'index' %}">
+<a href="{% url 'o_que_quiser' %}">
+```
+
+* Sempre buscar utilizar o conceito DRY (Don't Repeat Yourself). Para aplicá-lo em Django, podemos criar um arquivo base que poderá ser utilizado dentro de vários templates (pode ter o nome base.html).
+    1. Dentro deste novo template base.html, copiar tudo o que haverá repetição (fechar tags se necessário)
+
+    2. Dentro do template que usará o base.html, _extendê-lo_ e carregar seus arquivos estáticos juntos:
+    
+    ```html
+    {% extends 'app/base.html' %}
+    {% load static %}
+    ```
+
+    3. Agora no base.html, deve ser criado um _bloco_ onde haverá o conteúdo de qualquer template de que se deseja processar (dentro do body):
+
+    ```html
+    <body>
+        {% block content %}{% endblock %}
+    <body>
+    ```
+
+    4. Agora no template, definir novamente o mesmo bloco, só que agora para todo o conteúdo do html em questão, podendo ser removido as tags de \<body> e \<html>, que já estão no base.html (a tag deverá estar no começo do arquivo html)
+
+    ```html
+    {% extends 'app/base.html' %}
+    {% load static %}
+    {% block content %}
+    ...
+    {% endblock %}
+    ```
+
+* Para itens que também se repetem em múltiplos templates mas que não necessáriamente em todos, como um rodapé ou uma barra lateral, podemos importar apenas _partes parciais_ de HTMLs.
+    1. Criar uma pasta 'parcials' dentro da pasta do app que se deseja usar dentro de templates (se todos os apps utilizarem, coloque na base msm)
+
+    2. O nome do elemento deverá começar com um underline (é um padrão). Ex: _footer.html
+
+    3. _Incluir_ dentro do base.html daquele app (ou do geral se todos os templates o utilizarem):
+
+    ```html
+    {% include 'app/partials/_footer.html' %}
+    ```
+
+    4. Agora todos os que utilizam o base.html terão por padrão as coisas incluídas!
+
+* <a href="https://www.youtube.com/watch?v=x39vqeBTUmE&ab_channel=Alura">Link para ver o que é ORM</a>
