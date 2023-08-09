@@ -42,7 +42,7 @@ idAudio = `#som_${variavel}` // Chama-se template string
 
 * elemento_botão:active é uma _pseudoclasse_, na qual representa o estilo quando o botão está sendo pressionado.
 
-* Para saber qual tecla foi pressionada durante um evento, pode-se pagar os atributos 'code' ou 'key' dentro do evento
+* Para saber qual tecla foi pressionada durante um evento, pode-se pagar os atributos 'code' ou 'key' dentro do evento através do console do navegador (DevTools)
 
 ```js
 teste.onclick = function (evento) {
