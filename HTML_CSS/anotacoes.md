@@ -19,6 +19,8 @@
 
 * Existe uma técnica que chama 'reset CSS' que consiste em criar um arquivo .css que padronize a formatação de páginas HTML em diferentes navegadores através de um 'reset agressivo' da sua estilização. É uma boa prática em todo projeto web.
 
+<h2>HTML e CSS: Classes, posicionamento e Flexbox</h2>
+
 * O modelo padrão de posicionamento de elementos HTML é o *box position*.
 
 * Box-sizing é uma propriedade CSS para definir o comportamento de uma tag filha em relação ao seu elemento pai, por como a largura e a altura totais de um elemento filho são calculadas em relação ao seu elemento pai. 
@@ -48,4 +50,15 @@
 
 * Para fazer espaçamento enter vários elementos de uma tag que tenha display flex, pode-se verificar a propriedade _gap_.
 
-* 
+<h2>HTML e CSS: cabeçalho, footer e variáveis CSS</h2>
+
+* Ao inverter a direção do flexbox, as outras propriedades também modificam junto
+
+* Dicas para comentários:
+    * Evitar colocar muitos comentários;
+    * Evitar comentários muito grandes, pois apesar de não serem lidos, deixam o arquivo do código mais pesado;
+    * Anotar informações importantes neles, para que seja mais fácil lembrar do que o trecho faz;
+    * Apagar comentários de teste quando for comittar as mudanças por exemplo;
+    * Ao fazer um código mais significiativo (nomes de variáveis, classes e etc que representam o que elas fazem) a necessidade de comentários diminui;
+
+    

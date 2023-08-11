@@ -22,6 +22,7 @@ body{
     align-items: center;
     justify-content: space-between;
 }
+
 .apresentacao__conteudo{
     width: 615px;
     display: flex;

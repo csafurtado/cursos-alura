@@ -5,11 +5,17 @@
     padding: 0;
 }
 
+/* Para configurar o tamanho da figura do gatinho do mesmo tamanho do gabarito */
+.img_portifolio {
+    height: 550px;
+    width: 490px;
+}
+
 body {
-    background-color: rgb(18, 19, 94);
-    color: rgb(202, 202, 202);
     height: 100vh; /* 100% do tamanho do viewport definido para esta tag no HTML */
     box-sizing: border-box;  /* Define o limite do tamanho dos elementos filhos para o limite do tamanho desta tag, não podendo eles ultrapassar otamanho desta tag */
+    background-color: rgb(18, 19, 94);
+    color: rgb(202, 202, 202);
 }
 
 .titulo-destaque {
@@ -42,20 +48,31 @@ body {
 
 .apresentacao__links {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
+    gap: 32px;
+}
+
+.apresentacao__links__subtitulo {
+    font-family: 'Krona One', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
 }
 
 .apresentacao__links__link {
-    background-color: #22D4FD;
-    width: 280px;
+    /* background-color: #22D4FD; */
+    width: 378px;
     text-align: center;
-    border-radius: 16px;
+    border: 2px solid #22D4FD;
+    border-radius: 8px;
     font-size: 24px;
     font-weight: 600;
     padding: 21.5px 0;
     text-decoration: none; /* Retira o sublinhado do texto de um elemento <a>*/
-    color: black;
+    color: #f6f6f6;
     font-family: 'Montserrat', sans-serif;
 }
 
-/* ENTENDER O PQ QUE A IMAGEM ESTÁ SEM MARGEM ESQUERDA EM COMPARAÇÂO COM O ORIGINAL */
+/* ENTENDER O PQ QUE A IMAGEM ESTÁ SEM MARGEM ESQUERDA EM COMPARAÇÂO COM O ORIGINAL,
+   ACREDITO QUE SEJA O ZOOM DA PÁGINA DADO QUE AMBOS INDEX.HTML e STYLE.CSS ESTÃO IDÊNTICOS  */
