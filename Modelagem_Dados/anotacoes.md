@@ -38,6 +38,18 @@
 
 * Caso uma entidade fraca poder possuir um atributo identificador (candidado a ser primário), este será uma _chave parcial_. Este será o identificador para a entidade em questão, porém deverá ser acompanhado da chave primária da entidade forte da qual ela tem relacionamento.
 
-* <a href="https://www.alura.com.br/artigos/mer-e-der-funcoes">Site sobre MER e DER</a>
+* Links Úteis:
+    * <a href="https://www.alura.com.br/artigos/mer-e-der-funcoes">MER e DER: Definições, Banco de Dados e Exemplos</a>
+    * <a href="https://www.remessaonline.com.br/blog/mer-e-der-o-que-e-as-principais-diferencas-e-como-usar/">MER e DER: o que é, as principais diferenças e como usar</a>
+
 
 <h2>Modelagem de banco de dados relacional: modelagem lógica e física</h2>
+
+<img src="progressao_modelos_modelagem_DB.png">
+
+* Modelo Conceitual: Modelo mais alto nível da representação do banco de dados que se deseja implementar. Envolve somente definir os atributos, entidades, relacionamentos e especificações do projeto sem entrar em detalhes de implementação.
+
+* Modelo Lógico: Modelo intermediário entre o físico e o abstrato. Tem a responsabilidade de já trazer uma visualização prévia em tabelas (relações) sobre a forma como tudo o que está no Modelo Conceitual ficará dentro do Banco de Dados. Ele descreve como os dados serão armazenados no banco de dados, identificando as entidades, os atributos, as chaves primárias e estrangeiras e os seus relacionamentos.
+
+* Modelo Físico: Modelo que se trata da própria implementação do projeto no Banco de Dados. Pode ser um Modelo Lógico mais detalhado ou até o próprio código SQL que o implementa.
+
