@@ -186,4 +186,46 @@ urlpatterns = [
 
     4. Agora todos os que utilizam o base.html terão por padrão as coisas incluídas!
 
+
 * <a href="https://www.youtube.com/watch?v=x39vqeBTUmE&ab_channel=Alura">Link para ver o que é ORM</a>
+
+* Imagem com o funcionamento de uma ORM:
+<img src="como-funciona-ORM.png">
+
+<h2>Django: persistência de dados e Admin</h2>
+
+* A função \__str__() é usada para definir como o objeto será printado, então ao redefinir ela, se redefinie como o objeto é printado em print().
+
+* Alguns comandos de linha do manage.py:
+
+    * makemigrations: "Tudo o que está definido nas models.py de todos os apps seja transformado em tabelas de banco de dados"
+
+    * migrate: "Aplica todas as modificações que foram criadas a partir da _makemigrations_."
+
+    * shell: Abre um shell iterativo da própria aplicação Django.
+        * Para criar um novo registro para uma model (tabela) do BD, fazer assim dentro do shell:
+        ```python
+        from app.models import Modelo_desejado
+
+        objeto_registro = Modelo_desejado(attr1="asasas", attr2="asdhjdsa")
+        objeto_registro.save()
+
+        #Para ver os objetos salvos dentro do modelo(tabela)
+        Modelo_desejado.objects.all()
+        ```
+
+* É uma boa prática ao invés de deixar somente o nome do app criado em INSTALLED_APPS no settings.py, deixar desta forma:
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    '<nome_do_app_novo>'.apps.NomeDoAppNovoConfig, #Nome da classe dentro do apps.py do app respectivo
+]
+```
+* <a href="https://docs.djangoproject.com/pt-br/4.1/topics/db/models/">Documentação Oficial Django sobre Models</a>
+
