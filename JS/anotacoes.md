@@ -50,4 +50,6 @@ teste.onclick = function (evento) {
 }
 ```
 
-* 
+<h2>JavaScript: manipulando o DOM</h2>
+
+* O JavaScript interage no documento HTML através do DOM (Document Object Model) que é um objeto JavaScript manipulável.
