@@ -12,7 +12,7 @@
 }
 
 body {
-    height: 100vh; /* 100% do tamanho do viewport definido para esta tag no HTML */
+    /* height: 100vh; 100% do tamanho do viewport height definido para esta tag no HTML */
     box-sizing: border-box;  /* Define o limite do tamanho dos elementos filhos para o limite do tamanho desta tag, não podendo eles ultrapassar otamanho desta tag */
     background-color: rgb(18, 19, 94);
     color: rgb(202, 202, 202);
@@ -23,7 +23,8 @@ body {
 }
 
 .apresentacao {
-    margin: 10% 15%; /* Margem superior/inferior e margem esquerda/direita */
+    /* margin: 10% 15%; Margem superior/inferior e margem esquerda/direita */
+    padding: 8% 15%;
     display: flex;
     align-items: center; /* Alinha os itens para ficar alinhados ao centro um do outro */
     justify-content: space-between; /* O espaçamento entre os itens será igual para cada um */
@@ -62,6 +63,9 @@ body {
 
 .apresentacao__links__link {
     /* background-color: #22D4FD; */
+    display: flex;
+    justify-content: center;
+    gap: 16px;
     width: 378px;
     text-align: center;
     border: 2px solid #22D4FD;
@@ -74,5 +78,39 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.apresentacao__links__link:hover {
+    background-color: #4000ff;
+}
+
+.rodape {
+    padding: 24px;
+    color: black;
+    background-color: #22D4FD;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+/* Fica de curiosidade pra entender as animações CSS */
+/*
+.apresentacao__links__link:hover {
+    background-color: #4000ff;
+    animation: pulse1 1s infinite;
+    transition: 1s;
+}
+
+@keyframes pulse1 {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+} */
+
 /* ENTENDER O PQ QUE A IMAGEM ESTÁ SEM MARGEM ESQUERDA EM COMPARAÇÂO COM O ORIGINAL,
-   ACREDITO QUE SEJA O ZOOM DA PÁGINA DADO QUE AMBOS INDEX.HTML e STYLE.CSS ESTÃO IDÊNTICOS  */
+   ACREDITO QUE SEJA O ZOOM DA PÁGINA DADO QUE AMBOS INDEX.HTML e STYLE.CSS ESTÃO IDÊNTICOS 
+   OU PODE SER A RESOLUÇÃO DO MEU PC */

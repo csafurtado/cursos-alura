@@ -9,20 +9,37 @@
     </head>
     <body>
         <!-- Estrutura básica do HTML header, main e footer -->
-        <header></header>
+        <header class="cabecalho">
+            <nav class="cabecalho__menu">
+                <a class="cabecalho__menu__link">Home</a>
+                <a class="cabecalho__menu__link">Sobre Mim</a>
+            </nav>
+        </header>
         <main class="apresentacao">
             <section class="apresentacao__conteudo"> <!-- Tag utilizada para definir seções dentro do site -->
                 <h1 class="apresentacao__conteudo__titulo">Eleve seu negócio digital a outro nível<strong class="titulo-destaque"> um Front-end de qualidade!</strong></h1>
                 <p class="apresentacao__conteudo__texto">Olá! Sou Cristian Furtado, desenvolvedore Front-end com especialidade em React, HTML e CSS. Ajudo pequenos negócios e designers a colocarem em prática boas ideias. Vamos conversar?</p>
                 <div class="apresentacao__links">
                     <h2 class="apresentacao__links__subtitulo">Acesse minhas redes:</h2>
-                    <a class="apresentacao__links__link" href="https://instagram.com/csafurtado">Instagram</a>
-                    <a class="apresentacao__links__link" href="https://github.com/csafurtado">GitHub</a>
+                    <a class="apresentacao__links__link" href="https://github.com/csafurtado">
+                        <img src="./assets/github.png">
+                        GitHub
+                    </a>
+                    <a class="apresentacao__links__link" href="https://www.linkedin.com/in/cristianfurtado">
+                        <img src="./assets/linkedin.png">
+                        LinkedIn
+                    </a>
+                    <a class="apresentacao__links__link" href="https://instagram.com/csafurtado">
+                        <img src="./assets/instagram.png">
+                        Instagram
+                    </a>
                 </div>
             </section>
-            <img class="img_portifolio" src="fofo_561.webp" alt="gato_fofo">
+            <img class="img_portifolio" src="./assets/imagem.webp" alt="gato_fofo">
         </main>
-        <footer></footer>
+        <footer class="rodape">
+            <p>Desenvolvido por Cristian</p>
+        </footer>
     </body>
 </html>
 

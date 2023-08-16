@@ -19,9 +19,13 @@
 
 * Existe uma técnica que chama 'reset CSS' que consiste em criar um arquivo .css que padronize a formatação de páginas HTML em diferentes navegadores através de um 'reset agressivo' da sua estilização. É uma boa prática em todo projeto web.
 
+* Quando dizemos que uma tag é semântica, significa que ela possui um significado específico e claro em relação ao conteúdo que está sendo representado. O uso de tags semânticas não altera o processamento básico do documento HTML no navegador. O navegador ainda irá interpretar e renderizar o código HTML da mesma forma, independentemente do uso de tags semânticas. No entanto, o uso de tags semânticas traz benefícios em termos de organização, acessibilidade e SEO. Esses benefícios estão relacionados à interpretação e compreensão do conteúdo por parte de leitores de tela, motores de busca e desenvolvedores, mas não afetam diretamente o processamento do código HTML pelo navegador.
+
 <h2>HTML e CSS: Classes, posicionamento e Flexbox</h2>
 
 * O modelo padrão de posicionamento de elementos HTML é o *box position*.
+
+* O Padding é responsável por definir a distância entre um conteúdo e suas bordas.
 
 * Box-sizing é uma propriedade CSS para definir o comportamento de uma tag filha em relação ao seu elemento pai, por como a largura e a altura totais de um elemento filho são calculadas em relação ao seu elemento pai. 
     
@@ -46,7 +50,7 @@
 
 * Documentação para ajudar na estilização do CSS:
     * <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS Tricks</a>
-    * <a href="https://www.alura.com.br/artigos/css-guia-do-flexbox?_gl=1*mwk7i3*_ga*MTQxODYwMjU3My4xNjg0NDQyMTc2*_ga_59FP0KYKSM*MTY5MDk4MTc2Ny4yMS4xLjE2OTA5ODM2NDguMC4wLjA.*_fplc*NTR5T3YlMkZCeXAwaFdHOHhzUGx2c3U2N29TMEw0Vm8lMkJtUUpUQ0lrV3BWMzVXaGRuOUFJRXJoVm0lMkIwYmJGemxmREE1TkZnZmt2R2slMkJ4ajg1MW0wNSUyQmtGMHZqNWNqNjZRRTl0TnpvSEpPUlVlbWpNc0g3U0FQRTdGak9yQ1RjUSUzRCUzRA..">Flexbox CSS: Guia Completo, Elementos e Exemplos</a>
+    * <a href="https://www.alura.com.br/artigos/css-guia-do-flexbox">Flexbox CSS: Guia Completo, Elementos e Exemplos</a>
 
 * Para fazer espaçamento enter vários elementos de uma tag que tenha display flex, pode-se verificar a propriedade _gap_.
 
@@ -61,4 +65,13 @@
     * Apagar comentários de teste quando for comittar as mudanças por exemplo;
     * Ao fazer um código mais significiativo (nomes de variáveis, classes e etc que representam o que elas fazem) a necessidade de comentários diminui;
 
-    
+* É padrão utilizar o nome **assets** para a pasta onde será colocados imagens e outras mídias 
+
+* Alguns tipos da propriedade _justify-content_ do flexbox que controla o posicionamento dos elementos filhos ao longo do eixo principal e também ajuda a distribuir o espaço livre entre eles:
+    * _space-around_: Com o valor space-around, os itens serão distribuídos cada um com um espaço ao seu redor.
+    * _space-evenly_: Com o valor space-evenly, os itens são distribuídos com espaços iguais entre si e até as bordas. Como temos apenas 2 elementos, eles ficarão centralizados.
+    * _center_: Com o valor center, os elementos serão centralizados em seu elemento pai, mas sem espaços entre si.
+
+* O seletor <a src="https://www.w3schools.com/CSSref/sel_hover.php">hover</a> pode ser aplicado a classes também, não só a tags somente.
+
+* A <a href="https://www.w3schools.com/TAgs/tag_nav.asp" >tag \<nav></a> é utilizada para representar uma seção de navegação em um documento web. É recomendado utilizar essa tag para agrupar os links de navegação do cabeçalho \<header>. Ela é uma tag semântica do HTML.
