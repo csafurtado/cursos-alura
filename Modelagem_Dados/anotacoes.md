@@ -53,3 +53,17 @@
 
 * Modelo Físico: Modelo que se trata da própria implementação do projeto no Banco de Dados. Pode ser um Modelo Lógico mais detalhado ou até o próprio código SQL que o implementa.
 
+* Nomes de tabelas em **maiúsculo** e nomes de atributos/colunas/campos em **minúsculo**.
+
+* As diferenças entre entidades fortes e fracas dentro do modelo lógico/físico é:
+    * Todas as relações fortes possuem chaves primárias.
+    * Uma entidade fraca sempre depende de uma entidade forte para sua existência, representada por uma chave estrangeira, mas ela pode possuir uma chave identificadora, conhecida como chave parcial.
+
+* Relações de n para n possuem chaves estrangeiras das duas relações participantes, sendo elas um par para chave primária.
+
+* Para especializações de uma entidade, criar novas relações que tenham como chave primária e estrangeira, a primária de onde se especializam.
+
+* Por vezes é identificado em uma modelagem, atributos de um relacionamento entre duas entidades, como o famoso e clássico caso de Empregado e Departamento. E dependendo da cardinalidade do relacionamento, estes atributos podem ou não se mover para uma das entidades. Os casos são:
+    * (1:1): Os atributos podem ser movidos para qualquer uma das entidades envolvidas.
+    * (1:n): Os atributos serão movidos para a entidade com a cardinalidade N.
+    * (n:m): Será criada uma _entidade associativa_ para este relacionamento, que conterá todos os atributos das entidades participantes do relacionamento + os atributos do relacionamento em si. (REVISAR VERIFICANDO POST NO FÓRUM)
