@@ -115,6 +115,8 @@ python manage.py collectstatic
 
 * A partir daí, o Django criará uma pasta _static_ na base do projeto mesmo, sendo esta que será usada pelos templates da aplicação.
 
+* Existe diferenças entre a pasta static criada manualmente e a static criada pelo comando _collectstatic_, a que está dentro da pasta de setup se refere a static dentro do ambiente de desenvolvimento e a outra para o ambiente de produção. Então **só se deve fazer novas modificações dentro desta pasta de desenvolvimento.**
+
 * Agora para usar os arquivos estáticos nos templates, podemos trocar as referências diretas para esses arquivos pela tag:
 
 ```python
@@ -227,5 +229,127 @@ INSTALLED_APPS = [
     '<nome_do_app_novo>'.apps.NomeDoAppNovoConfig, #Nome da classe dentro do apps.py do app respectivo
 ]
 ```
+* Assim, o arquivo de configurações apps.py é puxado, que por sua vez puxa todo o app.
+
 * <a href="https://docs.djangoproject.com/pt-br/4.1/topics/db/models/">Documentação Oficial Django sobre Models</a>
 
+* Para acessar valores de colunas de objetos de uma model em um HTML (template), utiliza-se tags especiais do Django para tais:
+
+```python
+# No views.py
+from app_tal.models import ModelTal
+
+def uma_view_qq(request):
+    objetos_desejados = ModelTal.objects.all() # Coleta todos os objetos desta tabela/model (retorna um QuerySet)
+    
+    # Para se passar estes dados para o HTML, primeiro se cria o que chamamos de 'contexto' que o Django irá traduzir para o HTML ler
+    contexto = {
+        "objetos" : objetos_desejados
+    }
+
+    return render(request, 'nome_app/template_tal.html', contexto)
+```
+
+```html
+<!-- No template.html -->
+<div>
+    {% if objetos %}    <!-- Verifica se a lista está vazia ou se existe essa variável no contexto trazido pela view que chamou o template -->
+    {% for item in objetos %}   <!-- Itera sobre a lista de objetos -->
+    <h2 class="titulo">{{ item.attr1 }}</h2>    <!-- Acessa o attributo desejado do objeto da iteração atual -->
+    <p class="paragrafo">{{ item.attr2 }}</p>
+    {% endfor %}    <!-- Encerra o loop -->
+    {% else %}
+    {% endif %}     <!-- Encerra a condicional -->
+</div>
+```
+
+* As tags Django também podem substituir também strings em imports estáticos:
+
+```html
+<!-- Não pode ter espaço entre o fim da tag '%}' e o início da tag '{{', para que não haja o caracter de espaço no meio da string da src -->
+<img class="imagem_qq" src="{% static 'caminho/para/imagem' %}{{ objeto.foto_nome }}" alt="foto_qq">
+```
+
+* Também é possível passar argumentos pela própria URL para serem usados em uma view:
+
+```python
+# Na urls.py do app_tal
+urlpatterns = [
+    path('', index, name='index'),
+    path('caminho_1/<int:id_tal>', view_tal, name='caminho_1')
+]
+
+# Na views.py do app_tal
+def index(request):
+    return render(request, 'nome_app/template_tal.html')
+
+def view_tal(request, id_tal):  # Recebe o argumento definido na urls.py para esta rota que chama esta view
+    # Função nativa do Django que pega um único objeto de uma model e verifica se existe ou não
+    objeto = get_object_or_404(Fotografia, pk=id_tal) 
+
+    contexto = {
+        'objeto' : objeto,
+    }
+
+    return render(request, 'nome_app/template_tal2.html', contexto)
+```
+
+```html
+<!-- No template_tal.html -->
+<!-- É possível adicionar argumentos a esta tag, no caso está sendo passado o id do objeto fotografia vindo do contexto -->
+<!-- O resultado seria: ip:porta/.../imagem/id_da_foto , então ao clicar neste <a>, a página é redirecionada para a imagem com tal id -->
+<a href="{% url 'imagem' fotografia.id %}"> 
+```
+
+* Para facilitar na adição/remoção/edição de itens no banco de dados, podemos utilizar o módulo de <a href="https://docs.djangoproject.com/en/4.1/ref/contrib/admin/">_Admin_ do Django</a>. Para poder manuseá-lo dentro da aplicação, precisa-se primeiro criar um _super usuário_. Após isso, basta logar na rota base '(ip:porta)/admin'
+
+```python
+python manage.py createsuperuser
+```
+
+* O Django também cria por automático o arquivo admin.py dentro de cada novo app criado. Para adicionar uma model para ser manuseada, precisa-se registrar a model desejada dentro deste arquivo:
+
+```python
+# Dentro de admin.py do app_tal
+from django.contrib import admin
+from app_tal.models import ModelTal
+
+# Classe que pode ser criada para configurar a visualização de objetos de uma ou mais models dentro da página de admin 
+class ListandoObjetos(admin.ModelAdmin):
+    list_display = ("id", "nome", "legenda")    # Colunas dos objetos da model que são mostradas 
+    list_display_links = ("id", "nome")         # Colunas dos objetos da model que, ao clicar, levarão ao registro do item
+    search_fields = ("nome",)                   # Adiciona possibilidade de pesquisar registros por uma ou mais colunas (precisa ter vírgula no final caso seja somente um argumento, pois é uma tupla)
+
+# Caso se deseje mostrar a visualização padrão para models no admin
+# admin.site.register(ModelTal)
+
+# Caso se deseje mostrar a visualização customizada pela classe criada no admin
+admin.site.register(ModelTal, ListandoObjetos)
+```
+
+* Para se definir valores específicos para uma coluna (um domínio de valores), pode-se fazer: 
+
+```python
+# Em models.py do app_tal
+from django.db import models
+
+class ModelTal(models.Model):
+    # Define as opções de valores que a coluna de 'categorias' pode ter
+    OPCOES_CATEGORIAS = [
+        ("NEBULOSA", "Nebulosa"),
+        ("ESTRELA", "Estrela"),
+        ("GALÁXIA", "Galáxia"),
+        ("PLANETA", "Planeta")
+    ]
+
+    att1 = models.CharField(max_length=100, null=False, blank=False)
+    att2 = models.CharField(max_length=150, null=False, blank=False)
+    categoria = models.CharField(max_length=100, null=False, blank=False, choices=OPCOES_CATEGORIAS, default='')    # Precisa ter um default caso tenha o atributo choices
+    att3 = models.TextField(null=False, blank=False)
+    att4 = models.CharField(max_length=100, null=False, blank=False)
+
+    def __str__(self):
+        return f"Objeto [nome={self.att1}]"
+```
+
+* **OBS: TODA MUDANÇA FEITA DENTRO DE UMA MODEL DEVERÁ SER SEGUIDA DE MAKEMIGRATIONS->MIGRATE, PARA QUE O BD E APLICAÇÃO TENHAM A MESMA TABELA E MODEL SINCRONIZADOS**
