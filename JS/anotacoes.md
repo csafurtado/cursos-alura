@@ -53,3 +53,76 @@ teste.onclick = function (evento) {
 <h2>JavaScript: manipulando o DOM</h2>
 
 * O JavaScript interage no documento HTML através do DOM (Document Object Model) que é um objeto JavaScript manipulável.
+
+* É uma convenção utilizar uma pasta chamada 'js' no projeto onde conterá os scripts JS da aplicação. Também deve-se evitar fazer funções inline (JS dentro da tag HTML).
+
+* É ideal colocar o script na última linha antes do \<\body>, assim permitindo que a página toda carregue sem que o script seja executado primeiro.
+
+* Para se fazer um elemento HTML escutar um evento, adiciona-se o método .addEventListener("evento_desejado", funcao_declarada_desejada).
+
+* OBS: Se colocar funcao_tal com parênteses, a função é executada somente uma vez, pois seria considerado um trecho de código ao invés do chamamento da própria função quando o evento acontece! Da mesma forma com uma função anônima function () {} sem o chamamento de uma função já existente.
+
+```js
+const elemento = document.querySelector("#elemento");
+
+function teste() {
+    alert('teste');
+}
+
+// Consegue executar a cada vez que o evento click (ou qq outro) acontece
+elemento.addEventListener("click", teste);
+
+elemento.addEventListener("click", function () {
+    teste();
+});
+
+elemento.addEventListener("click", function () {
+    alert('teste');
+});
+
+elemento.addEventListener("click", () => {  // Maneira mais atualizada de expressar funções anônimas, mas é a msm coisa
+    alert('teste');
+});
+
+// Não consegue executar a cada vez que o evento click (ou qq outro) acontece
+elemento.addEventListener("click", teste());
+
+elemento.addEventListener("click", function () {
+    teste;
+});
+
+```
+
+* É possível verificar as propriedades do próprio evento que ocorreu dentro do elemento, basta colocar um argumento dentro das aspas da função anônima, este indicará o evento que ocorreu. Geralmente é dado o nome de 'e' ou 'event' mesmo, mas pode ser qq nome.
+
+```js
+elemento.addEventListener("click", (evento_ocorrido) => {  // Maneira mais atualizada de expressar funções anônimas, mas é a msm coisa
+    alert('teste');
+    console.log(evento_ocorrido);
+});
+```
+
+* O _Hoisting_ (ou içamento em inglês) é uma ação feita pelo JS que consiste em mover declarações de funções e variáveis para o começo do código antes dele ser executado de fato, mesmo estas tendo sido declaradas anteriormente. Serão movidas para o topo as variáveis declaradas com a palavra-chave let, mas não as inicializa como as variáveis declaradas com a palavra chave var. Exemplo:
+
+```js
+// Forma como foi escrito
+let x=20, y=10;
+
+let result = add(x,y);
+console.log(result);
+
+function add(a,b){
+    return a+b;
+}
+
+// Forma como seria executado
+function add(a,b){
+    return a+b;
+}
+
+let x=20, y=10;
+
+let result = add(x,y);
+console.log(result);
+```
+
