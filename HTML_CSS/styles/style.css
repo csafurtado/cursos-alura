@@ -18,13 +18,26 @@ body {
     color: rgb(202, 202, 202);
 }
 
-.titulo-destaque {
+.cabecalho {
+    padding: 2% 0 0 15%;
+}
+
+.cabecalho__menu {
+    display: flex;
+    gap: 80px;
+}
+
+.cabecalho__menu__link {
+    font-family: 'Montserrat', sans-serif;
+    font-size:  24px;
+    font-weight: 600;
     color: #22D4FD;
+    text-decoration: none;
 }
 
 .apresentacao {
     /* margin: 10% 15%; Margem superior/inferior e margem esquerda/direita */
-    padding: 8% 15%;
+    padding: 5% 15%;
     display: flex;
     align-items: center; /* Alinha os itens para ficar alinhados ao centro um do outro */
     justify-content: space-between; /* O espaçamento entre os itens será igual para cada um */
@@ -35,6 +48,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 40px;
+}
+
+.titulo-destaque {
+    color: #22D4FD;
 }
 
 .apresentacao__conteudo__titulo {
@@ -83,6 +100,8 @@ body {
 }
 
 .rodape {
+    /*position: fixed;*/    /* Faz com que o elemento fique numa posição fixa da página */
+    /*bottom : 0;*/         /* Faz com que o elemento fique totalmente na parte inferior do site */
     padding: 24px;
     color: black;
     background-color: #22D4FD;

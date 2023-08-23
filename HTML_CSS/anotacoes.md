@@ -75,3 +75,9 @@
 * O seletor <a src="https://www.w3schools.com/CSSref/sel_hover.php">hover</a> pode ser aplicado a classes também, não só a tags somente.
 
 * A <a href="https://www.w3schools.com/TAgs/tag_nav.asp" >tag \<nav></a> é utilizada para representar uma seção de navegação em um documento web. É recomendado utilizar essa tag para agrupar os links de navegação do cabeçalho \<header>. Ela é uma tag semântica do HTML.
+
+* Para se tratar de espaçamentos, é recomendado utilizar porcentagens, dado que a página pode ser carregada em dispositivos com telas de resoluções diferentes.
+
+* É convenção utilizar uma pasta chamada _styles_ para colocar os códigos CSS.
+
+* É possível que, ao criar novas páginas, seja necessário criar novos arquivos .css para definir os estilos de um conjunto ou de uma página em específico. É priorizado que se utilize o menor número de arquivos .css possível por questões de performance de processamento da página.
