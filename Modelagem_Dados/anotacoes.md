@@ -66,4 +66,22 @@
 * Por vezes é identificado em uma modelagem, atributos de um relacionamento entre duas entidades, como o famoso e clássico caso de Empregado e Departamento. E dependendo da cardinalidade do relacionamento, estes atributos podem ou não se mover para uma das entidades. Os casos são:
     * (1:1): Os atributos podem ser movidos para qualquer uma das entidades envolvidas.
     * (1:n): Os atributos serão movidos para a entidade com a cardinalidade N.
-    * (n:m): Será criada uma _entidade associativa_ para este relacionamento, que conterá todos os atributos das entidades participantes do relacionamento + os atributos do relacionamento em si. (REVISAR VERIFICANDO POST NO FÓRUM)
+    * (n:m): Será criada uma _entidade associativa_ para este relacionamento, que conterá todos os atributos das entidades participantes do relacionamento + os atributos do relacionamento em si.
+
+* O SQL Power Architect mexe com a modelagem física. Existem outros softwares tbm que mexem com isso tipo o _MySQL Workbench_, o _Astah_ e o _DBDesigner_.
+
+* O domínio de um dado são os valores possíveis que este pode assumir. Desde tipo até valores específicos. Dentre eles temos:
+    * Para valores numéricos:
+        * Int armazena valores numéricos inteiros.
+        * Float armazena valores numéricos aproximados com precisão de ponto flutuante.
+        * Decimal armazena valores numéricos com casas decimais, utilizando precisão.
+    * Para valores de texto (strings):
+        * Varchar armazena valores de string de tamanho variável de acordo com o seu limite. Precisão é a qtd de caracteres possível.
+        * Char armazena valores de string de tamanho fixo.
+        * Text armazena valores de string de tamanho variável.
+    * Para valores com datas e horários:
+        * Date armazena apenas valores de data.
+        * Time armazena apenas valores de hora.
+        * Timestamp armazena valores de data e hora.
+
+* 
