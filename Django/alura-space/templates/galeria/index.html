@@ -24,7 +24,12 @@
                     {% for fotografia in cards %}
                     <li class="card">
                         <a href="{% url 'imagem' fotografia.id %}">
-                            <img class="card__imagem" src="{% static '/assets/imagens/galeria/' %}{{ fotografia.foto }}" alt="foto">
+                        <!-- Modificar os atributos de width e height ou tirá-los por completo -->
+                        {% if fotografia.foto == "" or fotografia.foto == null %}
+                            <img class="card__imagem" width="300" height="300" src="{% static '/assets/imagens/galeria/not-found.png' %}" alt="foto_not_found">
+                        {% else %}
+                            <img class="card__imagem" width="300" height="300" src="{{ fotografia.foto.url }}" alt="foto">   <!-- Pega a URL da foto enviada por upload para dentro do projeto -->
+                        {% endif %}
                         </a>
                         <span class="card__tag">Estrelas</span>
                         <div class="card__info">

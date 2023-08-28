@@ -319,6 +319,8 @@ class ListandoObjetos(admin.ModelAdmin):
     list_display = ("id", "nome", "legenda")    # Colunas dos objetos da model que são mostradas 
     list_display_links = ("id", "nome")         # Colunas dos objetos da model que, ao clicar, levarão ao registro do item
     search_fields = ("nome",)                   # Adiciona possibilidade de pesquisar registros por uma ou mais colunas (precisa ter vírgula no final caso seja somente um argumento, pois é uma tupla)
+    list_filter = ("categoria",)                # Adiciona filtragem por lista como uma barra lateral
+    list_per_page = 10                          # Adiciona paginação
 
 # Caso se deseje mostrar a visualização padrão para models no admin
 # admin.site.register(ModelTal)
@@ -353,3 +355,50 @@ class ModelTal(models.Model):
 ```
 
 * **OBS: TODA MUDANÇA FEITA DENTRO DE UMA MODEL DEVERÁ SER SEGUIDA DE MAKEMIGRATIONS->MIGRATE, PARA QUE O BD E APLICAÇÃO TENHAM A MESMA TABELA E MODEL SINCRONIZADOS**
+
+* Podemos filtrar os itens que gostaríamos de retirar da nossa models/tabela no DB. Podemos utilizar o ModelTal.objects.filter(atributos=valor_desejado)
+
+* Para ordenar os registros que vem do DB, basta utilizar o método *order_by("atributo_desejado")* para ordem crescente. Para ordem decrescente, basta colocar *order_by("-atributo_desejado")*.
+
+* Para permitir upload de arquivos no Django (no caso aqui imagens), é necessário seguir os passos:
+    1. Modificar o settings.py, criando uma referência para arquivos de mídia:
+    ```python
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+    MEDIA_URL = "/media/"
+
+    # A pasta será criada automaticamente no caso de algum upload
+    ```
+
+    2. Adicionar no urls.py do **setup** o caminho especificado no passo (1):
+    ```python
+    from django.contrib import admin
+    from django.urls import path, include
+    from django.conf import settings
+    from django.conf.urls.static import static
+
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        ...
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    ```
+
+    3. Alterar o campo na model desejada do qual se deseja ser a coluna de arquivo de mídia:
+    ```python
+    # Numa models.py aí:
+    ...
+    attrMedia = models.ImageField(upload_to="fotos/%y/%m/%d/", blank=True) # Permite fazer upload par uma pasta com ano, mês e dia específico
+    ...
+    ```
+
+    4. Colocar esta imagem para aparecer no template que se deseja (boas práticas para caso se a imagem não existir, substituindo por outra imagem default):
+    ```html
+    {% if fotografia.foto == "" or fotografia.foto == null %}
+        <img class="card__imagem" src="{% static '/assets/imagens/app_tal/' %}{{ fotografia.foto }}" alt="foto_not_found">
+    {% else %}
+        <img class="card__imagem" src="{{ fotografia.foto.url }}" alt="foto">   <!-- Pega a URL da foto enviada por upload para dentro do projeto -->
+    {% endif %}
+    ```
+
+* A parte fotografia.foto.url do código HTML é uma expressão Django que recupera a URL da imagem. A variável fotografia é um objeto que representa a fotografia, e a propriedade foto é um objeto que representa a imagem da fotografia. A propriedade url da imagem é a URL da imagem. Quando o código HTML é renderizado, a expressão fotografia.foto.url é avaliada e a URL da imagem é retornada. A URL da imagem é então usada como o valor do atributo src do elemento img. O atributo src do elemento img especifica a URL da imagem que deve ser exibida.
+
