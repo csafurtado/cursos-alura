@@ -126,3 +126,42 @@ let result = add(x,y);
 console.log(result);
 ```
 
+* Para converter valores string em int, basta fazer **parseInt('string')**.
+
+* Para iterar sobre todos os itens de uma lista (Array), pode-se usar a função **forEach((elemento) => {})**:
+
+```js
+var lista = [1,2,3,4,5,6,7];
+
+lista.forEach( (elemento) => {
+    console.log(elemento);
+    }
+)
+// Serve como um for mais enxuto
+```
+
+* Para iterar sobre os itens de uma lista mas modificá-los, pode-se usar uma função parecida ao forEach(), o **map(item => o_que_vc_quiser_fazer)**:
+
+```js
+var lista = [1,2,3,4,5,6,7];
+
+novaLista = lista.map(elemento =>
+    // console.log(elemento)    // Ao se colocar console.log(), todos os itens da nova lista (ou mesma lista refatorada) terão seus elementos undefined, mesmo o console.log() tendo sido executado para cada elemento
+    elemento + 2                // Não pode ter ';' no final da instrução do map()
+)
+
+console.log(novaLista)
+
+// A diferença do map() pro forEach() é que map() aceita somente uma instrução, enquanto o forEach() funciona como um for, aceitando mais comandos dentro de si para serem executados. Também o map() retorna uma lista.
+```
+
+* Para retirar um ou mais elementos de uma lista, pode-se usar o **splice(indice_item, qtd_itens_a_retirar)**
+```js
+var lista = ["Laranja", "Vermelho", "Branco", "Amarelo", "Rosa"]; 
+
+lista.splice(1,1)
+
+console.log(lista);
+// lista agora é ["Laranja", "Branco", "Amarelo", "Rosa"];
+
+```
