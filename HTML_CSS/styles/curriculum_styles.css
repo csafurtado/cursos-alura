@@ -1,0 +1,29 @@
+.apresentacao__curriculo {
+    /* margin: 10% 15%; Margem superior/inferior e margem esquerda/direita */
+    padding: 5% 15%;
+    display: flex;
+    align-items: center; /* Alinha os itens para ficar alinhados ao centro um do outro */
+    justify-content: space-between; /* O espaçamento entre os itens será igual para cada um */
+    gap: 100px;
+    /* padding: 5% 15%; */
+}
+
+.apresentacao__curriculo__texto {
+    font-family: 'Montserrat', sans-serif;
+    font-size:  20px;
+}
+
+
+.apresentacao__curriculo__texto__topico {
+    padding-bottom: 10px;
+}
+
+.apresentacao__curriculo__texto__topico__lista {
+    padding-bottom: 40px;
+}
+
+.apresentacao__curriculo__imagem img {
+    width: 500px;
+    height: 450px;
+    border-radius: 80px;
+}

@@ -81,3 +81,34 @@
 * É convenção utilizar uma pasta chamada _styles_ para colocar os códigos CSS.
 
 * É possível que, ao criar novas páginas, seja necessário criar novos arquivos .css para definir os estilos de um conjunto ou de uma página em específico. É priorizado que se utilize o menor número de arquivos .css possível por questões de performance de processamento da página.
+
+* Alguns atalhos do VSCode:
+    ! : Completa um esqueletinho básico de um html
+    elemento_html*n : Cria n elementos htmls de uma vez só
+
+* É possível utilizar <a src="https://developer.mozilla.org/pt-BR/docs/Web/CSS/Using_CSS_custom_properties">variáveis CSS</a> para evitar repetição de código e facilitar a manutenção de código. Para isso, utilizamos a <a href="">pseudoclasse</a> **root**, representada por :root dentro do arquivo .css. Ela representa o escopo global do arquivo, ou seja, tudo declarado dentro dela, pode ser utilizada dentro de qualquer outro elemento definido no css. A variável precisa ser declarada com um hífen duplo (--) no início, para que seja reconhecida como variável e não como propriedade CSS.
+
+```css
+:root {
+    --cor-primaria: #000000;
+    --cor-secundaria: #F6F6F6;
+    --cor-terciaria: #22D4FD;
+}
+
+
+.elemento__uno {
+    color: var(--cor-primaria);
+}
+
+.elemento__dos {
+    background-color: var(--cor-secundaria);
+}
+
+```
+
+* Ideias para projetos HTML/CSS:
+    * Página de presente com fotos e textos fofos.
+    * Página de lojas com itens ou produtos favoritos.
+    * etc etc...
+
+<h2>HTML e CSS: trabalhando com responsividade e publicação de projetos</h2>
