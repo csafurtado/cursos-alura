@@ -84,4 +84,15 @@
         * Time armazena apenas valores de hora.
         * Timestamp armazena valores de data e hora.
 
-* 
+* Não precisamos colocar duas chaves primárias estrangeiras que vem de uma outra entidade, pois uma já está fazendo o papel de chave primária e de chave estrangeira. (?)
+
+<img src="./explicacao_chaves_pk_fk.png">
+
+* Existem dois tipos de identificação de relacionamentos dentro do Power Architect:
+    * **Identificador**: É aquele na qual uma ocorrência da entidade fraca, precisa estar associada a exatamente uma ocorrência da entidade forte e não pode existir sem ela. Nesse caso, esse relacionamento é utilizado para representar uma chave primária estrangeira.
+
+    * **Não identificador**: Cada ocorrência da entidade fraca pode ser identificada sem a necessidade de saber a qual ocorrência da entidade forte está associada. É utilizado para representar apenas chaves estrangeiras.
+
+* Um tipo de representação comum de relacionamentos dentro de vários modelos físicos chama-se <a href="https://cursos.alura.com.br/forum/topico-cardinalidade-entre-produto-e-estoque-241385">_Pé de galinha_</a>.
+
+<h2>NOVO CURSO</h2>
