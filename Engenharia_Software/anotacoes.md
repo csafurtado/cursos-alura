@@ -119,3 +119,12 @@
 
     * Precisa-se verificar a necessidade da aplicação de uma arquitetura monolítica ou de microsserviços, pois uma pode ser melhor que a outra dado o contexto.
 
+    * Existem diferentes tipos de microsserviços, os mais conhecidos são:
+        * _Data Service (Serviço de Dados)_: É um tipo de serviço que permite acesso a um aglomerado de dados.
+        * _Business Service (Serviço de Negócio)_: É um aglomerado de _data services_, pois além de permitir acesso a dados, possui regras de negócios implemetadas em si para acesso a eles.
+        * _Translation Service (Serviço de Tradução)_: É um serviço que traduz uma requisição do próprio sistema em uma requisição para outro sistema, sem que cada componente que necessite fazer uma requisição tenha que traduzir por si só o formato de sua requisição, evitando assim duplicação de código.
+        * _Edge Services ()_: É um serviço que retorna especificidades de recursos dependendo da plataforma que a solicita.
+
+    * _API Gateway_: É uma plataforma que recebe todas as requições de clientes em diferentes plataformas e chama pelo serviço/microsserviço adequado, centralizando tudo. Ele fornece um <a src="https://www.oficinadanet.com.br/onresponde/46307-proxy-oquee-como-funciona">_proxy_</a> (ou fachada) para os subsistemas. Contudo, se este gateway falha, TODO o serviço cai, já que todas as requisições estão centralizadas nele. O API Gateway não só centraliza e direciona as requisições, mas pode fazer outras coisas como: registro de log, realizar autenticação, limitar acesso/conteúdo ou controlar tráfego e etc. É parecido com <a src="https://pt.stackoverflow.com/questions/507893/o-que-%c3%a9-bff-back-end-for-front-end">**BFF (Best Friend... I mean: Backend For Frontend)**</a>
+
+    * _Service Mesh (Malha de Serviços)_: É uma camada de infraestrutura para serviços dentro de uma aplicação, permitindo adicionar funcionalidades como observabilidade, gerenciamento de tráfego e segurança de maneira transparente e sem modificar o código dos serviços da aplicação. Isso pode ser feito através de _proxies_ que tiram a responsabilidade do código da aplicação de coletar/implentar essas métricas em si.
