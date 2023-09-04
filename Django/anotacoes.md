@@ -402,3 +402,8 @@ class ModelTal(models.Model):
 
 * A parte fotografia.foto.url do código HTML é uma expressão Django que recupera a URL da imagem. A variável fotografia é um objeto que representa a fotografia, e a propriedade foto é um objeto que representa a imagem da fotografia. A propriedade url da imagem é a URL da imagem. Quando o código HTML é renderizado, a expressão fotografia.foto.url é avaliada e a URL da imagem é retornada. A URL da imagem é então usada como o valor do atributo src do elemento img. O atributo src do elemento img especifica a URL da imagem que deve ser exibida.
 
+* É possível que a Django-tag de url seja no formato {% url 'name_definido_no_urls.py_deste_app'%} VERIFICAR
+
+* O ModelTal.objects.get() retorna um objeto/registro da model. O ModelTal.objects.filter() retorna um queryset, uma lista de dicts dom os tributos de cada registro filtrado.
+
+* <a src="https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Django/Authentication">Como criar páginas de autenticação no Django (se quiser entender o projeto, vai ter que ler o que tem antes XD)</a>
