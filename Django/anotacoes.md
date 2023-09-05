@@ -407,3 +407,5 @@ class ModelTal(models.Model):
 * O ModelTal.objects.get() retorna um objeto/registro da model. O ModelTal.objects.filter() retorna um queryset, uma lista de dicts dom os tributos de cada registro filtrado.
 
 * <a src="https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Django/Authentication">Como criar páginas de autenticação no Django (se quiser entender o projeto, vai ter que ler o que tem antes XD)</a>
+
+<h2>Django: autenticação de formulários e alerta</h2>

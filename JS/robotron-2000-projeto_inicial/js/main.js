@@ -10,22 +10,22 @@ function dizOi(nome) {
     alert(`Olá Humano ${nome}.`);
 }
 
-// Soma/subtrai valores quando clicados
-somar.addEventListener("click", (evento) => {
-    manipulaDados('somar');
-})
-
-subtrair.addEventListener("click", (evento) => {
-    manipulaDados('subtrair');
+// Adiciona o escutador de eventos a cada elemento da lista
+controle.forEach( (elemento) => {
+    elemento.addEventListener("click", (evento) => {
+        manipulaDados(evento.target.textContent);
+    })
 })
 
 
 // Função que soma ou subtrai valores quando clicados
 function manipulaDados(operacao) {
-    if (operacao === "subtrair") {
-        braco.value = parseInt(braco.value) - 1;
+    const peca = controle.querySelector(".controle-contador");
+
+    if (operacao === "-") {
+        peca.value = parseInt(peca.value) - 1;
     } else {
-        braco.value = parseInt(braco.value) + 1;
+        peca.value = parseInt(peca.value) + 1;
     }
 }
 

@@ -165,3 +165,53 @@ console.log(lista);
 // lista agora é ["Laranja", "Branco", "Amarelo", "Rosa"];
 
 ```
+
+* Para fazer com o o querySelector() encontre elementos com um atributo extra (exemplo,\<p cor='azul'>Texto\</p>) podemos colocar em seu argumento document.querySelector('[cor="azul"]'), pois aí ele pega a primeira tag que tiver esse atributo no documento ou elemento em questão. Se quiser colocar sem valor, apenas o atributo em si, também é válido! (exemplo, \<h1 tituloAleatorio>Titulo aleatório\</h1>)
+
+* Ainda é possível manipular um elemento utilizando o CSS, o HTML e o JS juntos! Utilizando da ideia do tópico passado, também podemos passar para o CSS um estilo para elementos que tenham o atributo e valor dentro de si:
+
+```html
+<h1 tituloAleatorio>Titulo aleatório</h1>
+
+<button class="botao__muda-cor">Muda Cor</button>
+<p id="texto">Texto</p>
+```
+
+```css
+[cor="azul"] {
+    color: blue;
+    font-size: 20px;
+}
+
+[cor="vermelho"] {
+    color: red;
+    font-size: 12px;
+}
+
+[cor="padrao"] {
+    color: black;
+    font-size: 25px;
+}
+```
+
+```js
+const botaoMudaCor = document.querySelector(".botao__muda-cor");
+const tituloAleatorio = document.querySelector("[tituloAleatorio]");
+const texto = document.querySelector("#texto");
+
+console.log(tituloAleatorio);
+
+// Adiociona o evento de click ao botão
+// A cada clique no botão, o <p> muda de cor e tamanho, depois reinicia e vai fazendo de novo
+botaoMudaCor.addEventListener('click', () => {
+    if (!(texto.getAttribute('cor'))) {
+        texto.setAttribute('cor', 'azul');
+    } else if (texto.getAttribute('cor') === "azul"){
+        texto.setAttribute('cor', 'vermelho');
+    } else if (texto.getAttribute('cor') === "vermelho"){
+        texto.setAttribute('cor', 'padrao');
+    } else {
+        texto.removeAttribute('cor');
+    }
+});
+```
