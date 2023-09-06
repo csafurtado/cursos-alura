@@ -112,3 +112,21 @@
     * etc etc...
 
 <h2>HTML e CSS: trabalhando com responsividade e publicação de projetos</h2>
+
+* Existem 2 grandes <a href="https://www.alura.com.br/artigos/guia-de-unidades-no-css">grupos de medidas para elementos em HTML</a>:
+    * **Absolutas:** Possuem tamanho fixo e próprio determinado na página de estilo (cm, mm, in, px, pt, pc)
+
+    * **Relativas:** Possuem seu tamanho com base no tamanho de um outro elemento HTML, podendo mudar caso este outro elemento mude de tamanho. Estas são:
+        * em: Relativo ao tamanho da fonte do elemento em questão (2em = 2*tamanho_da_fonte)
+        * ex: Relativo ao tamanho x da fonte atual (não utilizado mais quase)
+        * ch: Relativo à largura de "0" ou zero. (caracter zero)
+        * rem: Relativo ao tamanho da fonte do elemento raiz, ou seja, o HTML (16px = 1rem)
+        * vw: Relativo à 1% da largura do viewport (Viewport é o tamanho da janela do navegador atualmente)
+        * vh: Relativo à 1% da altura do viewport
+        * vmin: Relativo à 1% da menor dimensão do viewport
+        * vmax: Relativo à 1% da maior dimensão do viewport
+        * %: Relativo ao elemento pai
+
+* É recomendado se utilizar medidas relativas, pois caso a página seja redimensionada ou esteja em um display com menor resolução, os elementos redimensionam junto com a página, tornando a página mais _responsiva_.
+
+* 
