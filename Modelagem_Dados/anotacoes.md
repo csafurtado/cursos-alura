@@ -95,4 +95,12 @@
 
 * Um tipo de representação comum de relacionamentos dentro de vários modelos físicos chama-se <a href="https://cursos.alura.com.br/forum/topico-cardinalidade-entre-produto-e-estoque-241385">_Pé de galinha_</a>.
 
-<h2>NOVO CURSO</h2>
+<h2>Modelagem de banco de dados relacional: álgebra relacional</h2>
+
+* **Álgebra relacional:** Teoria matemática que forma a base dos bancos de dados relacionais. Ela é implementada pela linguagem SQL dentro dos SGBD's relacionais. As operações mais comuns são:
+    * _Seleção_: (preencher nelhor o conceito aqui) é implementado como WHERE em SQL.
+    * _Projeção_: (preencher nelhor o conceito aqui) é implementado como a lista de colunas que você escolhe após a palavra SELECT em SQL.
+    * _União_: (preencher nelhor o conceito aqui) é representado pelo UNION em SQL.
+    * _Intersecção_: (preencher nelhor o conceito aqui) 
+    * _Diferença_: (preencher nelhor o conceito aqui) é implementado como EXCEPT em SQL.
+    * _Produto Cartesiano_: (preencher nelhor o conceito aqui) é implementado como um JOIN sem condição ou CROSS JOIN em SQL.
