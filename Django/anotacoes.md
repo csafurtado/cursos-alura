@@ -409,3 +409,9 @@ class ModelTal(models.Model):
 * <a src="https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Django/Authentication">Como criar páginas de autenticação no Django (se quiser entender o projeto, vai ter que ler o que tem antes XD)</a>
 
 <h2>Django: autenticação de formulários e alerta</h2>
+
+* É possível que um projeto esteja sendo desenvolvido numa versão do Python diferente da sua, então para isso, pode-se buscar utilizar outro interpretador Python para este. No caso do VSCode, basta Ctrl+Shift+P e digitar escolher interpretador. Depois, localizar e acessar a pasta do ambiente virtual do projeto em questão, selecionandoo **python.exe** dele.
+
+* É uma boa prática todo app ter uma _urls.py_ dentro de si. O _urls.py_ do setup terá somente o include dos apps, com a string de urls vazia.
+
+* 
