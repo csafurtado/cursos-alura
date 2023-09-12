@@ -56,7 +56,7 @@ teste.onclick = function (evento) {
 
 * É uma convenção utilizar uma pasta chamada 'js' no projeto onde conterá os scripts JS da aplicação. Também deve-se evitar fazer funções inline (JS dentro da tag HTML).
 
-* É ideal colocar o script na última linha antes do \<\body>, assim permitindo que a página toda carregue sem que o script seja executado primeiro.
+* É ideal colocar o script na última linha antes do \<\body>, assim permitindo que a página toda carregue sem que o script seja executado primeiro. Pode-se também colocar a tag <\script src="pasta/arq.js" defer> dentro do head. O atributo __defer__, (que significa adiar) faz com que o script seja carregado após o carregamento do documento HTML.
 
 * Para se fazer um elemento HTML escutar um evento, adiciona-se o método .addEventListener("evento_desejado", funcao_declarada_desejada).
 
@@ -215,3 +215,4 @@ botaoMudaCor.addEventListener('click', () => {
     }
 });
 ```
+* 
