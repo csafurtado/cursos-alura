@@ -129,4 +129,24 @@
 
 * É recomendado se utilizar medidas relativas, pois caso a página seja redimensionada ou esteja em um display com menor resolução, os elementos redimensionam junto com a página, tornando a página mais _responsiva_.
 
+* <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS/Media_Queries/Using_media_queries">Media Queries</a>: é uma técnica do CSS que permite aplicar estilos diferentes com base em condições de tamanho de tela, melhorando a responsividade seja para desktops, celulares ou tablets já que estes possuem resoluções diferentes.
+
+```css
+/* Aplica esse estilo quando está dentro das condições do parênteses */
+@media (min-width:300px) and (max-width:600px) {
+    /* Define mais ou redefine estilos para uma classe ou elemento HTML*/
+    .classe_tal {
+        background-color: blue;
+        font-size: 20px;
+        /* (...) */
+    }
+
+    /* (...) */
+}
+```
+
+* <a href="https://www.alura.com.br/artigos/srcset-trabalhando-imagens-responsivas">Sobre a tag \<picture></a>, uma tag para se trabalhar com imagens em sites.
+
+<h2>HTML e CSS: praticando HTML/CSS</h2>
+
 * 

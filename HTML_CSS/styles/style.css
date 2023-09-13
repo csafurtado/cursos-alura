@@ -52,6 +52,7 @@ body {
     display: flex;
     align-items: center; /* Alinha os itens para ficar alinhados ao centro um do outro */
     justify-content: space-between; /* O espaçamento entre os itens será igual para cada um */
+    gap: 82px;
 }
 
 .apresentacao__conteudo {
@@ -126,8 +127,24 @@ body {
     font-weight: 400;
 }
 
-.imagem__curriculo {
-    border-radius: 80px;
+@media (max-width:1200px) {
+    .cabecalho {
+        padding: 6%;
+    }
+
+    .cabecalho__menu {
+        justify-content: center;
+    }
+    
+    .apresentacao {
+        flex-direction: column-reverse;
+        padding: 5%;
+    }
+
+    .apresentacao__conteudo {
+        width: auto;
+    }
+    
 }
 
 /* Fica de curiosidade pra entender as animações CSS */
