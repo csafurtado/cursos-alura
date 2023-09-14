@@ -98,8 +98,10 @@
 <h2>Modelagem de banco de dados relacional: álgebra relacional</h2>
 
 * **Álgebra relacional:** Teoria matemática que forma a base dos bancos de dados relacionais. Ela é implementada pela linguagem SQL dentro dos SGBD's relacionais. As operações mais comuns são:
-    * _Seleção_: (preencher nelhor o conceito aqui) é implementado como WHERE em SQL.
-    * _Projeção_: (preencher nelhor o conceito aqui) é implementado como a lista de colunas que você escolhe após a palavra SELECT em SQL.
+    * _Seleção_: (Operação a se realizar no DB, como se fosse um corte horizontal na tabela de dados) é implementado como WHERE em SQL.
+        * Sintaxe: σ condição (Relação)
+    * _Projeção_: (Escolha dos dados que se deseja mostrar/utilizar) é implementado como a lista de colunas que você escolhe após a palavra SELECT em SQL.
+        * Sintaxe: π coluna desejada (σ(Se quiser colocar uma consdição de seleção)(Relação))
     * _União_: (preencher nelhor o conceito aqui) é representado pelo UNION em SQL.
     * _Intersecção_: (preencher nelhor o conceito aqui) 
     * _Diferença_: (preencher nelhor o conceito aqui) é implementado como EXCEPT em SQL.
