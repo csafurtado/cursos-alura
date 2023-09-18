@@ -414,4 +414,100 @@ class ModelTal(models.Model):
 
 * É uma boa prática todo app ter uma _urls.py_ dentro de si. O _urls.py_ do setup terá somente o include dos apps, com a string de urls vazia.
 
-* 
+* É uma boa prática criar um arquivo para formulários em páginas que tenham esse recurso (como login por exemplo). O arquivo deve se chamar _forms.py_ e deverá ser importado para a view respectiva que o irá usar.
+
+```python
+# Na forms.py dentro de um app_tal
+from django import forms
+
+class FormTal(forms.Form):
+    campo1 = forms.CharField(
+        label="Campo 1",    # O que irá aparecer na página
+        required=True,
+        max_length=100,
+    )
+
+    campoSenha = forms.CharField(
+        label="Senha",
+        required=True,
+        max_length=70,
+        widget=forms.PasswordInput()        # Adiciona a configuração de um campo de senha (caracteres ocultos)
+    )
+
+
+# Na views.py dentro do mesmo app_tal
+def view1(request):
+    formTal = FormTal()
+    
+    contexto = {
+        form_tal = form_tal,
+    }
+
+    return render(request, "caminho/template.html", contexto)
+
+```
+
+* Para fazê-lo aparecer na página, podemos colocar assim:
+```html
+(...)
+
+<form action="" method="">
+    {% csrf_token %}        <!-- PRECISA VIR DEPOIS DA TAG DE FORMULÁRIO -->
+    {% for field in form.visible_fields %}
+    <div>
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+    </div>
+    {% endfor %}  
+    <div>
+        <button type="submit">Logar</button>
+    </div>
+</form>
+
+(...)
+```
+
+* Os forms podem ser estilizados tanto no HTML quanto no próprio form!
+
+```python
+# Na forms.py dentro de um app_tal
+from django import forms
+
+class FormTal(forms.Form):
+    campo1 = forms.CharField(
+        label="Campo 1",    # O que irá aparecer na página
+        required=True,
+        max_length=100,
+    )
+
+    campoSenha = forms.CharField(
+        label="Senha",
+        required=True,
+        max_length=70,
+        widget=forms.PasswordInput(
+            attrs={         # Usado para aplicar confgurações HTML e CSS no elemento do formulário
+                'class':'form-control',
+                'placeholder': 'Digite a senha',
+            })        # Adiciona a configuração de um campo de senha (caracteres ocultos)
+    ) 
+```
+
+```html
+<!-- No caso aqui, está sendo usado as classes do bootstrap para estilização -->
+<form action="" method="">
+    {% csrf_token %}        <!-- PRECISA VIR DEPOIS DA TAG DE FORMULÁRIO -->
+    <div class="row">
+        {% for field in form.visible_fields %}
+        <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
+            <label for="{{ field.id_for_label }}" style="color:#D9D9D9; margin-bottom: 5px;">{{ field.label }}</label>
+            {{ field }}
+        </div>
+        {% endfor %}                   
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success col-12" style="padding: top 5px;">Logar</button>
+    </div>
+</form>
+```
+
+* <a href="https://cursos.alura.com.br/course/django-autenticacao-formularios-alerta/task/119348">Sobre o token CSRF</a>
