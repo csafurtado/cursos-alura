@@ -215,4 +215,4 @@ botaoMudaCor.addEventListener('click', () => {
     }
 });
 ```
-* 
+* Recomenda-se que todos os arquivos de mídia que serão utilizados na página sejam carregados junto com ela ao invés de depois, pois caso um destes arquivos seja pesado, irá prejudicar a experiência do usuário.
