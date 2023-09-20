@@ -20,6 +20,7 @@
 .img_portifolio {
     height: 550px;
     width: 50%;
+    border-radius: 10px;
 }
 
 body {
@@ -114,6 +115,10 @@ body {
 
 .apresentacao__links__link:hover {
     background-color: var(--cor-hover);
+}
+
+.apresentacao__imagem__curriculo {
+    
 }
 
 .rodape {
