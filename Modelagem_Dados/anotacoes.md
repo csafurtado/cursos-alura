@@ -103,6 +103,56 @@
     * _Projeção_: (Escolha dos dados que se deseja mostrar/utilizar) é implementado como a lista de colunas que você escolhe após a palavra SELECT em SQL.
         * Sintaxe: π coluna desejada (σ(Se quiser colocar uma consdição de seleção)(Relação))
     * _União_: (preencher nelhor o conceito aqui) é representado pelo UNION em SQL.
-    * _Intersecção_: (preencher nelhor o conceito aqui) 
+    * _Intersecção_: (preencher nelhor o conceito aqui)
     * _Diferença_: (preencher nelhor o conceito aqui) é implementado como EXCEPT em SQL.
-    * _Produto Cartesiano_: (preencher nelhor o conceito aqui) é implementado como um JOIN sem condição ou CROSS JOIN em SQL.
+    * _Produto Cartesiano_: (É a combinação de todos os registros das relações. Ex. Livros tem 20 registros e Cliente tem 10. O PC terá 200 linhas) é implementado como um JOIN sem condição ou CROSS JOIN em SQL. **OBS**. Operação custosa, pois aumenta exponencialmente a cada novo registro em qq das relações
+        * Sintaxe: Relação x Relação
+    *_Junção_: É a junção entre duas tabelas que resultam em uma outra relação da qual possue seus registros com valores qe são iguais entre as colunas de ambas relações originais. 
+        * Sintaxe : σ condição (Relação1 x Relação2), que pode ser substituída por (Relação1 ⨝ (condição) Relação2)
+    Tem os tipos:
+        * _Natural_: Quando as colunas das relações originais em questão possuem o mesmo nome, não há necessidade de deixar explícito a condição de ligação 
+            * Sintaxe: (Relação1 ⨝ Relação2)
+        * _À esquerda_: Puxa todas as linhas da relação à esquerda, mesmo as que não tenham ligação com a da direita.
+            * Sintaxe: (Relação1 ⟕ Relação2)
+        * _À direita_: Puxa todas as linhas da relação à direita, mesmo as que não tenham ligação com a da esquerda.
+            * Sintaxe: (Relação1 ⟖ Relação2)
+
+* EXERCÍCIO DE PRÁTICA DE ÁLGBEBRA RELACIONAL:
+    * Quais são os nomes dos livros que possuem preço maior que R$50?
+        * R: π nome_livro (σ(preco > 50)(Livros))
+
+    * Quais são os vendedores que possuem mais de 5 anos de experiência?
+        * R: σ (anos_exp > 5)(Vendedor)
+
+    * Quais são os códigos de livros recomendados pela revista ‘BestBooks Magazine’?
+        * R: π id_livro (σ(fonte_recomendacao = 'BestBooks Magazine')(LivrosRecomendados))
+
+    * Quais são os livros com estoque menor que 20 unidades?
+        * R: σ (qtd_estoque < 20)(Livros)
+
+    * Quais são os códigos dos livros mais vendidos durante o ano de 2021?
+        * R: π id_livro (σ(ano = 2021)(LivrosMaisVendidos))
+
+    * Quais são os livros com preço entre R$30 e R$50?
+        * R: σ (preco >= 30 AND preco <= 50)(Livros)
+
+    * Existe algum livros sem exemplar em estoque? Quais?
+        * R:  σ (qtdEstoque = 0)(Livros)
+
+    * Quais são os livros que custam mais de R$ 50 e contém mais de 5 unidades no estoque?
+        * R: σ (qtdEstoque > 5 AND preco > 50)(Livros)
+
+    * Quais livros atendem os requisitos do amigo oculto do cliente André: ser um livro de George Orwell ou de qualquer outra autoria que seja mais caro que 30 reais?
+        * R: σ (autor = 'George Orwell' OR preco > 30)(Livros)
+
+    * Qual o nome e preço dos livros que custam até 30 reais?
+        * R :π nome_livro, preco (σ(preco <= 30)(Livros)) 
+
+    * Quais livros da “Colleen Houck” venderam mais de 3 exemplares em um único pedido?
+        * R: σ (Livros.autor = 'Colleen Houck' AND Vendas.qtd_vendida > 3) (Livros ⨝ Vendas)
+
+    * Quais são os livros que tiveram vendas acima de 10 unidades em um único pedido OU possuem preço total igual a R$20?
+        * R: σ (Vendas.qtd_vendida > 10 OR Livros.preco = 20) (Livros ⟕ Vendas)
+
+    * Qual o nome dos livros mais recomendados com nota média superior a 4.3?
+        * R: π Livros.nome_livro σ (LivrosRecomendados.nota_media > 4.3) (Livros ⨝ LivrosRecomendados)
