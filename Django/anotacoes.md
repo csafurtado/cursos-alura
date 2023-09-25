@@ -511,3 +511,10 @@ class FormTal(forms.Form):
 ```
 
 * <a href="https://cursos.alura.com.br/course/django-autenticacao-formularios-alerta/task/119348">Sobre o token CSRF</a>
+
+* O Django possui embutido um sistema e models de usuários do sistema, então não se precisa criar uma models para ele, mas pode-se criar um app que cuide de infos de usuários. O pacote 'auth' do Django já possui implementado em si vários elementos que auxiliam no sistema de login e cadastro de novos usuários, inclusive em aspectos de segurança também.
+
+* É uma boa prática ao prgramar em python é colocar a condição negativa primeiro antes da desejada para agilizar a leitura do código
+
+* Para que mensagens de login/registro de usuários apareçam para o usuário, precisa-se além de importar o pacote de mensagens do Django auth, também colocar esta mensagem nos templates relativos a login/cadastro, indicando onde e como essas mensagens aparecerão.
+
