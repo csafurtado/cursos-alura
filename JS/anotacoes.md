@@ -216,3 +216,48 @@ botaoMudaCor.addEventListener('click', () => {
 });
 ```
 * Recomenda-se que todos os arquivos de mídia que serão utilizados na página sejam carregados junto com ela ao invés de depois, pois caso um destes arquivos seja pesado, irá prejudicar a experiência do usuário.
+
+* Para funções que não retornam nada, é preferível se utilizar o _const_, já que seria um 'valor' que não muda. Porém, se houver algum retorno, é preferível se utilizar o _function_ mesmo. Contudo, se esta função _const_ for utilizada em outro lugar, precisa-se escrever DEPOIS dela para que seja visível para as demais funções, já que seria como a declaração de 'variável' normal.
+
+```js
+// Função que 'retorna' uma constante
+const constagemRegressiva = () => {     // Função anônima
+    tempoDecorridoEmSegundos -= 1;
+    console.log('Temporizador: ' + tempoDecorridoEmSegundos);
+}
+
+// Função que retorna um valor
+function constagemRegressiva() {
+    tempoDecorridoEmSegundos -= 1;
+    return tempoDecorridoEmSegundos;
+}
+
+// Função qq que usa a contagem
+function seiLaMano() {
+    constagemRegressiva;
+}
+```
+
+* Podemos realizar uma função dentro de um intervalo determinado através do _setInterval(\<função_desejada>, \<tempo em ms>)._ Esta irá executar a função a cada período de tempo passado. O retorno desta função é um número que representa o ID de execução da função, identificando-a para que seja possível pará-la depois com o _clearInterval(\<ID_da_função_de_setInterval>)._, transformando o ID de execução da função em _null_.
+
+```js
+var contador = 5;
+var ID_funcao = setInterval(funcaoTal, 1000);   // Inicia contador e execução da função
+
+function funcaoTal(){
+    if (contador > 0){
+        console.log('olá mundo');
+        contador -= 1;
+    } else {
+        clearInterval(ID_funcao);   // Para a execução do contador
+    }
+}
+```
+
+* É possível acessar o pai, filhos e irmãos "mais velhos" ou "mais novos" de um elemento HTML através de:
+    * _elemento.parentNode_: elemento PAI
+    * _elemento.childNodes_: lista com os elementos FILHOS
+    * _elemento.nextElementSibling_: elemento logo após o atual ainda dentro do elemento PAI (IRMÃO MAIS NOVO)
+    *_elemento.previousElementSibling_: elemento logo antes o atual ainda dentro do elemento PAI (IRMÃO MAIS VELHO)
+
+* 
