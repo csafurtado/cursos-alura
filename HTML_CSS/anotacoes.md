@@ -151,4 +151,8 @@
 
 * Há diferença entre a tag \<img> e a propriedade _background-image_ do CSS. A tag é utilizada para elementos de imagem que sejam relavantes para o usuário, pois até tem o atributo _alt_, que serve justamente para auxiliar no entendimento do que se trata a  imagem, ao contrário da propriedade, em que, se a página não carregar corretamente, não geraria um ônus para a leitura do site pelo usuário. Se fizer sentido para o usuário, você usa a tag img para colocar um texto alternativo. Se é uma questão só decorativa, você usa o background-image.
 
+* Para se decidir qual usar entre \<a> e \<button>, devemos pensar em qual propósito este será utilizado. Se queremos ser redirecionados para uma outra página, então devemos priorizar o uso de \<a> que já tem o atributo deo _href_ para isso. Se queremos que alguma ação seja executada na página, não havendo necessidade de redirecionamento, utilizaremos um botão e adicionaremos um comportamento a ele.
+
+* Existe uma nova forma ainda de definir o arranjo dos itens dentro de um elemento: atrvés do <a href="https://www.alura.com.br/artigos/criando-layouts-com-css-grid-layout">display: grid</a>. Com isso, é possível separar a área do elemento em uma grade de n x n elementos, podendo configurar a o tamanho de cada posição.
+
 * 
