@@ -102,11 +102,16 @@
         * Sintaxe: σ condição (Relação)
     * _Projeção_: (Escolha dos dados que se deseja mostrar/utilizar) é implementado como a lista de colunas que você escolhe após a palavra SELECT em SQL.
         * Sintaxe: π coluna desejada (σ(Se quiser colocar uma consdição de seleção)(Relação))
-    * _União_: (preencher nelhor o conceito aqui) é representado pelo UNION em SQL.
-    * _Intersecção_: (preencher nelhor o conceito aqui)
-    * _Diferença_: (preencher nelhor o conceito aqui) é implementado como EXCEPT em SQL.
+    * _União_: (É a combinação de dois conjuntos, tendo elementos iguais ou não) é representado pelo UNION em SQL.
+        * Sintaxe: π coluna_tal (Relação1) ∪ π coluna_tal (Relação2)
+    * _Intersecção_: (É a combinação de dois conjuntos, tendo somente elementos iguais a ambos)
+        * Sintaxe: π coluna_tal (Relação1) ∩ π coluna_tal (Relação2)
+    * _Diferença_: (É idêntica a operação de subtração da matemática, onde se tem dois conjuntos e tira-se todos os elementos que não do primeiro conjunto que não se relacionam com os do segundo) é implementado como EXCEPT em SQL.
+        * Sintaxe: π coluna_tal (Relação1) - π coluna_tal (Relação2)
+    * _Divisão_: (Resulta nas linhas que a coluna do conjunto da direita estão dentro das linhas do conjunto da esquerda)
+        * Sintaxe: π coluna_tal (Relação1) ÷ π coluna_tal (Relação2)
     * _Produto Cartesiano_: (É a combinação de todos os registros das relações. Ex. Livros tem 20 registros e Cliente tem 10. O PC terá 200 linhas) é implementado como um JOIN sem condição ou CROSS JOIN em SQL. **OBS**. Operação custosa, pois aumenta exponencialmente a cada novo registro em qq das relações
-        * Sintaxe: Relação x Relação
+        * Sintaxe: Relação1 x Relação2
     *_Junção_: É a junção entre duas tabelas que resultam em uma outra relação da qual possue seus registros com valores qe são iguais entre as colunas de ambas relações originais. 
         * Sintaxe : σ condição (Relação1 x Relação2), que pode ser substituída por (Relação1 ⨝ (condição) Relação2)
     Tem os tipos:
@@ -117,6 +122,7 @@
         * _À direita_: Puxa todas as linhas da relação à direita, mesmo as que não tenham ligação com a da esquerda.
             * Sintaxe: (Relação1 ⟖ Relação2)
 
+    * A diferença principal entre _junção_ e _união e intersecção_ é que a primeira exige uma coluna comum a ambas relações que estão sendo colocadas ali, ao contrário da segunda.
 * EXERCÍCIO DE PRÁTICA DE ÁLGBEBRA RELACIONAL:
     * Quais são os nomes dos livros que possuem preço maior que R$50?
         * R: π nome_livro (σ(preco > 50)(Livros))
