@@ -15,6 +15,8 @@ Vai ter que instalar o conda :/
 
 * Características (ou features) são critérios pelos quais avaliamos uma informação para _classificar_ o que ela é.
 
+* Alvo (ou target) é a informação que queremos prever ou classificar com base nas features.
+
 * Processo de classificação de informação com algoritmos para isso:
     1. Características (features) que se deseja avaliar
     2. Treinar o estimador (algoritmo ou modelo) para fazê-lo entender as características
@@ -31,3 +33,5 @@ Vai ter que instalar o conda :/
     * <p style="text-align: center;">y é a classe (ou labels) resultante destas características</p>
 
 * SEMPRE se deve separar os dados de treino dos dados de teste, para que o algoritmo possa fazer previsões fora do escopo dos dados de teste, permitindo assim que ela aprenda e o resultado não fique inviezado. Ex: 100 dados de teste com 100 dados de treino. Deixar metade deles para treino e metade para teste.
+
+* Deve-se manter uma proporção certa entre os treinos e nos testes, para que o algoritmo possa aprender e entender as possibilidades de uma análise, pois se o modelo for treinado apenas com um tipo de resultado, o mesmo irá tender a 'chutar' que os dados de teste tendam para este resultado, pois não foi apresentado de forma proporcional os outros cenários possíveis de resultados (outros targets).
