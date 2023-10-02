@@ -2,6 +2,8 @@ from django.db import models
 
 from datetime import datetime
 
+from django.contrib.auth.models import User
+
 
 class Fotografia(models.Model):
     # Define as opções de valores que a coluna de 'categorias' pode ter
@@ -19,6 +21,13 @@ class Fotografia(models.Model):
     foto = models.ImageField(upload_to="fotos/%Y/%m/%d/", blank=True)
     publicada = models.BooleanField(default=False)
     data_fotografia = models.DateTimeField(default=datetime.now(), blank=False)
+    usuario = models.ForeignKey(    # Cria relação de chave estrangeira com outra model (no caso aqui com User)
+        to=User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=False,
+        related_name='user',        # Nome mais fácil para a chave
+    )
 
 
     def __str__(self):

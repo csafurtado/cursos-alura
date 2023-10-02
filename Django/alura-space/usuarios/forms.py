@@ -74,3 +74,15 @@ class CadastroForms(forms.Form):
             }
         )        
     )
+
+    # O nome do método precisa ter esse formato para ser reconhecido pelo Django: clean_<nome_atributo_referente>
+    def clean_nome_cadastro(self):  
+        nome = self.cleaned_data.get("nome_cadastro")
+
+        if nome:
+            nome = nome.strip()
+
+            if ' ' in nome:
+                raise forms.ValidationError("Não é permitido espaços neste campo!")
+            else:
+                return nome

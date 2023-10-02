@@ -518,3 +518,92 @@ class FormTal(forms.Form):
 
 * Para que mensagens de login/registro de usuários apareçam para o usuário, precisa-se além de importar o pacote de mensagens do Django auth, também colocar esta mensagem nos templates relativos a login/cadastro, indicando onde e como essas mensagens aparecerão.
 
+* Conseguimos realizar associações entre tabelas através da funcionalidade de chave primária e estrangeira do Django. Para isso, definimos o atributo que será a chave estrangeira na model em questãoe a tabela a qual ela faz referência:
+
+```python
+from django.contrib.auth.models import User
+
+
+class ModelTal(models.Model):
+    attr1 = models.CharField(max_length=100, null=False, blank=False)
+    attr2 = models.CharField(max_length=150, null=False, blank=False)
+    usuario_ref = models.ForeignKey(    # Cria relação de chave estrangeira com outra model (no caso aqui com User)
+        to=User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=False,
+        related_name='user',        # Nome mais fácil para a chave
+    )
+
+```
+
+* É possível fazer validações de campo dentro de formulários do Django, como regras para senha ou formato de nome de usuário por exemplo:
+
+```python
+class CadastroForms(forms.Form):
+    nome_cadastro=forms.CharField(
+        label="Nome de Cadastro",
+        required=True,
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                'class':'form-control',
+                'placeholder': 'Ex. João da Silva',
+            }
+        )        
+    )
+
+    senha_1 = forms.CharField(
+        label="Senha",
+        required=True,
+        max_length=70,
+        widget=forms.PasswordInput(     # Adiciona a configuração de um campo de senha (caracteres ocultos)
+            attrs={
+                'class':'form-control',
+                'placeholder': 'Digite a senha',
+            }
+        )        
+    )
+
+    senha_2 = forms.CharField(
+        label="Confirme a Senha",
+        required=True,
+        max_length=70,
+        widget=forms.PasswordInput(     # Adiciona a configuração de um campo de senha (caracteres ocultos)
+            attrs={
+                'class':'form-control',
+                'placeholder': 'Digite novamente a senha',
+            }
+        )        
+    )
+
+    # (...) Outros campos (...)
+
+    # O nome do método precisa ter esse formato para ser reconhecido pelo Django: clean_<nome_atributo_referente>
+    def clean_nome_cadastro(self):  
+        nome = self.cleaned_data.get("nome_cadastro")
+
+        if nome:
+            nome = nome.strip()
+
+            # Verifica se o nome inserido (após o strip()) é válido, não tendo espaços dentro dele 
+            if ' ' in nome:
+                # Lança uma exceção dizendo o erro que ocorreu
+                raise forms.ValidationError("Não é permitido espaços neste campo!")
+            else:
+                # Retorna o nome validado corretamente
+                return nome
+
+    # Verificação de senhas iguais
+    def clean_senha_2(self):
+        senha_1 = self.cleaned_data.get("senha_1")
+        senha_2 = self.cleaned_data.get("senha_2")
+
+        if senha_1 and senha_2:
+            if senha_1 != senha_2:
+                raise forms.ValidationError('Senhas não são iguais')
+            else:
+                return senha_2
+
+```
+
