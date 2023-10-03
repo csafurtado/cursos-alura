@@ -260,4 +260,28 @@ function funcaoTal(){
     * _elemento.nextElementSibling_: elemento logo após o atual ainda dentro do elemento PAI (IRMÃO MAIS NOVO)
     *_elemento.previousElementSibling_: elemento logo antes o atual ainda dentro do elemento PAI (IRMÃO MAIS VELHO)
 
-* 
+* Para se mexer com datas e tempo, e usado o objeto Date(tempoEmMilissigundos). Para poder fazer o tempo no formato de mm:ss, pode-se usar:
+
+```js
+    const tempo = new Date(tempoDecorridoEmSegundos * 1000);    // Em milissegundo
+    const tempoFormatado = tempo.toLocaleTimeString('pt-Br', {minute:'2-digit', second:'2-digit'});
+```
+
+* É possível também coletar a partir de um objeto Date, seu ano, mês até os millisegundos. Também é possível de se criar um objeto Date() a partir de uma string de data já formatada no padrão 'yyyy-mm-dd' dentro do construtor.
+
+```js
+const dateString = "2023-08-03";
+const formatoDeData = new Date(dateString);
+
+const currentDate = new Date();
+
+const ano = currentDate.getFullYear();  // Acessa o ano
+const mês = currentDate.getMonth(); // Acessa o mês - Janeiro é 0, Fevereiro é 1, ..., Dezembro é 11
+const dia = currentDate.getDate(); // Acessa o dia
+const horas = currentDate.getHours(); // Acessa as horas 
+const minutos = currentDate.getMinutes(); // Acessa os minutos
+const segundos = currentDate.getSeconds(); // Acessa os segundos
+const milissegundos = currentDate.getMilliseconds();  // Acessa os milissegundos 
+```
+
+<h2>JavaScript na Web: armazenando dados no navegador</h2>
