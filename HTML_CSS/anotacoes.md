@@ -25,7 +25,7 @@
 
 * O modelo padrão de posicionamento de elementos HTML é o *box position*.
 
-* O Padding é responsável por definir a distância entre um conteúdo e suas bordas.
+* O _padding_ é responsável por definir a distância entre um conteúdo e suas bordas (espaçamento interno) enquanto o _margin_ define a distância ao redor do elemento em questão.
 
 * Box-sizing é uma propriedade CSS para definir o comportamento de uma tag filha em relação ao seu elemento pai, por como a largura e a altura totais de um elemento filho são calculadas em relação ao seu elemento pai. 
     
@@ -149,10 +149,15 @@
 
 <h2>HTML e CSS: praticando HTML/CSS</h2>
 
+* Sobre os Displays:
+    1. <a src="https://blog.frontux.com/pare-de-chutar-e-aprenda-como-funciona-o-display-inline-4ccb7b77371d#.8tcy3rrhg">_inline_</a>
+    2. <a src="https://blog.frontux.com/pare-de-chutar-e-aprenda-como-funciona-o-display-block-98480c987950#.ko7z123q5">_block_</a>
+    3. <a src="https://medium.com/collabcode/pare-de-chutar-e-aprenda-como-funciona-o-display-inline-block-4e6cba2f19d4">_inline-block_</a>
+
 * Há diferença entre a tag \<img> e a propriedade _background-image_ do CSS. A tag é utilizada para elementos de imagem que sejam relavantes para o usuário, pois até tem o atributo _alt_, que serve justamente para auxiliar no entendimento do que se trata a  imagem, ao contrário da propriedade, em que, se a página não carregar corretamente, não geraria um ônus para a leitura do site pelo usuário. Se fizer sentido para o usuário, você usa a tag img para colocar um texto alternativo. Se é uma questão só decorativa, você usa o background-image.
 
 * Para se decidir qual usar entre \<a> e \<button>, devemos pensar em qual propósito este será utilizado. Se queremos ser redirecionados para uma outra página, então devemos priorizar o uso de \<a> que já tem o atributo deo _href_ para isso. Se queremos que alguma ação seja executada na página, não havendo necessidade de redirecionamento, utilizaremos um botão e adicionaremos um comportamento a ele.
 
 * Existe uma nova forma ainda de definir o arranjo dos itens dentro de um elemento: atrvés do <a href="https://www.alura.com.br/artigos/criando-layouts-com-css-grid-layout">display: grid</a>. Com isso, é possível separar a área do elemento em uma grade de n x n elementos, podendo configurar a o tamanho de cada posição.
 
-* 
+* Para alinhar elementos dentro de um outro elemento de display _grid_, usa-se a propriedade _align-items_. Todos os elementos ficarão alinhados dentro das colunas respectivas do grid em questão.
