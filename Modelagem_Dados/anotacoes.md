@@ -123,7 +123,13 @@
             * Sintaxe: (Relação1 ⟖ Relação2)
 
     * A diferença principal entre _junção_ e _união e intersecção_ é que a primeira exige uma coluna comum a ambas relações que estão sendo colocadas ali, ao contrário da segunda.
-* EXERCÍCIO DE PRÁTICA DE ÁLGBEBRA RELACIONAL:
+
+* Tabela de operações algébricas relacionais:
+<br>
+<img src="./colinha-algebra-relacional.png">
+<br>
+
+* **EXERCÍCIO DE PRÁTICA DE ÁLGBEBRA RELACIONAL**:
     * Quais são os nomes dos livros que possuem preço maior que R$50?
         * R: π nome_livro (σ(preco > 50)(Livros))
 
@@ -162,3 +168,19 @@
 
     * Qual o nome dos livros mais recomendados com nota média superior a 4.3?
         * R: π Livros.nome_livro σ (LivrosRecomendados.nota_media > 4.3) (Livros ⨝ LivrosRecomendados)
+
+* Para renomear relações, utilizamos a sigla 'ρ'(Rô) na relação em questão. Esta operação é útil quando se deseja comparar registros de uma tabela com ela mesma. É possível també, renomear atributos
+    * Para relações: σ (NovoNome.attr1 > Relação.attr1 = 20) (ρ NovoNome Relação x Relação)
+    * Para atributos: ρ novoNome <- nomeOriginal (Relação)
+
+* Toda operação entre conjuntos gera um novo conjunto (relação), e é possível associá-lo a uma 'variável' através do sinal de igual '=':
+    * Exemplo: novaRelação = σ (NovoNome.attr1 > Relação.attr1 = 20) (ρ NovoNome Relação x Relação); novaRelação x Relação2
+
+    * OBS: o símbolo de atribuição no Relax (=) é diferente da literatura formal (←);
+
+* <a src="https://coens.dv.utfpr.edu.br/will/wp-content/uploads/2022/03/Apostila_Algebra_Relacional.pdf">Link para livro de álgebra relacional</a>
+
+* <a src="https://dbis-uibk.github.io/relax/calc/gist/41cf5ce652756d9331eec7562644e074/imdbsample/0">Link com dados já carregados no RelaX</a>
+
+
+<h2>Modelagem de banco de dados relacional: entendendo SQL</h2>
