@@ -607,3 +607,80 @@ class CadastroForms(forms.Form):
 
 ```
 
+* Além das validações de formulário, é possível usar as **mensagens** para declarar erros ou acertos dentro de views ao serem chamadas. 
+```py
+from django.contrib import auth, messages   # Libs de autenticação e de mensagens de login
+
+def view_tal(request):
+    # Não permite o usuário a acessar essa view se não estiver logado
+    if not request.user.is_authenticated:
+        messages.error(request, 'Logue para ter acesso à página!')
+        return redirect('login')
+
+
+    # (...)
+
+    contexto = {
+        # (...)
+    }
+
+    return render(request, 'app/template_tal.html', contexto)
+
+```
+
+
+* O Django possui um framework embutido que cuida de mensagens (erro, sucesso etc). São tags de mensagens que podem ser utilizadas na aplicação, em que se é possível colocar o tipo de mensagem e seu conteúdo. Essas tags são colocadas no _settings.py_ e usadas no template definido.
+
+```py
+# No settings.py
+
+from django.contrib.messages import constants as messages
+# É associada a tag para o tipo de message dada
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',      
+    messages.SUCCESS: 'success' 
+}
+```
+
+```html
+<!-- Em um alert.html específico para mostrar mensagens -->
+
+{% if messages %}
+<!-- No caso aqui está se usando Bootstrap -->
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        <p id="messages">{{message}}</p>
+    </div>
+    {% endfor %}
+{% endif %}
+
+
+<!-- ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨ -->
+
+<!-- Em um template.html chamado por uma view onde tem o envio de um message, na qual se usará alertas -->
+    <!-- (...) -->
+    <img src="{% static '/assets/logo/Logo(2).png' %}" alt="Logo da Alura Space" />
+    {% include 'app/partials/_alert.html' %}
+    <div class="cabecalho__busca">
+    <!-- (...) -->
+```
+
+* Pode-se optar por deixar apenas uma das opções (forms ou mensagens) para notificar o usuário de status, contanto que a validação esteja sendo feita corretamente.
+
+* ValidationError() aparece em fields.error enquanto que as mensagens aparecem em message.tags e {{ message }}
+
+```html
+{% for error in field.errors %}
+<div class="alert alert-danger">
+    {{error}}
+</div>
+{% endfor %}  
+
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}">
+    <p id="messages">{{message}}</p>
+</div>
+{% endfor %}
+```
+
+<h2>Django: CRUD e persistência no S3</h2>

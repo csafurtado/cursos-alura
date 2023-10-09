@@ -3,12 +3,8 @@
 
 {% block content %}
     <section class="conteudo">
+        {% include 'partials/_alertas.html' %}
         <section class="banner">
-            {% for message in messages %}
-            <div class="alert alert-primary">
-                    <p id="messages">{{message}}</p>
-            </div>
-            {% endfor %}
             <img class="banner__imagem" src="{% static '/assets/imagens/Banner(2).png' %}" alt="banner Alura Space">
             <h1 class="banner__titulo"> A galeria mais completa de fotos do espaço!</h1>
         </section>
@@ -27,7 +23,7 @@
                 <ul class="cards__lista">
                     {% if cards %}
                     {% for fotografia in cards %}
-                    <li class="card">
+                    <li class="card" style="background-color: #041833;">
                         <a href="{% url 'imagem' fotografia.id %}">
                         <!-- Modificar os atributos de width e height ou tirá-los por completo -->
                         {% if fotografia.foto == "" or fotografia.foto == null %}
