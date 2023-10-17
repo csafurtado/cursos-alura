@@ -285,3 +285,20 @@ const milissegundos = currentDate.getMilliseconds();  // Acessa os milissegundos
 ```
 
 <h2>JavaScript na Web: armazenando dados no navegador</h2>
+
+* É possível salvar dados da página dentro do navegador através do _localStorage_. Para isso, usamos o localStorage como uma variável já existente no JS e com os seus métodos setItem('chave', 'valor') e getItem('chave') conseguimos respectivamente salvar e coletar esses dados.  Pode-se salvar até 5MB de dados no site, porém, pode-se expandir (apenas alguns navegadores tem suporte para isso).
+
+* Existem outras formas de salvar dados da página no navegador, sendo algumas delas:
+    * _localStorage_,
+    * _cookies_: Assim como o localStorage, os cookies também armazenam de forma persistente dados da página, porém bem menos conteúdo (4KB apenas). Aqui, um arquivo é criado contendo informações mais sensíveis, como infos de acesso do usuário, localização de acesso, endereço de email do login, itens clicados do site e etc. Por isso que muitas empresas perguntam se podem usar cookies para coletar dados do site.
+    * _sessionStorage_: Aqui, os dados não são salvos de forma persistente (:c), sendo redefinidos cada vez que o usuário fecha o navegador.
+
+* JSON.parse(dado_em_json): JSON->dado         JSON.stringfy(variavel): dado->JSON
+
+* O elemento HTML \<form> envia eventos relevantes para o navegador, dos quais se pode fazer um tratamento usando JS. Os principais deles são:
+    * _submit_: Evento de quando o formulário é enviado (pressionado o botão de envio geralmente),
+    * _input_: Evento de quando um campo de entrada (texto ou qualquer campo) é modificado, seja digitando, deletando ou colando texto,
+    * _change_: Evento de quando o campo de entrada é alterado e o campo perde foco (funciona para campos do tipo radio e select),
+    * _click_: Evento de clique no elemento em questão,
+    * _select_: Evento de quando o usuário seleciona um trecho de texto dentro de um campo de entrada.
+
