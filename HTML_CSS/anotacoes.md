@@ -161,3 +161,27 @@
 * Existe uma nova forma ainda de definir o arranjo dos itens dentro de um elemento: atrvés do <a href="https://www.alura.com.br/artigos/criando-layouts-com-css-grid-layout">display: grid</a>. Com isso, é possível separar a área do elemento em uma grade de n x n elementos, podendo configurar a o tamanho de cada posição.
 
 * Para alinhar elementos dentro de um outro elemento de display _grid_, usa-se a propriedade _align-items_. Todos os elementos ficarão alinhados dentro das colunas respectivas do grid em questão.
+
+* É recomendado se utilizar flexbox ou grids ao invés de margins, paddings e top, right, etc etc para tentar centralizar elementos que não são textos evitando assim empecilhos na hora de se fazer um site responsivo.
+
+* As <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS/Pseudo-classes">pseudoclasses</a> são como propriedades de comportamento de estilo em um elemento HTML, usadas para especificar o estado que esse elemento está. Alguns desstes estados (pseudo-classes) são:
+    * _:focus_ : é aplicada quando um elemento está em foco, pode ser pelo clique do mouse ou seleção pelo teclado. Um exemplo é quando os campos de escrita em formulários estão selecionados para o usuário escrever.
+    * _:hover_ : detecta quando um usuário está com o mouse em cima do elemento, sem necessariamente estar clicando.
+    * _:active_ : detecta quando o elemento está ativo, quando há uma interação, por exemplo: o link \<a> está sendo clicado.
+    * _:visited_ : detecta quando o link \<a> já foi visitado, ou seja, se você já clicou anteriormente naquele link.
+    * _:link_ : detecta quando é um link \<a> que nunca foi clicado antes.
+    * _:root_ : Também é uma pseudo-classe, porém ela não é usada para definir estados de interatividade, pois ela especifica algo para todo o documento HTML, não só para um elemento em específico. Ela é mais comummente usada para se definir variáveis dentro do .css
+
+    * Exemplo de uso:
+    ```css
+    .classe_elemento a {
+        color: white;
+    }
+
+    /* Ao passar o mouse em cima de um <a class="classe_elemento">, a cor da fonte dele muda pra azul, sendo originalmente branca*/
+    .classe_elemento a:hover {
+        color : blue;
+    }
+    ```
+
+    
