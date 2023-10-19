@@ -184,3 +184,5 @@
 
 
 <h2>Modelagem de banco de dados relacional: entendendo SQL</h2>
+
+* <a href="https://www.alura.com.br/artigos/banco-dados-relacionais-conceitos-terminologias-ferramentas">Link para termos gerais de BDRs</a>
