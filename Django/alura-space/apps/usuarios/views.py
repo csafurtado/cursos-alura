@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from usuarios.forms import LoginForms, CadastroForms
+from apps.usuarios.forms import LoginForms, CadastroForms
 
 from django.contrib import auth, messages   # Libs de autenticação e de mensagens de login
 from django.contrib.auth.models import User # Classe Model específica de Usuário
