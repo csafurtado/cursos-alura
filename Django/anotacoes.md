@@ -688,3 +688,36 @@ MESSAGE_TAGS = {
 
 <h2>Django: CRUD e persistência no S3</h2>
 
+* É possível criar Forms a partir de Models (classes de modelo) já existentes no projeto, ou seja, o Forms terá como campos os atributos da classe Model em questão.
+
+```python
+
+from django import forms
+
+from apps.viewtal.models import ModelTal
+
+
+# Cria um formulário com base em um form
+class ModelTalForms(forms.ModelForm):
+    class Meta:
+        model = ModelTal
+        exclude = ['attrNaoNecessario',]        # Exclui campos da models dos quais não precisa virar campo do forms
+        labels = {                              # Muda o que estará escrito no rótulo que fica no campo tal (por padrão vem o nome do atributo da model)
+            'attr1':'Atributo 1',
+            'attr2':'Atributo 2',
+        }
+
+        widgets = {
+            'attr1': forms.TextInput(attrs={'class':'form-control'}),    # Para o atributo attr1 de ModelTal (que agora é um campo do Forms atual)
+            'attr2': forms.TextInput(attrs={'class':'form-control'}), # Coloca o atributo 'form-control' no elemento HTML que este form irá virar quando estiver no template
+            'attr3_categoria': forms.Select(attrs={'class':'form-control'}),  # o Select é um dropdown com as categorias da ModelTal
+            'data_input': forms.DateField(                          # Campo de data, formatado para aparecer DD/MM/AAAA
+                format = '%d/%m/%y',
+                attrs={
+                    'class':'form-control',
+                    'type':'date',                                  # Para aparecer como um HTML do tipo Date
+                }
+            ),
+            'user': forms.Select(attrs={'class':'form-control'}),
+        }
+```

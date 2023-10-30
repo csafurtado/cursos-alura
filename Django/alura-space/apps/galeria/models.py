@@ -19,7 +19,7 @@ class Fotografia(models.Model):
     categoria = models.CharField(max_length=100, null=False, blank=False, choices=OPCOES_CATEGORIAS, default='')    # Precisa ter um default caso tenha o atributo choices
     descricao = models.TextField(null=False, blank=False)
     foto = models.ImageField(upload_to="fotos/%Y/%m/%d/", blank=True)
-    publicada = models.BooleanField(default=False)
+    publicada = models.BooleanField(default=True)
     data_fotografia = models.DateTimeField(default=datetime.now(), blank=False)
     usuario = models.ForeignKey(    # Cria relação de chave estrangeira com outra model (no caso aqui com User)
         to=User,
