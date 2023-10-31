@@ -6,6 +6,10 @@ const formLabel = document.querySelector('.app__form-label');
 
 const areaTextoTarefa = document.querySelector('.app__form-textarea');
 const cancelTaskBtn = document.querySelector('.app__form-footer__button--cancel');
+const deleteTaskBtn = document.querySelector('.app__form-footer__button--delete');
+const deleteAllConcludedTasksBtn = document.getElementById('btn-remover-concluidas');
+const deleteAllTasksBtn = document.getElementById('btn-remover-todas');
+
 const taskActiveDescription = document.querySelector('.app__section-active-task-description');
 
 const localStorageTarefas = localStorage.getItem('tarefas');    // Vira uma lista de JSON (objetos), já que localStorage só salva em string
@@ -27,12 +31,16 @@ const taskIconSvg = `
 
 // Inicialização das variaveis relacionadas a tarefas
 let tarefaSelecionada = null;
-let itemtarefaSelecionada = null;
+let itemTarefaSelecionada = null;
 
 let tarefaEmEdicao = null;
 let paragrafoEmEdicao = null;
 
 const selecionaTarefa = (tarefa, elementoTarefa) => {
+    if (tarefa.concluida) {
+        return;
+    }
+
     // Remove a classe de todos os items de tarefas para caso haja algum selecionado
     document.querySelectorAll('.app__section-task-list-item-active').forEach((button) => {
         button.classList.remove('app__section-task-list-item-active')
@@ -41,12 +49,12 @@ const selecionaTarefa = (tarefa, elementoTarefa) => {
     // Se a tarefa já estiver selecionada, deseleciona, senão, seleciona-a
     if (tarefaSelecionada == tarefa ) {
         tarefaSelecionada = null;
-        itemtarefaSelecionada = null;
+        itemTarefaSelecionada = null;
 
         taskActiveDescription.textContent = '';
     } else {
         tarefaSelecionada = tarefa;
-        itemtarefaSelecionada = elementoTarefa;
+        itemTarefaSelecionada = elementoTarefa;
 
         // Adiciona a classe de elemento selecionado e da tarefa clicada atualmente
         taskActiveDescription.textContent = tarefa.descricao;
@@ -56,13 +64,15 @@ const selecionaTarefa = (tarefa, elementoTarefa) => {
 
 // Função para selecionar uma tarefa para edição, sendo diferente de só uma seleção 
 const selecionaTarefaParaEdicao = (task, paragrafoTask) => {
+    if (task.concluida) {
+        return;
+    }
+
     // Se a tarefa já tenha sido aberta para edição e se é clicado para editá-la novamente, o form fecha
     if (tarefaEmEdicao == task) {
         limparForm();
         return;
     }
-
-    console.log("alou");
 
     // Abre o form com as características da edição já com o nome da tarefa preenchido em sua área de texto
     formLabel.textContent = "Editando tarefa";
@@ -110,9 +120,14 @@ function createTask(tarefa) {
 
     // Já adiciona o comportamento de marcar a tarefa como concluída no ícone de check (que é um svg)
     svgIcon.addEventListener('click', (evento) => {
-        evento.stopPropagation();   // Evita que elementos pai ou filhos capturem este evento
-        buttonEditar.setAttribute('disabled', true);
-        liNewTask.classList.add('app__section-task-list-item-complete');
+        if (tarefa==tarefaSelecionada) {
+            evento.stopPropagation();   // Evita que elementos pai ou filhos capturem este evento
+            buttonEditar.setAttribute('disabled', true);
+            liNewTask.classList.add('app__section-task-list-item-complete');
+            tarefaSelecionada.concluida = true;
+            updateLocalStorageTarefas();
+        }
+        
     })
     
     if (tarefa.concluida) {
@@ -183,10 +198,60 @@ formTask.addEventListener('submit', (evento) => {
     limparForm();
 });
 
-
+// Aplica comportamento de cancelar uma criação de uma nova tarefa
 cancelTaskBtn.addEventListener('click', () => {
     formTask.classList.toggle('hidden');
     limparForm();
+});
+
+// Aplica comportamento de deletar uma tarefa existente
+deleteTaskBtn.addEventListener('click', () => {
+    if (tarefaSelecionada) {
+        const index = tarefas.indexOf(tarefaSelecionada); // Dentro da lista de tarefas existentes no site, verifica a posição da tarefa selecionada
+
+        // Caso encontre a tarefa, remove-a da lista e 
+        if(index !== -1){
+            tarefas.splice(index, 1);   // Remover a partir de que indice e quantos elementos remover partindo dele
+        }
+
+        itemTarefaSelecionada.remove();     // Remove o elemento HTML referente a tarefa
+        tarefas.filter(t=> t!= tarefaSelecionada); // Cria-se um novo array filtrado, sem a tarefa selecionada
+        itemTarefaSelecionada = null;   // Seta os valores como mull, pq não existe mais a tarefa e nem o elemento HTML dela
+        tarefaSelecionada = null;
+    }
+
+    updateLocalStorageTarefas();
+    limparForm();
+});
+
+// Função que atribui um comportamento para deletar todas as tarefas concluídas ao botão tal
+deleteAllConcludedTasksBtn.addEventListener('click', () => {
+    listItemsTasks = Array.from(document.getElementsByClassName('app__section-task-list-item'));
+
+    listItemsTasks.forEach(itemTask => {
+        if (itemTask.classList.contains('app__section-task-list-item-complete')){
+            itemTask.remove();
+        }
+    });
+
+    tarefas = tarefas.filter(t=> t.concluida !== true);
+
+    updateLocalStorageTarefas();
+});
+
+// Função que atribui um comportamento para deletar todas as tarefas ao botão tal
+deleteAllTasksBtn.addEventListener('click', () => {
+    listItemsTasks = Array.from(document.getElementsByClassName('app__section-task-list-item'));
+
+    // Remove cada elemento HTML da lista dos que existem
+    listItemsTasks.forEach(itemTask => {
+        itemTask.remove();
+    });
+
+    // Remove todos os itens da lista de tarefas
+    tarefas.splice(0, tarefas.length);
+
+    updateLocalStorageTarefas();
 });
 
 // Coloca as tarefas na página
@@ -195,7 +260,16 @@ tarefas.forEach( (task) => {
     taskListContainer.appendChild(taskItem);
 });
 
+// NÃO TEM NENHUM EVENTO DE TAREFA CONCLUÍDA!!!
+document.addEventListener('TarefaFinalizada', (evento) => {
+    if (tarefaSelecionada) {
+        tarefaSelecionada.concluida = true;
+        itemTarefaSelecionada.classList.add('app__section-task-list-item-complete');
+        itemTarefaSelecionada.querySelector('button').setAttribute('disabled', true);
 
+        updateLocalStorageTarefas();
+    }
+})
 
 // // Forma de salvar dados do site dentro do próprio navegador DA MÁQUINA ATUAL
 // localStorage.setItem('quantidade', '10');   // Salva um par de chave:valor 
