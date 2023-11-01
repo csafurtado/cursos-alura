@@ -184,4 +184,8 @@
     }
     ```
 
-    
+* Para saber mais <a href="https://www.alura.com.br/artigos/como-colocar-projeto-no-ar-com-github-pages">GitHub Pages</a>
+
+<h2>HTML e CSS: responsividade com mobile-first</h2>
+
+* 
