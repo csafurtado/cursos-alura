@@ -721,3 +721,19 @@ class ModelTalForms(forms.ModelForm):
             'user': forms.Select(attrs={'class':'form-control'}),
         }
 ```
+
+* É possível passar argumentos a mais na tag da Django tag de URL no formato de: {% url 'name_da_view' talcoisa.attr %} que ficaria: '/name-da-view/5' por exemplo (dependendo do contexto). Contudo, a respectiva url na urls.py deve estar ajustada para poder receber esse argumento extra, permitindo então seu funcionamento.
+
+* É possível instanciar um form de um modelo com os dados de um objeto dele que já existe, que no caso então os dados do formulário do modelo instanciado seria preenchido com os dados do objeto já existente do modelo. Se de fato for feito uma modificação e enviada (POST), se cria um novo form com os dados que vieram preenchidos da página, substituindo os dados que já haviam no objeto existente.
+
+```python
+obj_existente = ModelTal.objects.get(id=foto_id)
+
+form = ModelTalForm(instance=obj_existente)
+
+if request.method == 'POST':
+    form = ModelTalForm(request.POST, request.FILES, instance=obj_existente)
+
+```
+
+* 

@@ -46,7 +46,7 @@ def buscar(request):
         'cards' : fotografias_buscadas
     }
 
-    return render(request, "galeria/buscar.html", context=contexto)
+    return render(request, "galeria/index.html", context=contexto)
 
 def nova_imagem(request):
     # Não permite o usuário a acessar essa view se não estiver logado
@@ -71,8 +71,41 @@ def nova_imagem(request):
 
     return render(request, 'galeria/nova_imagem.html', contexto)
 
-def editar_imagem(request):
-    pass
+def editar_imagem(request, foto_id):
+    fotografia = Fotografia.objects.get(id=foto_id)
+    form = FotografiaForms(instance=fotografia)
 
-def deletar_imagem(request):
-    pass
+    # Se o form for enviado para o servidor (POST) com as modificações, cria-se um novo form
+    # Que irá receber os dados preenchidos no site certinho com seus arquivos também E
+    # irá modificar apenas a instância já existente, sem precisar criar um novo objeto da Model
+    if request.method == 'POST':
+        form = FotografiaForms(request.POST, request.FILES, instance=fotografia)
+
+        if form.is_valid():
+            form.save()     # As informações que estão no formulário serão salvas na Model e na tabela do BD
+            messages.success(request, 'Fotografia editada com sucesso!')
+            return redirect('index')
+
+    contexto = {
+        'form':form,
+        'foto_id':foto_id,
+    }
+
+    return render(request, 'galeria/editar_imagem.html', contexto)
+
+def deletar_imagem(request, foto_id):
+    fotografia = Fotografia.objects.get(id=foto_id)
+    fotografia.delete()
+
+    messages.success(request, 'Fotografia deletada com sucesso!')
+
+    return redirect('index')
+
+def filtro(request, categoria):
+    fotografias = Fotografia.objects.order_by("-data_fotografia").filter(publicada=True, categoria=categoria)    # Ordena pelo mais antigo
+
+    contexto = {
+        'cards' : fotografias,
+    }
+
+    return render(request, 'galeria/index.html', contexto)
