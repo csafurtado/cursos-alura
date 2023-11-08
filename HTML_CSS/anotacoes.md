@@ -35,7 +35,7 @@
 
 * Para poder aplicar a propriedade de flexbox em um elemento, precisa-se observar o agrupamento dos elementos que se deseja organizar e verificar qual é o elemento que contém tais elementos, e assim, aplicar no elemento-pai a propriedade de flexbox.
 
-* Ao definir o valor da propriedade display de um elemento como flex, criamos um contêiner flex, ou seja, passamos a utilizar o Flexbox. A partir desse ponto, todos os elementos que estão dentro do contêiner são chamados de elementos-filhos e apresentarão comportamentos padronizados.
+* Ao definir o valor da propriedade display de um elemento como flex, criamos um contêiner flex, ou seja, passamos a utilizar o Flexbox. A partir desse ponto, todos os elementos que estão dentro do contêiner são chamados de elementos-filhos e apresentarão comportamentos padronizados. A propriedade CSS display: flex; aplicada em um elemento HTML, o transforma em um flex-container e os outros elementos que estão dentro se transformam em flex-itens.
 
 * Quando é criado um elemento dentro de outro que tenha uma classe, é uma boa prática colocar o nome da classe pai dentro do nome que a classe filho terá.
 
@@ -188,4 +188,21 @@
 
 <h2>HTML e CSS: responsividade com mobile-first</h2>
 
-* 
+* O _display: inline-block_ permite ajustes de altura e largura, ao contrário do somente _inline_.
+
+* Para se criar um menu Hamburguer utilizando CSS e HTML, é necessário os seguintes passos:
+    1. Criar um \<input type="checkbox" id="menu-hamburguer" class="menu-hamburguer">. Isso é necessário porque este input de checkbox irá guardar o clique do usuário, ficando ativo até que o usuário clique novamente, comportamento esse desejado em um menu hambúrguer.
+
+    2. Depois, criar um \<label for="menu-hamburguer">. Este elemento irá relacionar itens (elementos) que estiverem dentro de si com o input de checkbox.
+
+    3. Definir no CSS para a classe do input (no caso seria a _.menu-hamburguer_). Para isso, é feito assim:
+    ```css
+    .menu-hamburguer:checked~.classe_de_alguma_coisa {
+        /* Colocar aqui o estilo que o elemento com .classe_de_alguma_coisa terá quando o input estiver marcado */
+        /* O '~' é um é chamado combinador CSS. Um combinador CSS  vai procurar um outro elemento que vem em seguida daquele de antes */
+    }
+    ```
+
+    4.
+
+* Ler mais sobre a propriedade _position_!
