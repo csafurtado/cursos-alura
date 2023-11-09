@@ -182,7 +182,20 @@
 
 * <a src="https://dbis-uibk.github.io/relax/calc/gist/41cf5ce652756d9331eec7562644e074/imdbsample/0">Link com dados já carregados no RelaX</a>
 
-
-<h2>Modelagem de banco de dados relacional: entendendo SQL</h2>
-
 * <a href="https://www.alura.com.br/artigos/banco-dados-relacionais-conceitos-terminologias-ferramentas">Link para termos gerais de BDRs</a>
+
+<h2>Modelagem de banco de dados relacional: normalização</h2>
+
+* A redundância (no sentido da repetição) de dados dentro de tabelas podem ser chamado de _anomalias_. Estas anomalias podem gerar alguns tipos de inconsistência dentro de um BD, sendo três delas de:
+    * _Inserção_: repetição de dados a cada inserção de um item em uma tabela (Ex. Valor, data, cliente de um pedido repetidos);
+    * _Alteração_: modificação de diversas linhas que carregam uma informação em comum (Ex. Alterar o nome de um autor precisaria alterar várias linhas de pedidos que ele tenhm livros dele), podendo gerar inconsistências;
+    * _Remoção_: remoção de dados necessários dentro do banco de dados (Ex. Remover um livro que contenha as informações de seu autor e da editora);
+
+* Para buscar atacar essas anomalias acima mencionadas, utilizamos de um conjunto de critérios para definir a qualidade de um esquema de relações dento do DB, sendo algumas:
+    * Evitar a presença de colunas com valores vazios, pois não é ideal dentro da estrutura do DB;
+    * Evitar redundância de informações;
+    * Ter uma semântica clara com esquemas fáceis de explicar e de entender;
+    * Evitar o surgimento de tuplas (registros) falsos dentro de uma relação (tabela);
+
+* 
+
