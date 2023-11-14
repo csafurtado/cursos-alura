@@ -302,3 +302,8 @@ const milissegundos = currentDate.getMilliseconds();  // Acessa os milissegundos
     * _click_: Evento de clique no elemento em questão,
     * _select_: Evento de quando o usuário seleciona um trecho de texto dentro de um campo de entrada.
 
+* <a href="https://cursos.alura.com.br/extra/alura-mais/dark-mode-um-projeto-em-html-css-c1369">Como colocar o Dark Mode em um projeto HTML/CSS</a>
+
+<h2>JavaScript: validações e reconhecimento de voz</h2>
+
+* 
