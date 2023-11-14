@@ -736,4 +736,8 @@ if request.method == 'POST':
 
 ```
 
-* 
+* <a href="https://www.alura.com.br/artigos/cloud">O que é Cloud Computing?</a>
+
+* **O instrutor está utilizando o S3 da AWS no momento, porém não continuei porque no cadastro de uma nova conta da AWS, é necessário colocar dados de cobrança e de pagamento.**
+
+* Uma das opções para se hospedar imagens de forma gratuita além do S3 Bucket da AWS (apesar de que nela vc coloca dados de pagamento) é a Cloudinary.
