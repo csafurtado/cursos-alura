@@ -197,5 +197,29 @@
     * Ter uma semântica clara com esquemas fáceis de explicar e de entender;
     * Evitar o surgimento de tuplas (registros) falsos dentro de uma relação (tabela);
 
-* 
+* O que é então a normalização de dados? É a organização dos dados em um banco de forma eficiente, e sem redundâncias a minimizar problemas. Alguns de seus benefícios são:
+    * Facilitar operações de consultas;
+    * Evitar anomailias;
+    * Manter a intergridade do dado, evitando também a perda de dados ;
+    * Reduzir a redundância;
+    * Melhora o desempenho do BD;
+    * Simplifica o design do BD;
+    * Adaptação melhor a mudanças;
 
+* Para se iniciar o procedimento de normalização, é necessário se observar primeiro as relações entre os atributos de uma mesma tabela, ou seja, suas **dependências funcionais**. Existem outros tipos de dependência também, que envolvem outros aspectos dessas dependências como:
+    * Parcial e Total;
+    * Transitiva;
+    * Multivalorada;
+    * Junção;
+
+* A normalização possui em si formas normais, que são diretrizes específicas para a reorganização das tabelas do DB a fim de melhorar sua qualidade, buscando eliminar dependências. Existem 6 destas formas: desde a 1FN até a 5FN (Forma Normal) e a FN de Boyce-Codd ou FNBC.
+
+* Nas dependências funcionais, dizemos que existem atributos que determinam a existência de outros. Por exemplo, se tivéssemos dois atributos 'COD_CLIENTE' e 'NOME_CLIENTE', o código do cliente iria determinar unicamente o nome de um cliente, enquanto que um nome de um cliente poderia não determinar um único cliente, caso existam mais deles com o mesmo nome. A ideia então é que se o valor de um conjunto de atributos A, como o código, determina o valor de outro conjunto de atributos B, como o nome, escrevemos que A (determinante) determina B (determinado), ou seja, código determina nome. Isso significa que, para cada valor único de A, existe um valor único correspondente de B.
+
+<br>
+
+<img src="imagem_dependencia_funcional.png">
+
+* **1FN**: "Cada atributo deve apenas conter valores atômicos (únicos)" e "Cada linha deve ter uma identificação única". Ou seja, cada atributo não pode ter mais de uma informação dentro dele, como em um array por exemplo, e elas devem ser identificadas unicamente, como um campo como chave primária por exemplo.
+
+* 
