@@ -306,4 +306,4 @@ const milissegundos = currentDate.getMilliseconds();  // Acessa os milissegundos
 
 <h2>JavaScript: validações e reconhecimento de voz</h2>
 
-* 
+* A função que se utiliza para gerar números "aleatórios" em JS é a Math.random(), que retorna de \[0 a 1\[, excluindo o 1. Então para poder gerar números maiores, basta multiplicá-lo por um outro maior.
