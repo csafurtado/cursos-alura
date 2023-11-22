@@ -195,14 +195,18 @@
 
     2. Depois, criar um \<label for="menu-hamburguer">. Este elemento irá relacionar itens (elementos) que estiverem dentro de si com o input de checkbox.
 
-    3. Definir no CSS para a classe do input (no caso seria a _.menu-hamburguer_). Para isso, é feito assim:
+    3. Criar a lista dos quais serão os elementos que irão aparecer quando se abre esse menu. Pode ser um \<ul>.
+
+    4. Definir no CSS para a classe do input (no caso seria a _.menu-hamburguer_) e relacionar o que acontecerá com a classe que está depois do '~'. Para isso, é feito assim:
     ```css
     .menu-hamburguer:checked~.classe_de_alguma_coisa {
+        display: block;  /* Fará a classe aparecer */
         /* Colocar aqui o estilo que o elemento com .classe_de_alguma_coisa terá quando o input estiver marcado */
         /* O '~' é um é chamado combinador CSS. Um combinador CSS  vai procurar um outro elemento que vem em seguida daquele de antes */
     }
     ```
 
-    4.
+    5. Estilizar os elementos da lista da .classe_de_alguma_coisa, pintando o fundo, dando o espaçamento e etc para que fiquem organizados e estilizados
 
-* Ler mais sobre a propriedade _position_!
+
+* <a src="https://www.alura.com.br/artigos/entenda-a-propriedade-position-css">Mais sobre a propriedade _position_</a>
