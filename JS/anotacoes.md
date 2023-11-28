@@ -307,3 +307,19 @@ const milissegundos = currentDate.getMilliseconds();  // Acessa os milissegundos
 <h2>JavaScript: validações e reconhecimento de voz</h2>
 
 * A função que se utiliza para gerar números "aleatórios" em JS é a Math.random(), que retorna de \[0 a 1\[, excluindo o 1. Então para poder gerar números maiores, basta multiplicá-lo por um outro maior.
+
+* É possível fazer com que o navegador leia um texto (Speech Syntesis) ou reconheça o que o usuário fala (Speech Recognition)! Isso é possível através do <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API">Web Speech API</a> e <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API">mais detalhes dele</a>. Para utilizar as funcionalidades, começamos importando essa API para o código JS:
+
+```js
+// 
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const reconhecimento = new SpeechRecognition();
+reconhecimento.lang = 'pt-br';
+
+// Inicia o reconhecimento de voz (ativa o microfone)
+reconhecimento.start();
+```
