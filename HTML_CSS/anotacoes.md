@@ -210,3 +210,48 @@
 
 
 * <a src="https://www.alura.com.br/artigos/entenda-a-propriedade-position-css">Mais sobre a propriedade _position_</a>
+
+* Para fazer um carrossel (menu), utilizamos o plugin <a href="https://swiperjs.com/get-started">SwiperJS</a>. Para colocá-lo no código, é preciso os seguintes passos:
+    1. Importar o estilo e o o script do Plugin:
+    ```html
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> <!-- No final do body ou no head com defer -->
+    ```
+
+    2. Colocar o Layout HTML dele:
+    ```html
+    <!-- Slider main container -->
+    <div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        ...
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+    </div>
+    ```
+
+    3. Inicializar o Swiper por um script JS (ir para a seção API Documentation):
+    ```js
+    const swiper = new Swiper('.swiper', {
+        speed: 400,
+        spaceBetween: 100,
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+        },
+        qqOutraPropriedade: xx,
+    });
+    ```
+    4. Para qualquer funcionalidade do Swiper na qual se deseja usar (botões de next e previous, paginação,...) devem ser inicializados como um atributo dentro do inicializador do Swiper.
