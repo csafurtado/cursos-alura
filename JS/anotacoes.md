@@ -323,3 +323,5 @@ reconhecimento.lang = 'pt-br';
 // Inicia o reconhecimento de voz (ativa o microfone)
 reconhecimento.start();
 ```
+
+<h2>JavaScript: consumindo e tratando dados de uma API</h2>

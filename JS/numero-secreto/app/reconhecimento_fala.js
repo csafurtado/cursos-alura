@@ -15,10 +15,12 @@ function onSpeak(e) {
     // console.log(e);
     chute = e.results()[0][0].transcript;
 
+    verificaChute(chute);
+
     exibeChuteNaTela(chute);
 
     // Printa somente o resultado do processamento da voz (Tem muita coisa dentro desse evento kkkk)
-    console.log(e.results()[0][0].transcript)
+    // console.log(e.results()[0][0].transcript)
 }
 
 function exibeChuteNaTela(chute) {    
@@ -27,3 +29,7 @@ function exibeChuteNaTela(chute) {
         <span class="box">${chute}</span>
     `
 }
+
+reconhecimento.addEventListener('end', () => {
+    reconhecimento.start();
+});
