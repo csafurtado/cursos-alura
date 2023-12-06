@@ -8,7 +8,7 @@
 
 * \<meta name="viewport"> é uma tag que coloca a meta informação para definir a largura que será renderizada na página. Em computação gráfica, a viewport é a porção de área visível de um plano e é utilizada como unidade de medida no CSS para criar páginas Web 100% responsivas.
 
-* \<button> pode ser utilizada para ações como envios de formulários, a tag \<a> não possui essa funcionalidade, já que seu papel é apenas redirecionar o usuário para diferentes urls.
+* \<button> pode ser utilizada para ações como envios de formulários, a tag \<a> não possui essa funcionalidade, já que seu papel é apenas redirecionar o usuário para diferentes urls. Então para estes casos de redirecionamento, se estiliza o elemento da âncora para se parecer com um botão.
 
 * O CSS nasceu para estilizar elementos HTML de forma separada por um arquivo .css
 
@@ -255,3 +255,4 @@
     });
     ```
     4. Para qualquer funcionalidade do Swiper na qual se deseja usar (botões de next e previous, paginação,...) devem ser inicializados como um atributo dentro do inicializador do Swiper.
+
