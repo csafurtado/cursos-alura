@@ -325,3 +325,5 @@ reconhecimento.start();
 ```
 
 <h2>JavaScript: consumindo e tratando dados de uma API</h2>
+
+*
