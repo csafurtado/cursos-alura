@@ -256,3 +256,4 @@
     ```
     4. Para qualquer funcionalidade do Swiper na qual se deseja usar (botões de next e previous, paginação,...) devem ser inicializados como um atributo dentro do inicializador do Swiper.
 
+* Os elementos <a href="https://www.alura.com.br/artigos/html-tags-elementos-block-level">block-level</a> são aqueles que ocupam todo o espaço do seu elemento pai. Exemplos disso são a <\section>, <\header>, <\footer> entre outros.
