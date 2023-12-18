@@ -133,3 +133,54 @@ urlpatterns = [
 
 * Para testar a API fora da aplicação Django, pode-se utilizar programas como o PostMan e o Insomnia, onde é possível visualizar, cadastrar, remover e atualizar os dados da aplicação.
 
+* PUT e o PATCH são métodos HTTP utilizados para se atualizar algum recurso da API, contudo, o PUT serve para se fazer uma atualização completa de um recurso e o PATCH somente para um subconjunto dentro do recurso.
+
+* A questão de _models_ que possuem chaves estrangeiras para outras irá funcionar da mesma forma que no Django normal, lembrando sempre de serializá-lo, criar seu ViewSet e adicionar a rota para o recurso como é feito normalmente neste framework com REST.
+
+* Como posso saber, em um cenário de escola, quais cursos um aluno está matriculado? Ou até quais são os alunos cadastrados em um curso específico? Para isso será necessário seguir os seguintes passos:
+
+    1. Criar um novo serializador para esse fim (de listar as matrículas de um aluno ou de listar os alunos de um curso), com base no modelo desejado a se exibir (ou as matrículas do aluno ou os cursos)
+
+    ```py
+    # serializer.py
+    class ListaMatriculasAlunoSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Matricula
+            fields = ['curso', 'periodo']
+    ```
+
+    2. Criar uma classe nova no `views.py`, porém, esta não será uma _viewset_, mas sim uma **ListAPIView**. Para isso sua implementação ficará:
+
+    ```py
+    # views.py
+    from rest_framework import viewsets, generics
+
+    class ListaMatriculasAluno(generics.ListAPIView):
+    """Listando as matrículas de um aluno"""
+
+    def get_queryset(self):     # Sobrescreve esta função para poder coletar a informação que se deseja
+        return Matricula.objects.filter(aluno_id=self.kwargs['pk'])
+    
+    serializer_class = ListaMatriculasAlunoSerializer
+    ```
+
+    3. Adicionar uma rota nova com o id do objeto a se tirar informações, no caso de aluno (dos cursos dos quais ele está cadastrado)
+    ```py
+    # urls.py em setup
+    from escola.views import AlunosViewSet, CursosViewSet, MatriculasViewSet, ListaMatriculasAluno
+
+    # Cadastra um roteador do DjangoREST para cadastrar as rotas da API
+    # (Funcionará como um urls.py, mas do DjangoREST)
+    router = routers.DefaultRouter()
+    router.register('alunos', AlunosViewSet, basename='Alunos') # Nome da rota, classeViewSet responsável e nome padrão para identificação
+    router.register('cursos', CursosViewSet, basename='Cursos')
+    router.register('matriculas', MatriculasViewSet, basename='Matriculas')
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('', include(router.urls)), # Inclui as rotas registradas nesse roteador em sua base, já que haverá ramificações da rota
+        path('alunos/<int:pk>/matriculas/', ListaMatriculasAluno.as_view()), # É necessário ter o nome 'pk' para poder ser coletada em outra parte do programa e também como a classe ListaMatriculas não é um viewset, se utiliza esta função
+    ]
+
+    ```
+    (REVER AULA DE LISTAPIVIEW)
