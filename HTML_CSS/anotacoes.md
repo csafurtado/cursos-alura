@@ -129,7 +129,7 @@
 
 * É recomendado se utilizar medidas relativas, pois caso a página seja redimensionada ou esteja em um display com menor resolução, os elementos redimensionam junto com a página, tornando a página mais _responsiva_.
 
-* <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS/Media_Queries/Using_media_queries">Media Queries</a>: é uma técnica do CSS que permite aplicar estilos diferentes com base em condições de tamanho de tela, melhorando a responsividade seja para desktops, celulares ou tablets já que estes possuem resoluções diferentes.
+* <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS/Media_Queries/Using_media_queries">Media Queries</a>: é uma técnica do CSS que permite aplicar estilos diferentes com base em condições de tamanho de tela, melhorando a responsividade seja para desktops, celulares ou tablets já que estes possuem resoluções diferentes. Este <a href="https://www.alura.com.br/artigos/flexibilidade-em-paginas-para-dispositivos-moveis-com-media-queries">artigo</a> mostra com elas podem ser usadas na responsividade de sites.
 
 ```css
 /* Aplica esse estilo quando está dentro das condições do parênteses */
@@ -257,3 +257,6 @@
     4. Para qualquer funcionalidade do Swiper na qual se deseja usar (botões de next e previous, paginação,...) devem ser inicializados como um atributo dentro do inicializador do Swiper.
 
 * Os elementos <a href="https://www.alura.com.br/artigos/html-tags-elementos-block-level">block-level</a> são aqueles que ocupam todo o espaço do seu elemento pai. Exemplos disso são a <\section>, <\header>, <\footer> entre outros.
+
+* O ideal para um site responsivo é criar todos os elementos que irão aparecer em um ou mais tamanhos de tela (como uma logo, um item em específico etc) e só censurar suas aparições e estilos dentro dos media queries.
+
