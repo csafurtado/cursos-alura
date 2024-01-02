@@ -183,4 +183,47 @@ urlpatterns = [
     ]
 
     ```
-    (REVER AULA DE LISTAPIVIEW)
+    4. Caso se deseje formatar melhor os dados apresentados através do serializador, siga estes passos:
+
+    ```py
+
+
+    # Serializador responsável somente para listar as matrículas de um aluno
+    class ListaMatriculasAlunoSerializer(serializers.ModelSerializer):
+        curso = serializers.ReadOnlyField(source='curso.descricao')    # Campo em que será somente possível leitura, coletando o campo de descrição do modelo de Curso
+        periodo = serializers.SerializerMethodField()   # Campo do qual irá coletar o valor em uma função get_<nome_da_variavel>(), no caso aqui, get_periodo()
+
+        # Não faço a minima ideia ainda do porque que tem uma outra função como retorno que nem declarei
+        def get_periodo(self, obj):
+            return obj.get_periodo_display()
+
+        class Meta:
+            model = Matricula
+            fields = ['curso', 'periodo']
+    ```
+
+* Para colocar uma camada de autenticação para outros sistemas utilizarem dos dados da API criada, podemos optar pelas classes já disponibilizadas pelo próprio framework, como a _BasicAuthentication_ por exemplo. Para isso, extendendo dos exemplos anteriores, fazemos:
+
+```py
+    # views.py do app_tal
+
+    # Outros imports (...)
+    from rest_framework.authentication import BasicAuthentication  # Disponibiliza uma interface básica de autencicação do tipo usuário e senha
+    from rest_framework.permissions import IsAuthenticated # Faz a verificação se o sistema que realiza a solicitação está autenticado
+
+
+    # Classes que lidarão as interações com as APIs de cada model automaticamente,
+    # agrupando todas as operações (listagem, cadastro, exclusão, atualização) em uma única classe  
+    class AlunosViewSet(viewsets.ModelViewSet):
+        """Exibindo todos os alunos cadastrados"""
+
+        queryset = Aluno.objects.all()      # Qual será a query que será executada ao chamar a classe
+        serializer_class = AlunoSerializer  # Qual será o serializador responsável para traduzir os dados
+        authentication_classes = [BasicAuthentication]
+        permission_classes = [IsAuthenticated]
+
+    # Adicionar estas novas duas linhas para as demais views(...)
+```
+
+* OBS.: Para realizar uma requisição sem utilizar navegadores (Insomnia, POSTman, etc), é necessário entrar na aba de autorização e escolher o tipo 'Basic Auth', que é o utilizado aqui neste exemplo. Nos navegadores, aparece um pop-up para que os dados de autorização sejam preenchidos
+

@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from escola.views import AlunosViewSet, CursosViewSet, MatriculasViewSet, ListaMatriculasAluno
+from escola.views import AlunosViewSet, CursosViewSet, MatriculasViewSet, ListaMatriculasAluno, ListaAlunosCurso
 from rest_framework import routers
 
 # Cadastra um roteador do DjangoREST para cadastrar as rotas da API
@@ -27,8 +27,10 @@ router.register('alunos', AlunosViewSet, basename='Alunos') # Nome da rota, clas
 router.register('cursos', CursosViewSet, basename='Cursos')
 router.register('matriculas', MatriculasViewSet, basename='Matriculas')
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)), # Inclui as rotas registradas nesse roteador em sua base, já que haverá ramificações da rota
     path('alunos/<int:pk>/matriculas/', ListaMatriculasAluno.as_view()), # É necessário ter o nome 'pk' para poder ser coletada em outra parte do programa
+    path('cursos/<int:pk>/alunos/', ListaAlunosCurso.as_view()),
 ]
