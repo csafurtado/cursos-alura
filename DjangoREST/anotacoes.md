@@ -227,3 +227,67 @@ urlpatterns = [
 
 * OBS.: Para realizar uma requisição sem utilizar navegadores (Insomnia, POSTman, etc), é necessário entrar na aba de autorização e escolher o tipo 'Basic Auth', que é o utilizado aqui neste exemplo. Nos navegadores, aparece um pop-up para que os dados de autorização sejam preenchidos
 
+
+<h2>API com Django 3: Validações, buscas, filtros e deploy</h2>
+
+* É possível adicionar validações para cadastro de novas informações numa API através das restrições de um atributo da própria Model, onde o serializador desta já irá carregar consigo, porém, o mais ideal é colocar as validações desejadas através da criação de uma função chamada _validate\_<atributo_da_model>(self, atributo\_da\_model)_. Exemplo:
+
+```py
+# model.py
+from django.db import models
+
+class ModelEx1(models.Model):
+    nome = models.CharField(max_length=100, unique=True)
+    email = models.EmailField(blank=False, max_length=30)
+
+    def __str__(self):
+        return self.nome
+
+# serializers.py
+from rest_framework import serializers
+from exemplos.models import ModelEx1
+
+class ModelEx1Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = ModelEx1
+        fields = '__all__'
+    
+    # Validação para nome, não permitindo ser menor que 2 digitos
+    def validate_nome(self, nome):
+        if len(nome) < 2:
+            raise serializers.ValidationError("O nome é curto demais! Somente serão aceitos nomes com mais de 2 caracteres.")
+        
+        return nome
+```
+
+* Porém, o melhor é separar um arquivo em si em que irá ficar todas as validações desejadas, podendo ser chamado de _validators.py_. Com isso, podemos tirar todas as funções _validate\_<atributo_da_model>(self, atributo\_da\_model)_ e iremos trocar para apenas _validate(self, data)_ na serializers.py. Utilizando do exemplo anterior, ficará assim:
+
+```py
+# validators.py
+# não tem imports nem nada
+
+def nome_valido(cpf):
+    return len(nome)
+
+    # outras validações se quiser
+
+# serializer.py
+from rest_framework import serializers
+from exemplos.models import ModelEx1
+from exemplos.validators import *
+
+class ModelEx1Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = ModelEx1
+        fields = '__all__'
+    
+    # O data irá se referir ao objeto de dados do Modelo
+    def validate(self, data):
+        if nome_valido(data['nome']) < 2:
+            raise serializers.ValidationError({'nome':"O nome é curto demais! Somente serão aceitos nomes com mais de 2 caracteres."}) # Um dicionário com o 'campo':'mensagem_de_erro'
+        
+        # outras validações
+
+        return data
+
+```
