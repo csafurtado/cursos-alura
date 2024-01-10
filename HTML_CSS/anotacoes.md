@@ -260,3 +260,4 @@
 
 * O ideal para um site responsivo é criar todos os elementos que irão aparecer em um ou mais tamanhos de tela (como uma logo, um item em específico etc) e só censurar suas aparições e estilos dentro dos media queries.
 
+* 
