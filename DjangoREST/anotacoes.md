@@ -291,3 +291,11 @@ class ModelEx1Serializer(serializers.ModelSerializer):
         return data
 
 ```
+
+* Uma forma bem comum e muito utilizada de se validar strings é usando <a href="https://www.alura.com.br/artigos/principais-casos-uso-regex-para-tratamento-dados">regex</a>, ou _expressões regulares_ que nada mais são que expressões que definem um certo padrão para uma string.
+
+* Uma forma de validar documentos brasileiros (como CPF) sem ter que fazer na mão, é utilizar a lib `validate_docbr`. Basta instalá-la pelo `pip install` e usufruir dela.
+
+* A biblioteca <a href="https://faker.readthedocs.io/en/master/">Faker</a> serve para gerar dados falsos e aleatórios para testar códigos.
+
+* 

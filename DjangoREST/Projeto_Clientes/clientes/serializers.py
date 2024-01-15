@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from clientes.models import Cliente
 from clientes.validators import *
+from validate_docbr import CPF
 
 
 class ClienteSerializer(serializers.ModelSerializer):
@@ -11,13 +12,15 @@ class ClienteSerializer(serializers.ModelSerializer):
     # O data irá se referir ao objeto de dados do Modelo
     def validate(self, data):
         if not nome_valido(data['nome']):
-            raise serializers.ValidationError({'nome':"Nome não pode conter números!"})
+            raise serializers.ValidationError({'nome':"O nome não pode conter números!"})
         if not cpf_valido(data['cpf']):
-            raise serializers.ValidationError({'cpf':"O CPF deve ter 11 dígitos!"})
+            raise serializers.ValidationError({'cpf':"O CPF não é válido! Somente números são permitidos!"}) # CPF só vem com os números
         if not rg_valido(data['rg']):
             raise serializers.ValidationError({'rg':"O RG deve ter 9 dígitos!"})
         if not celular_valido(data['celular']):
-            raise serializers.ValidationError({'celular':"O celular precisa ter 11 dígitos!"})
+            raise serializers.ValidationError({'celular':"O número de celular deve ter o formato: XX 9XXXX-XXXX!"})
+        
+        data['cpf'] = CPF().mask(data['cpf']) # Coloca uma máscara no CPF, para enviar o cpf com os traços e pontos
 
         return data
 
