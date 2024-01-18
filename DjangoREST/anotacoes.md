@@ -298,4 +298,16 @@ class ModelEx1Serializer(serializers.ModelSerializer):
 
 * A biblioteca <a href="https://faker.readthedocs.io/en/master/">Faker</a> serve para gerar dados falsos e aleatórios para testar códigos.
 
-* 
+* Não é muito comum ter uma rota de uma API que entregue todos os seus conteúdos de uma vez só, principalmente se há muitos deles. O que se recomenda é fazer uma paginação, ou seja, mostrar até X contéudos no máximo por vez, separando em páginas. Para fazer isso no DjangoREST, precisamos:
+    1. Colocar no `setting.py` o seguinte trecho de código:
+    ```py
+    # (...)
+
+    REST_FRAMEWORK = {
+        # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination', # Para paginação por Offset
+        'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination', # Para paginação por número de páginas
+        'PAGE_SIZE': 10, 
+    }
+
+    # (...)
+    ```

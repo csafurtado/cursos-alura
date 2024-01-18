@@ -41,6 +41,16 @@ INSTALLED_APPS = [
     'clientes'
 ]
 
+# Rest Configuration
+## O Django e o DjangoREST precisaram ser atualizados po conta da versão das
+## bibliotecas usadas na aula 3 do curso. Também foi aplicada uma migração com isso 
+
+REST_FRAMEWORK = {
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination', # Para paginação por Offset
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination', # Para paginação por número de páginas
+    'PAGE_SIZE': 10, 
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
