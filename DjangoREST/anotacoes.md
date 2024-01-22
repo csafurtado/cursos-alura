@@ -311,3 +311,39 @@ class ModelEx1Serializer(serializers.ModelSerializer):
 
     # (...)
     ```
+
+* É comum também filtrar os dados que podem ser entregues por uma API, seja por ordem crescente ou não, por ordem alfabética de uma chave específica e por aí vai. No DjangoREST, isso funciona através da biblioteca <a href= "https://www.django-rest-framework.org/api-guide/filtering/">django_filter</a>. Para implementar essa funcionalidade na API desenvolvida, precisamos seguir os seguintes passos:
+
+    1. Instalar de fato a lib através do `pip install django-filter`
+    2. Colocar esta lib instalada no _settings.py_:
+    ```py
+    INSTALLED_APPS = [
+        # (...),
+        django_filters, # Aqui precisa estar no plural para funcionar
+    ]
+
+    # (...)
+
+    REST_FRAMEWORK = [
+        # (...) Mais detalhes na documentação do DjangoREST,
+    ]
+    ```
+    3. Implementar em um viewset em _views.py_:
+    ```py
+    from rest_framework import viewsets, filters
+    # Imports de serializadores, models e etc
+    from django_filters.rest_framework import DjangoFilterBackend
+
+
+    class Model1ViewSet(viewsets.ModelViewSet):
+        """Docstring resumindo o que este viewset mostra"""
+        queryset = Model1.objects.all()
+        serializer_class = Model1Serializer
+        filter_backends = [DjangoFilterBackend, filters.OrderingFilter] # Aqui se coloca a classe que ficará responsável para filtrar os resultados e qual filtro será aplicado (o segundo é do próprio DjangoREST, que no caso, é por ordenação)
+        ordering_fields = ['atributo_desejado']
+    ```
+    4. Caso se deseje adicionar o filtro de busca textual mesmo, basta adicionar na lista de filter_backends o elemento `filters.SearchFilter` e acrescentar o atributo `search_fields` com uma lista das quais contém os campos da para se pesquisar (assim como em ordering_fields, na classe do viewset). Uma dica: caso se deseje pesquisar por mais de um campo por vez (indicados na lista do search_fields), basta colocar na url (...)?search=item+item+item...
+
+    5. Caso ainda se deseje acicionar um filtro para valores de campos específicos (utilizando apenas um por vez, mesmo que tenha outro item na lista), pode-se utilizar o atributo `filterset_fields` na classe do viewset. A url ficaria: (...)?attr_desejado=xxxx
+
+*  
