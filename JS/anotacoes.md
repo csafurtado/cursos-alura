@@ -326,4 +326,22 @@ reconhecimento.start();
 
 <h2>JavaScript: consumindo e tratando dados de uma API</h2>
 
-*
+* É possível utilizar o JavaScript fora do navegador através do Node.js (ou Node somente). O JavaScript é executado no navegador porque nele tem uma máquina virtual que compila esse código, logo, o Node é uma altenativa em que essa máquina virtual pode ser utilizada sem o navegador, permitindo então a criação de várias soluções de JS sem depender deste.
+
+* No Node, podemos baixar um pacote chamado 'JSON Server' para simular uma API para nosso frontend, em que nele temos dados _mockados_, ou seja, m conteúdo inventado e utilizado apenas como um marcador de posição e testes. Para rodar o JSON Server de fato então, basta então (dentro do terminal do node) utilizar o comando `json-server  --watch <caminho_do_arquivo_JSON_para_mockagem>`. Para isso, é preciso liberar a execução de Scripts pelo Windows (caso esteja rodando por lá) através do comando `Set-ExecutionPolicy RemoteSigned`. Após o uso do JSON Server, é fortemente recomendado reinstaurar essa execução de scripts por conta de segurança com o comando `Set-ExecutionPolicy Restricted`.
+
+* A função `fetch()` busca um recurso de uma url dado para ela dando como reposta (**Response**) um <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>, que é um objeto JavaScript que lida com operações assíncronas (que não bloqueiam o fluxo principal de execução do programa). O _Promise_ resolvido (ou retornado com sucesso) poderá ser manipulado logo após através da função `then(resposta => {codigo a ser executado})`, senão, deve ser tratado com a função `catch()`. Um exemplo é:
+
+```js
+
+const urlAPIFake = 'localhost:3000/videos'
+
+const testeAPI = fetch(urlAPIFake).then(
+    resposta => {
+        // Código que é executado quando se obtem uma resolução da Promessa gerada pelo fetch()
+        console.log(resposta)  // Printa os dados da resposta da requisição
+        return resposta     // Retorna a resposta da requisição do fetch (a promessa cumprida) que pode ser utilizada em outro then() se for o caso
+    }
+).catch()
+
+```
