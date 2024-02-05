@@ -346,4 +346,7 @@ class ModelEx1Serializer(serializers.ModelSerializer):
 
     5. Caso ainda se deseje acicionar um filtro para valores de campos específicos (utilizando apenas um por vez, mesmo que tenha outro item na lista), pode-se utilizar o atributo `filterset_fields` na classe do viewset. A url ficaria: (...)?attr_desejado=xxxx
 
-*  
+
+<h2>API com Django 3: Versionamento, cabeçalhos e CORS</h2>
+
+* 
