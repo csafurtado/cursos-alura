@@ -86,7 +86,7 @@
     ! : Completa um esqueletinho básico de um html
     elemento_html*n : Cria n elementos htmls de uma vez só
 
-* É possível utilizar <a src="https://developer.mozilla.org/pt-BR/docs/Web/CSS/Using_CSS_custom_properties">variáveis CSS</a> para evitar repetição de código e facilitar a manutenção de código. Para isso, utilizamos a <a href="">pseudoclasse</a> **root**, representada por :root dentro do arquivo .css. Ela representa o escopo global do arquivo, ou seja, tudo declarado dentro dela, pode ser utilizada dentro de qualquer outro elemento definido no css. A variável precisa ser declarada com um hífen duplo (--) no início, para que seja reconhecida como variável e não como propriedade CSS.
+* É possível utilizar <a src="https://developer.mozilla.org/pt-BR/docs/Web/CSS/Using_CSS_custom_properties">variáveis CSS</a> para evitar repetição de código e facilitar a manutenção de código. Para isso, utilizamos a <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS/Pseudo-classes">pseudoclasse</a> **root**, representada por :root dentro do arquivo .css. Ela representa o escopo global do arquivo, ou seja, tudo declarado dentro dela, pode ser utilizada dentro de qualquer outro elemento definido no css. A variável precisa ser declarada com um hífen duplo (--) no início, para que seja reconhecida como variável e não como propriedade CSS.
 
 ```css
 :root {
