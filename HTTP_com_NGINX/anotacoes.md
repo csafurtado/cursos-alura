@@ -32,4 +32,17 @@
 
 * O DNS é hierárquico e em formato de árvore, ou seja, os domínios são separados em domínios de nível superior ou TLS  (.com, .br, .org, ...) e em sub-domínios, que realmente seriam os nomes do sites. Ex: google.com -> subdomínio = google e o domínio superior = .com. Assim fica mais fácil de se administrar os zilhões de domínios existentes na internet.
 
-* 
+* Os principais métodos HTTP utilizados são (CRUD):
+    * GET: Pegar algum conteúdo (Read)
+    * POST: Criar um conteúdo (Create)
+    * PUT: Atualizar algum conteúdo (Update)
+    * DELETE: Deletar um conteúdo (Delete)
+
+* Os servidores HTTP são servidores _stateless_, ou seja, eles não lembram da conexão passada que foi feita com um cliente. Uma das formas de poder fazer o servidor lembrar de uma conexão é através de **Sessões** (tempo que o usuário fica logado) ou de <a href="https://www.alura.com.br/artigos/o-que-sao-cookies-como-funcionam">cookies</a>(dados armazenados no cliente).
+
+* As respostas das requisições sempre respondem com um _código de status_. Eles são catagorizados por:
+    * 100: Informacionais
+    * 200: Requisições bem sucedidas
+    * 300: Redirecionamento
+    * 400: Erro no cliente
+    * 500: Erro no servidor
