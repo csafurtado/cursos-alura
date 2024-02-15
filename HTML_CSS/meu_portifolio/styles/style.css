@@ -72,9 +72,24 @@ body {
     font-family: var(--fonte-primaria);
 }
 
+.apresentacao__conteudo__antetexto {
+    font-size: 3rem;
+    color: var(--cor-primaria);
+    border-radius: 10px;
+    background: var(--cor-terciaria);
+    margin: 2em 0;
+    padding: 2em;
+    font-family: var(--fonte-secundaria);
+    font-weight: bold;
+}
+
 .apresentacao__conteudo__texto {
     font-size: 1.5rem;
     font-family: var(--fonte-secundaria);
+}
+
+.apresentacao__conteudo__lista {
+    margin-left: 2em;
 }
 
 .apresentacao__conteudo__texto a{

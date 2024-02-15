@@ -259,5 +259,3 @@
 * Os elementos <a href="https://www.alura.com.br/artigos/html-tags-elementos-block-level">block-level</a> são aqueles que ocupam todo o espaço do seu elemento pai. Exemplos disso são a <\section>, <\header>, <\footer> entre outros.
 
 * O ideal para um site responsivo é criar todos os elementos que irão aparecer em um ou mais tamanhos de tela (como uma logo, um item em específico etc) e só censurar suas aparições e estilos dentro dos media queries.
-
-* 
