@@ -17,3 +17,15 @@ const elementoSelect = documento.querySelector(".classe_elemento_ou_tag") as HTM
 * Quando há um erro de 'Cannot redeclare block-scoped variable 'elementoTal'.', pode ser que em algum outro lugar do código ou até mesmo em outro arquivo do projeto esta variável está sendo declarada novamente.
 
 * O navegador não reconhece arquivos .ts, somente .js, então para realizar essa conversão se utiliza o comando ```tsc arquivo_typescript.ts``` no terminal. (para baixar o pacote, usar o comando `npm install -g typescript`)
+
+* Usando TS, a arquitetura de pastas muda:
+    * É criada uma pasta para arquivos usados na produção (chamada 'dist', onde ficarão os arquivos .js, .css, assets e os .htmls) e outra para o desenvolvimento (chamada 'src', onde ficarão os arquivos .ts)
+    * É necessário criar um arquivo de configuração para arquivos .ts, chamado de tsconfig.json no mesmo nível das pastas 'dist' e 'src'.
+
+* O pacote 'tsc' possue um watcher, ou seja, um observador de mudanças no código TS (pasta 'src') em que para cada alteração ele recompila o arquivo ou cria novos arquivos compilados se houver novos arquivos TS. Para ativá-lo, utilizar o comando `tsc -w`.
+
+* Para que uma variável possa assumir outros tipos de valores durante a execução do programa, basta definí-la como tipo 'any', como por exemplo, `let variavel : any = "tipo texto"; variavel = 40`;
+
+* O alias em TypeScript, ou Type Alias, é uma comparação mais próxima ao typedef em C. Ambos permitem criar um novo nome para um tipo existente, facilitando a reutilização e a legibilidade do código. Já a enumeração é mais parecida com a declaração de constantes em C, onde definimos um conjunto de valores fixos.
+
+* 
