@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "ES2022", // Versão do JavaScript que o TypeScript vai compilar
         "outDir": "./dist/js/", // Diretório onde os arquivos .js serão colocados após compilação dos arquivos .ts
-        "noEmitOnError": true, // Não gera arquivos .js se houver algum erro na compilação
+        "noEmitOnError": true, // Não gera arquivos .js se houver algum erro na compilação, mas não impede a execução do script JS (executa o mais recente gerado)
     },
     "include": [
         "src/**/*.ts" // Diretório onde estão os arquivos .ts que serão compilados

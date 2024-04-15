@@ -28,4 +28,4 @@ const elementoSelect = documento.querySelector(".classe_elemento_ou_tag") as HTM
 
 * O alias em TypeScript, ou Type Alias, é uma comparação mais próxima ao typedef em C. Ambos permitem criar um novo nome para um tipo existente, facilitando a reutilização e a legibilidade do código. Já a enumeração é mais parecida com a declaração de constantes em C, onde definimos um conjunto de valores fixos.
 
-* 
+* Não é interessante deixar todo o código TS concentrado em apenas um arquivo .ts, então é fundamental criar outros arquivos .ts que tenham responsabilidades específicas para cada componente do projeto em si e importar cada um no HTML que for necessário
