@@ -10,7 +10,7 @@ let arrayNumeros : number[] = [1, 2, 3, 4, 5];       // Lista que permite em si 
 
 
 // TIPOS PERSONALIZADOS (tipo um typedef em C, mas se chama 'type alias')
-type Transacao = {
+type TipoAliasTransacao = {
     valor: number,
     tipoTransacao: string,
     data: Date,
@@ -18,15 +18,15 @@ type Transacao = {
 }
 
 // ENUMS (Conjunto de possíveis valores fixos para uma variável, como um typedef em C, mas com valores fixos)
-enum TipoTransacao {
+enum EnumExemploTipoTransacao {
     DEPOSITO = "Depósito",
     TRANSFERENCIA = "Transferência",
     PAGAMENTO_BOLETO = "Pagamento de Boleto",
 }
 
-const novaTransacao : Transacao = {
+const novaTransacao : TipoAliasTransacao = {
     valor: 4000,
-    tipoTransacao: TipoTransacao.DEPOSITO,
+    tipoTransacao: EnumExemploTipoTransacao.DEPOSITO,
     data: new Date(),
     isAtivada: true,
 }

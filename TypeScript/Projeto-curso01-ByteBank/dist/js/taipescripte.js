@@ -7,15 +7,15 @@ let valorBuleano = true; // O TS vai garantir que esta variavel continue do tipo
 let arrayQQ = []; // Lista que permite em si elemento de qualquer tipo
 let arrayNumeros = [1, 2, 3, 4, 5]; // Lista que permite em si apenas elementos do tipo number
 // ENUMS (Conjunto de possíveis valores fixos para uma variável, como um typedef em C, mas com valores fixos)
-var TipoTransacao;
-(function (TipoTransacao) {
-    TipoTransacao["DEPOSITO"] = "Dep\u00F3sito";
-    TipoTransacao["TRANSFERENCIA"] = "Transfer\u00EAncia";
-    TipoTransacao["PAGAMENTO_BOLETO"] = "Pagamento de Boleto";
-})(TipoTransacao || (TipoTransacao = {}));
+var EnumExemploTipoTransacao;
+(function (EnumExemploTipoTransacao) {
+    EnumExemploTipoTransacao["DEPOSITO"] = "Dep\u00F3sito";
+    EnumExemploTipoTransacao["TRANSFERENCIA"] = "Transfer\u00EAncia";
+    EnumExemploTipoTransacao["PAGAMENTO_BOLETO"] = "Pagamento de Boleto";
+})(EnumExemploTipoTransacao || (EnumExemploTipoTransacao = {}));
 const novaTransacao = {
     valor: 4000,
-    tipoTransacao: TipoTransacao.DEPOSITO,
+    tipoTransacao: EnumExemploTipoTransacao.DEPOSITO,
     data: new Date(),
     isAtivada: true,
 };
