@@ -1,3 +1,5 @@
+import SaldoComponent from "./saldo-component.js";
+import Conta from "../types/Conta.js";
 const elementoFormulario = document.querySelector(".block-nova-transacao form");
 elementoFormulario.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -12,24 +14,13 @@ elementoFormulario.addEventListener("submit", (event) => {
     let tipoTransacao = inputTipoTransacao.value; // Define esse valor como sendo do tipo TipoTransacao, ou seja, um dos valores dentro dessa enum 
     let valor = inputValor.valueAsNumber; // Para coletar o string do form já como inteiro
     let data = new Date(inputData.value); // Para coletar o string do form já como data, e como é uma classe, precisa de new Date (constructor)
-    if (tipoTransacao == "Depósito") {
-        saldo += valor;
-    }
-    else if (tipoTransacao == TipoTransacao.TRANSFERENCIA || tipoTransacao == TipoTransacao.PAGAMENTO_BOLETO) {
-        saldo -= valor;
-    }
-    else {
-        alert("Tipo de transação inválido!");
-        return;
-    }
     const novaTransacao = {
         tipoTransacao: tipoTransacao,
         valor: valor,
         data: data,
     };
-    elementoSaldo.textContent = saldo.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
-    ;
+    Conta.registrarTransacao(novaTransacao); // Registra a transação
     console.log(novaTransacao);
-    console.log(saldo);
+    SaldoComponent.atualizar(); // Atualiza o saldo na tela
     elementoFormulario.reset();
 });

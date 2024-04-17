@@ -1,4 +1,6 @@
-type Transacao = {
+import { TipoTransacao } from "./TipoTransacao";
+
+export type Transacao = {
     tipoTransacao : TipoTransacao,  // Enum
     valor : number,
     data : Date

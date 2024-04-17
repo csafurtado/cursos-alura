@@ -1,8 +1,11 @@
-function formatarMoeda(valor : number) : string {
+import { FormatoData } from "../types/FormatoData.js";
+
+
+export function formatarMoeda(valor : number) : string {
     return valor.toLocaleString("pt-br", {style: "currency", currency: "BRL"});
 }
 
-function formatarData(data : Date, formato : FormatoData = FormatoData.PADRAO) : string {
+export function formatarData(data : Date, formato : FormatoData = FormatoData.PADRAO) : string {
     if (formato == FormatoData.DIA_SEMANA_DIA_MES_ANO) {
         return data.toLocaleDateString("pt-br", {
             weekday: "long",
@@ -21,6 +24,6 @@ function formatarData(data : Date, formato : FormatoData = FormatoData.PADRAO) :
     
 }  // Coloca a data de acesso no formato dd/mm/aaaa e dia da semana
 
-function formataTransacao(valorTransacao : number, dataTransacao : Date, formatoData : FormatoData = FormatoData.PADRAO) : string {
+export function formataTransacao(valorTransacao : number, dataTransacao : Date, formatoData : FormatoData = FormatoData.PADRAO) : string {
     return `${formatarMoeda(valorTransacao)} em ${formatarData(dataTransacao, formatoData)}`;
 }

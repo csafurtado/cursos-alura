@@ -32,4 +32,15 @@ const elementoSelect = documento.querySelector(".classe_elemento_ou_tag") as HTM
 
 * É interessante ter um arquivo .ts que irá ser responsável por formatar strings: o formatters.ts. Assim, é possível fazer reuso dessa formatação.
 
-* Para organizar melhor o código, sabendo a origem das funções e variáveis utilizadas dentro do programa e também permitir a criação de nomes de variáveis iguais dentro do ecossistema da aplicação e também evitando de escrever várias tags \<scripts> dentro do .html (pode até gerar erros de dependências dado que o HTML é processado de cima para baixo), é utilizado os 
+* Para organizar melhor o código, sabendo a origem das funções e variáveis utilizadas dentro do programa e também para permitir a criação de nomes de variáveis iguais dentro do ecossistema da aplicação e também evitando de escrever várias tags \<scripts> dentro do .html (pode até gerar erros de dependências dado que o HTML é processado de cima para baixo), nós utilizamos o conceito de importar 'módulos', como é em outras linguagens de programação 
+
+* Para isso, primeiro é necessário criar pastas dentro do 'src' para separar os arquivos .ts em componentes (components), enums e tipos(types), e também funções utilitárias (utils) etc. Então com isso, teremos que ter um arquivo .ts central que chame todos esses arquivos (geralmente com o nome 'main.ts' ou 'app.ts'). Com isso, no arquivo .html que irá chamar o .js desse main.ts, a tag de importação do script estará agora dessa forma: 
+```html
+<script type="module" src="./js/main.js"></script>
+```
+
+* Após isso, deve-se importar dentro do main.ts os scripts .js (Sim, dentro do .ts deve ter os imports .js, lembre-se da compilação do .ts em seu .js respectivo)
+
+* Para disponibilizar um tipo ou função de um arquivo .ts para outro, deve-se colocar `export` antes da definição da coisa no arquivo onde esta está e depois colocar `import { funcaoOuTipo } from "local/arquivo/origem.js"`
+
+*
