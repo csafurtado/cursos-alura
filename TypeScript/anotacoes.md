@@ -43,4 +43,4 @@ const elementoSelect = documento.querySelector(".classe_elemento_ou_tag") as HTM
 
 * Para disponibilizar um tipo ou função de um arquivo .ts para outro, deve-se colocar `export` antes da definição da coisa no arquivo onde esta está e depois colocar `import { funcaoOuTipo } from "local/arquivo/origem.js"`
 
-*
+* Para lançar exceções em TS, podemos utilzar o comando: `throw new Error('Mensagem de erro')` e depois, para capturar o erro, utilizar o 'try' com 'catch' dentro do código que se deseja testar.
