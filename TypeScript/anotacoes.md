@@ -44,3 +44,30 @@ const elementoSelect = documento.querySelector(".classe_elemento_ou_tag") as HTM
 * Para disponibilizar um tipo ou função de um arquivo .ts para outro, deve-se colocar `export` antes da definição da coisa no arquivo onde esta está e depois colocar `import { funcaoOuTipo } from "local/arquivo/origem.js"`
 
 * Para lançar exceções em TS, podemos utilzar o comando: `throw new Error('Mensagem de erro')` e depois, para capturar o erro, utilizar o 'try' com 'catch' dentro do código que se deseja testar.
+
+<h2>Angular 14: aplique os conceitos e desenvolva seu primeiro CRUD</h2>
+
+* O Angular é um framework frontend para criar aplicações de página única (SPAs). Ele possui:
+    - Estrutura baseada em componentes 
+    - Coleção de bibliotecas integradas e conjunto de ferramentas 
+
+* Para instalar o Angular 14, é necessário:
+    - Ter o Node.js na versão 14.15 (pode utilizar o nvm pra instalar essa versão, porém terá que instalar o ng de novo pra ele caso tenha instalado em outra versão do Node.js)
+    - Utilizar o comando `npm install -g @angular/cli@14.0.0`
+    - Em caso de dúvidas, este é o <a href="angular.io/cli">site da documentação do Angular</a>
+
+* Para criar um novo projeto Angular, utilizar o comando `ng new <nome_do_projeto>`. Depois, escolher as opções desejadas (recomenda-se ter um arquivo para rotas e utilizar CSS como estilo)
+
+* Sobre a estrutura de arquivos do projeto Angular:
+    - _node\_modules_: Onde estão instaladas as dependências do projeto, declaradas no _package.json_ (produção e desenvolvimento).
+    - _angular.json_: Arquivo de configurações do projeto atual
+    - _src_: Pasta com os arquivos de fato desenvolvidos no projeto
+    - _src/environments_: Pasta com os arquivos que contém as variáveis de ambiente produção e dev.
+    - _src/app:_ Primeiro e superior componente do projeto (padrão). Possui a estrutura que os componentes de um projeto Angular devem ter, que no caso são o HTML, o CSS, os TS de rota, do componente em si e de módulo, e o SPEC.TS (para testes unitários). Será dentro dessa pasta onde serão criados os componentes do projeto.
+
+* Para gerar um novo componente no projeto, podemos utilizar o comando `ng generate component <nome_do_componente>` (ou apenas `ng g c <nome_do_componente>` para os mais íntimos). Para usar o componente dentro de seu .html, basta chamar pela tag `<app-nome-componente></app-nome-componente>` no arquivo .html da pasta suprema 'app'.
+
+* Sempre que criamos um novo componente, devemos parar a aplicação no terminal com o atalho "Ctrl + C", criar o componente e logo em seguida inicializar novamente a aplicação com o comando ng serve. Esse procedimento evita futuros problemas.
+
+* 
+
