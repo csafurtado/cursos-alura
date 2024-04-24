@@ -69,5 +69,76 @@ const elementoSelect = documento.querySelector(".classe_elemento_ou_tag") as HTM
 
 * Sempre que criamos um novo componente, devemos parar a aplicação no terminal com o atalho "Ctrl + C", criar o componente e logo em seguida inicializar novamente a aplicação com o comando ng serve. Esse procedimento evita futuros problemas.
 
-* 
+* Para que o Angular consiga associar variáveis dentro do arquivo .ts para colocar como informação no arquivo .html do componente, é necessário colocar na propriedade da tag html desejada os *colchetes \[\]*, exemplo: `<input [value]="variavel_ts"></input>` ou `<input [value]="objeto.atributo"></input>`. Essa propriedade se chama _property binding_ ou _elo de propriedades_. Também é possível fazer estas assanociações com a propriedade de _interpolação_, onde se coloca \{\{ variavel \}\} ou \{\{ objeto_var.variavel \}\}. A diferença de uso de ambos é que o property binding é mais adequado para as propriedades de tags HTMLs, pois ela não converte o valor para string enquanto a interpolação faz a conversão do conteúdo dentro de si para string, ideal para colocar em valores onde se usam strings. Aqui a ação vem do código para o template.
 
+* O Angular também tem uma propriedade para escutar eventos de uma tag html que se chama _event binding_. Para isso, é necessário colocar os parênteses e o nome do evento desejado: `<tag (evento)="funcao_desejada()"></tag>`. Então aqui a ação vem do template para o código.
+
+* Diretivas do Angular são 'classes HTML especiais' colocadas dentro das tags HTML que podem modificar essa tag. Para utilizá-las, é necessário importá-las no `app.module.js`. A classe 'ngModel' por exemplo é ideal para ser utilizada em formulários pois ela substitue a propriedade 'value' de um \<input>, e o que o módulo a ser importado é o 'FormsModule':
+
+```typescript
+
+// No app.module.js
+// (...)
+import { FormsModule } from '@angular/forms'; // AQUI
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    // (...)
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule  // AQUI
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+* Então, onde tem tal atributo do ts, o 'ngModel' irá trocar o valor dela dinâmicamente, do template para o TS e do TS para o template, pois a tag \[\] faz TS->template e a tag \(\) faz template->TS.
+
+* Para colocar rotas dentro da aplicação Angular, é necessário utilizar a tag `<router-outlet>` no 'app.component.html'. Ele é uma diretiva do Angular responsável por carregar os elementos (componentes) dinamicamente. As rotas da aplicação serão colocadas no arquivo de rotas 'app-routing.module.ts' dentro da variável de lista chamada 'routes'. Exemplo:
+
+```html
+<!-- No app.component.html -->
+<app-cabecalho></app-cabecalho>
+<main> 
+    <router-outlet></router-outlet>
+</main>
+<app-rodape></app-rodape>
+```
+
+```typescript
+// No app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { ExemploUnoComponent } from './componentes/exemplo-uno';
+import { ExemploDosComponent } from './componentes/exemplo-dos';
+
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'rota-exemplo-uno',
+    pathMatch: 'full'
+  },
+  {
+    path: 'rota-exemplo-uno',
+    component: ExemploUnoComponent
+  },
+  {
+    path: 'rota-exemplo-dos',
+    component: ExemploDosComponent
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+
+* Para que um elemento HTML (principalmente botões) direcionem para uma rota em específico, basta colocar a diretiva do Angular chamada 'routerLink' dentro do elementoHTML, por exemplo:`<button routerLink="/rota-a-se-direcionar">Botão redireciona</button>`
