@@ -142,3 +142,45 @@ export class AppRoutingModule { }
 ```
 
 * Para que um elemento HTML (principalmente botões) direcionem para uma rota em específico, basta colocar a diretiva do Angular chamada 'routerLink' dentro do elementoHTML, por exemplo:`<button routerLink="/rota-a-se-direcionar">Botão redireciona</button>`
+
+* Para se utilizar estruturas de repetição para repetir um elemento HTML na página, pode-se usar a diretiva do Angular '*ngFor' numa div que engloba o elemento a ser repetido. Abaixo temos um exemplo do uso dessa diretiva:
+
+```html
+<!-- Dentro do .html do componente desejado a se ter a repetição -->
+<div class="mural">
+    <div *ngFor="let item of listaItems"> <!-- Um for each usando a diretiva -->
+        <app-componente-tal [variavel-componente-filho]="item" ></app-componente-tal> <!-- Usa-se o component binding aqui para se enviar o 'item' para o componente filho -->
+    </div>
+</div>
+```
+
+
+```typescript
+// No arquivo componente-tal.ts
+
+// (...)
+
+// Precisa-se colocar esse decorador no arquivo filho para que possa receber do pai o input e o formato que ele deve ter
+@Input() variavel-componente-filho = {
+  conteudo1: 'cont1',
+  conteudo2: 'cont2',
+  conteudo3: 'cont3',
+}
+// (...)
+```
+
+* A diretiva do Angular '*ngIf' funciona como o if-else comum nas linguagens de programação. Para usá-lo (em conjunto com o else também), podemos utilizar do exemplo anterior:
+
+```html
+<div class="mural" *ngIf="listaItems.length > 0 else templateDoElse">
+    <div *ngFor="let item of listaItems"> <!-- Um for each usando a diretiva -->
+        <app-componente-tal [variavel-componente-filho]="item" ></app-componente-tal> <!-- Usa-se o component binding aqui para se enviar o 'item' para o componente filho -->
+    </div>
+</div>
+
+<ng-template #templateDoElse> <!-- Usa-se # para definir o nome deste template para que este seja usado em outro lugar -->
+  Não há itens para se mostrar!
+</ng-template>
+```
+
+* A diretiva do Angular 'ngClass' aplica uma classe CSS a um elemento conforme uma função ou atributo do TS. Para usá-lo, basta colocá-lo dentro do elemento do qual se deseja aplicar uma classe.
