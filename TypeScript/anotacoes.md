@@ -184,3 +184,35 @@ export class AppRoutingModule { }
 ```
 
 * A diretiva do Angular 'ngClass' aplica uma classe CSS a um elemento conforme uma função ou atributo do TS. Para usá-lo, basta colocá-lo dentro do elemento do qual se deseja aplicar uma classe.
+
+* Mais informações sobre diretivas do Angular podem ser encontradas neste <a href="https://angular.io/guide/built-in-directives">site</a>.
+
+* O JSON Server é uma biblioteca capaz de criar uma API fake para testes no frontend. Para configurá-lo em um projeto Angular, pode-se:
+  * Criar uma pasta dentro do projeto chamada 'backend'. 
+  * Entrar nesta pasta e criar o arquivo 'package.json' através do comando `npm init -y`
+  * Instalar o json-server com o comando npm i json-server
+  * Criar um arquivo .json que representará o banco de dados, com os dados dentro dele devidamente formatados conforme a necessidade.
+  * No 'package.json', na chave 'scripts' colocar uma entrada com `"start": json-server --watch db.json --port 3000`, que será o comando que será executado no terminal (como um makefile).
+  * Ainda dentro da pasta 'backend', executar o comando: `npm start` para iniciar o servidor
+
+* Para garantira formatação correta dos dados que trafegam para o backend, podemos nos utilizar de _interfaces_. Ela pode ser implementada dentro de um arquivo .ts qualquer seguindo este formato:
+
+```typescript
+export Interface ModeloInterface {    // Funciona de modo parecido com uma classe
+  campo1 : string,
+  campo2 : number,
+  campo3 : float,
+  campo4 : Date,
+}
+
+// Em um arquivo.ts do qual se use a interface
+import { ModeloInterface } from 'caminho-arquivo.ts';
+
+@Input() modelinho : ModeloInterface = {
+  campo1 = '',
+  campo2 = 0,
+  campo3 = 0.0,
+  campo4 = Date(),
+}
+```
+
