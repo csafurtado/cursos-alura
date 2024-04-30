@@ -216,3 +216,28 @@ import { ModeloInterface } from 'caminho-arquivo.ts';
 }
 ```
 
+* O Angular possui uma estruturação de responsabilidades para cada arquivo dentro de um componente sendo:
+  * componente.ts : Define a lógica de dos comportamentos do componente em si e da sua renderização na tela.
+  * service.ts: Define a lógica de negócios e a conversa com o backend (servidor), contendo todas as requisições para este. No caso, este será o arquivo onde terá o CRUD da aplicação.
+
+* Para que o arquivo 'services.ts' seja criado, utiliza-se o comando `ng generate service <caminho_para_o_componente>` ou apenas `ng g s <caminho_para_o_componente>`. Ele terá este formato:
+
+```typescript
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'; // (Precisa ser colocado)
+
+// Decorador que permite utilizar esta classe em outros componentes e classes pela injeção de dependências
+@Injectable({
+  providedIn: 'root'  // Essa classe de serviço pode ser usada em qualquer lugar da aplicação, pois é 'root'
+})
+
+export class ComponenteService {
+
+  constructor(private http : HttpClient) {} // (Precisa ser colocado) Colocando o modificador de acesso private, fazemos com que esse atributo seja automaticamente declarado como atributo dessa classe.
+}
+```
+
+* <a href="https://www.alura.com.br/artigos/services-injecao-dependencia-angular-o-que-sao-como-funcionam">Para saber mais sobre services.ts</a>
+
+* Para se definir a API que será consumida pela aplicação frontend e os seus métodos CRUD, precisa-se colocar a URL desta colocando-a como um atributo da classe do serviço: `private readonly API = '<url_da_api>';`.
