@@ -22,4 +22,22 @@ export class PensamentoService {
   cadastrar(pensamento: Pensamento): Observable<Pensamento> {
     return this.httpCliente.post<Pensamento>(this.API, pensamento);
   }
+
+  // Cria um componente observável, ou seja, irá editar/atualizar o conteúdo de um pensamento no BD através do serviço
+  editar(pensamento : Pensamento): Observable<Pensamento> {
+    const url = `${this.API}/${pensamento.id}`;
+    return this.httpCliente.put<Pensamento>(url, pensamento);
+  }
+
+  // Criar um componente observável, ou seja, irá deletar um pensamento no BD através do serviço
+  excluir(id : Number): Observable<Pensamento> {
+    const url = `${this.API}/${id}`;
+    return this.httpCliente.delete<Pensamento>(url);
+  }
+
+  // Criar um componente observável, ou seja, irá buscar um pensamento no BD através do serviço
+  buscarPorId(id : Number): Observable<Pensamento> {
+    const url = `${this.API}/${id}`;
+    return this.httpCliente.get<Pensamento>(url);
+  }
 }

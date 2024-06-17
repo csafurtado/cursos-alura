@@ -241,3 +241,5 @@ export class ComponenteService {
 * <a href="https://www.alura.com.br/artigos/services-injecao-dependencia-angular-o-que-sao-como-funcionam">Para saber mais sobre services.ts</a>
 
 * Para se definir a API que será consumida pela aplicação frontend e os seus métodos CRUD, precisa-se colocar a URL desta colocando-a como um atributo da classe do serviço: `private readonly API = '<url_da_api>';`.
+
+* Diferente do Router, a classe ActivatedRoute fornece informações sobre as rotas usadas (?)
