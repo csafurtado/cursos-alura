@@ -3,3 +3,4 @@
 */*/*.pyc
 */*/*/*/*.pyc
 */gabaritos
+*/*/*/node_modules

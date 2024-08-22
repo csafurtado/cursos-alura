@@ -1,0 +1,1 @@
+console.log('Primeito script usando Node.js como ambiente de execução! YaY')

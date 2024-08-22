@@ -1,3 +1,30 @@
+<h2>Node.js e terminal: dominando o ambiente de desenvolvimento front-end<h2>
+
+* Para executar arquivos .js no terminal usando node.js, basta utilizar `node <caminho_do_arquivo_js>`
+
+* Para rodar o backend local com o **json-server**, utilizamos o comando `json-server --watch <caminho_arquivo_json>`.
+
+* Para poder definir quais bibliotecas um projeto irá usar, é necessário ter um **package.json**, que é o que o Node.js irá utilizar para baixar as dependências dele. Para criá-lo, basta usar o comando 'npm init'. A partir daí, para adicionar bibliotecas ao projeto, basta utilizar o `npm init @<lib_tal>@<versao_especifica_se_tiver>`
+
+* O comando `npx` permite executar pacotes do npm sem a necessidade de instalá-los globalmente no seu sistema. Por exemplo: `npx eslint <arquivo(s)_a_analisar>` fará com que o arquivo específico seja rodado com o pacote do **eslint**.
+
+* Existem extensões no VSCode que podem fazer a execução do `npx` e de pacotes específicos (como o **eslint**) sem ter que utilizar o terminal
+
+* Uma ferramenta interessante para se padronizar código é o **prettier**, já que o uso do **ES-Lint** é mais recomendado para se verificar erros de código
+
+* A flag `--save-dev ou -D` serve para manter o pacote apenas para a plataforma de desenvolvimento (package.json no devDependencies) e a flag `--save-exact` serve para definir a versão exata a ser utilizada no código para qualquer pessoa que for trabalhar no código JS.
+
+* A diferença entre pacotes globais (instalados com a flag `-g ou --global`) é que eles ficam disponíveis para uso em todos os projetos, mesmo não estando no package.json, porém, pode ser que a versão global instalada do pacote não seja compatível com algum projeto. Para executar o global, basta utilizar seu nome, mas para executar o pacote local, é necessário utilizar `npx <nome_do_pacote>`, dentro da pasta do projeto.
+
+* Os números de uma versão de um pacote tem significado: `X.Y.Z`, onde **Z** é a versão com correção de bugs, **Y** é a versão menor, onde são acrescentadas novas funcionalidades e **Z** é a versão maior, onde se pode haver descontinuação de pacotes ou mudanças significativas dentro do pacote. Esse padrão se chama 'versionamento semântico'.
+  * `^X.Y.Z`: significa que o projeto roda versões superiores a X.Y.Z de um pacote, não é recomendado utilizá-lo.
+
+* Para facilitar a escrita para execução de comandos, pode-se adicionar o comando do terminal no `package.json` na chave de 'scripts'. Basta adicionar o nome do comando (como chave) a ser executado e o comando em si (como valor). Ex: `"teste-local":"json-server --watch arquivolocal.json`". Para executar então é só escrever `npm run <comando_do_scripts>`.
+
+* 
+
+
+
 <h2>TypeScript na prática: implemente um projeto completo com TypeScript e módulos</h2>
 
 * Todo dado que vem do form vem em string (campo.value)
@@ -44,6 +71,7 @@ const elementoSelect = documento.querySelector(".classe_elemento_ou_tag") as HTM
 * Para disponibilizar um tipo ou função de um arquivo .ts para outro, deve-se colocar `export` antes da definição da coisa no arquivo onde esta está e depois colocar `import { funcaoOuTipo } from "local/arquivo/origem.js"`
 
 * Para lançar exceções em TS, podemos utilzar o comando: `throw new Error('Mensagem de erro')` e depois, para capturar o erro, utilizar o 'try' com 'catch' dentro do código que se deseja testar.
+
 
 <h2>Angular 14: aplique os conceitos e desenvolva seu primeiro CRUD</h2>
 
