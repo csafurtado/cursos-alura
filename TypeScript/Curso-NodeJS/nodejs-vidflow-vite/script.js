@@ -1,10 +1,23 @@
+import axios from "axios";
+
 const containerVideos = document.querySelector(".videos__container");
 
 async function buscarEMostrarVideos() {
-  try {
-    const busca = await fetch("http://localhost:3000/videos");
-    const videos = await busca.json();
+  // Verifica se está no ambeinte de prod do Vite ou não, escolhendo a URL adequada (SOLUÇÃO 1, não muito escalável)
+  // const urlVideos = import.meta.env.PROD ?
+  // "https://gist.githubusercontent.com/antonio-evaldo/e8a63621b51c883931eb3fa3a3eca990/raw/12f5c46ee6dd00d03c051adadaf341e06452cea0/videos.txt"
+  // : "http://localhost:3000/videos"
 
+  // Verifica se está no ambiente de prod do Vite ou não, escolhendo a URL adequada (SOLUÇÃO 2, escalável definida por .env respectivo ao ambiente)
+  const urlVideos = import.meta.env.VITE_URL_VIDEOS;
+
+  console.log(urlVideos);
+
+  try {
+    const busca = await axios.get(urlVideos);
+
+    const videos = await busca.data;
+    
     videos.forEach((video) => {
       if (video.categoria == "") {
         throw new Error("Vídeo não tem categoria");
