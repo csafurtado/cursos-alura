@@ -28,4 +28,28 @@ match expressao:
 
 <h2>Python: aplicando a Orientação a Objetos</h2>
 
-- 
+- Todas as classes em Python possuem classes comuns entre si. A função **vars('classe')** printa em formato de dicionário os atributos e valores da classe em questão. A função **dir('classe)** mostra todos os métodos e atributos dentro da classe em questão.
+
+- Para criar o construtor de uma classe, devemos fazer:
+```python
+
+class ClasseTal:
+    var_classe = 'X'
+
+    def __init__(self, attr1, attr2):
+        self.attr1 = "Atributo 1"
+        self.attr2 = "Atributo 2"
+
+    @classmethod
+    def ver_var_classe(cls):
+        return cls.var_classe
+
+elemento1_tal = ClasseTal('atributo1','atributo2')
+```
+
+- Objetos podem ver variáveis de classe, mas não pode modificá-los, ficando restrito apenas à própria classe poder alterá-los. O decorador '@classmethod' é responsável por definir isto. O método então fica parecido com os relativos ao objeto, porém apontando para a classe em si.
+
+- Para modificar o "print" de uma classe, pode-se sobrescrever a função **__str__()** dentro da definição da classe. Os métodos com dois underlines indicam métodos do próprio Python.
+
+- A convenção para atributos privados em Python é iniciar o nome do atributo com um único underline, tipo '\_atributo'. Para modificar como um atributo desta classe é lido, pode-se usar o decorator `@property`. permitindo usar normalmente o _classe.atributo\_privado.
+
