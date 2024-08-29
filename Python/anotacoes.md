@@ -53,3 +53,13 @@ elemento1_tal = ClasseTal('atributo1','atributo2')
 
 - A convenção para atributos privados em Python é iniciar o nome do atributo com um único underline, tipo '\_atributo'. Para modificar como um atributo desta classe é lido, pode-se usar o decorator `@property`. permitindo usar normalmente o _classe.atributo\_privado.
 
+
+<h2>Python: avance na Orientação a Objetos e consuma API</h2>
+
+- Para utilizar funções de uma classe pai, podemos utilizar o `super().metodo_da_classe_pai()`
+
+- Para criar métodos abstratos, deve-se colocar a classe pai herdando da classe ABC (importar a classe de 'abc') e colocar o decorator @abstractmethod em cima da função que deverá ser implementada pelas classes filhas
+
+- Polimorfismo é uma função ter diferentes comportamentos dependendo da classe em que está.
+
+- 
