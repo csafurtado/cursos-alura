@@ -62,4 +62,22 @@ elemento1_tal = ClasseTal('atributo1','atributo2')
 
 - Polimorfismo é uma função ter diferentes comportamentos dependendo da classe em que está.
 
+- Para fazer requisições, é possível utilizar a lib `requests` do Python.
+
+```py
+
+import requests
+
+# Fazendo uma requisição GET
+response = requests.get('https://www.alura.com.br/')
+
+# Verificando o status code
+print(response.status_code)
+
+# Imprimindo o conteúdo da resposta
+print(response.text)
+```
+
+- O FastAPI já gera uma documentação por automático da API criada, basta acessar a rota '/docs'. Para adicionar conteúdo à documentação de uma tal rota, pode-se usar aspas triplas logo em baixo da assinatura da função.
+
 - 
