@@ -51,5 +51,7 @@ public class Main {
         // System.out.println("Sinopse avançada: " + sinopseAvancada + "%s");
 
         printaInfoFilme(nomeFilme, anoLancamento, notaFilme, descricaoFilme, sinopseAvancada);
+
+        leitura.close();
     }
 }
