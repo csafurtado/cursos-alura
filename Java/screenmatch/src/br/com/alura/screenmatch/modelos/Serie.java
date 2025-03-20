@@ -7,15 +7,8 @@ public class Serie extends Titulo {
     private boolean ativa;
     private int minutosPorEpisodio;
     
-    public Serie() {
-    }
-
-    public Serie(int temporadas, int epsPorTemporada, boolean ativa, int minutosPorEpisodio) {
-            super();    // Utiliza o construtor da classe Pai
-            this.temporadas = temporadas;
-            this.epsPorTemporada = epsPorTemporada;
-            this.ativa = ativa;
-            this.minutosPorEpisodio = minutosPorEpisodio;
+    public Serie(String nome, int anoLancamento) {
+        super(nome, anoLancamento);
     }
 
     public int getTemporadas() {
@@ -53,6 +46,12 @@ public class Serie extends Titulo {
     @Override
     public int getDuracaoMinutos() {
         return minutosPorEpisodio * epsPorTemporada * temporadas;
+    }
+
+    @Override
+    public String toString() {
+        String infoFormatada = "Serie: %s (%d)".formatted(this.getNome(), this.getAnoLancamento());
+        return infoFormatada;
     }
 
     

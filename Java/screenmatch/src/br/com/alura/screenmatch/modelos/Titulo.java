@@ -1,7 +1,8 @@
 package br.com.alura.screenmatch.modelos;
 
 
-public class Titulo {
+public class Titulo implements Comparable<Titulo> {     // Para comparar objetos da mesma classe
+// public class Titulo { 
     private String nome;
     private int anoLancamento;
     private boolean incluidoNoPlano;
@@ -12,14 +13,9 @@ public class Titulo {
     public Titulo() {
     }
 
-    public Titulo(String nome, int anoLancamento, boolean incluidoNoPlano, double somaAvaliacoes, int totalAvaliacoes,
-            int duracaoMinutos) {
+    public Titulo(String nome, int anoLancamento) {
         this.nome = nome;
         this.anoLancamento = anoLancamento;
-        this.incluidoNoPlano = incluidoNoPlano;
-        this.somaAvaliacoes = somaAvaliacoes;
-        this.totalAvaliacoes = totalAvaliacoes;
-        this.duracaoMinutos = duracaoMinutos;
     }
 
     public String getNome() {
@@ -74,5 +70,10 @@ public class Titulo {
 
     public double pegaMedia() {
         return somaAvaliacoes/totalAvaliacoes;
+    }
+
+    @Override
+    public int compareTo(Titulo outroTitulo) {    // Para comparar objetos da mesma classe
+        return this.getNome().compareTo(outroTitulo.getNome());
     }
 }
