@@ -98,3 +98,29 @@
             - Sendo um Vector, também é considerado uma classe legado, o ArrayDeque é preferível.
 
 - O **Map** é uma interface que permite que os desenvolvedores associem chaves a valores. O **HashMap** é uma classe que implementa a interface Map usando uma __tabela hash__ para armazenar os pares chave-valor. Ele é conhecido por sua eficiência em termos de tempo de execução. Essa classe tem uma complexidade de tempo O(1) - constante - para inserção, recuperação e remoção de elementos. Isso significa que o desempenho do HashMap não depende do tamanho da coleção de dados! Porém não é garante a ordenação dos itens nem no input e nem na saida justamente por conta da função hash.
+
+<h2>Java: consumindo API, gravando arquivos e lidando com erros</h2>
+
+- API Keys servem para identificar o requisitor da informação da API.
+
+- A classe `HttpClient`, `HttpRequest` e `HttpResponse` são as classes utilizadas para realizar requisições Web. Esta é a <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.net.http/java/net/http/HttpRequest.html">documentação oficial dela</a>. Abaixo temos um código exemplo de como realizar uma requisição online e obter uma resposta:
+
+```java
+HttpClient cliente = HttpClient.newHttpClient();
+                    HttpRequest req = HttpRequest.newBuilder(URI.create(uriBusca)).build();
+                    HttpResponse<String> res = cliente.send(req, HttpResponse.BodyHandlers.ofString());
+```
+
+- O <a href="mvnrepository.com">MVN Repository</a> é um site do qual se é possível achar bibliotecas Java que não são nativas para facilitar o desenvolvimento. Existem diversas opções para se usar dependendo do gerenciador de pacotes (Maven, Gradle, etc) que você está utilizando atualmente. Para projetos Java mais comuns, é utilizado o **.jar** desta biblioteca dentro do projeto. Para adicioná-lo ao projeto para ser utilizado, procure a opção de incluí-lo as bibliotecas referenciadas no gestor de arquivos do projeto.
+
+- A biblioteca <a href="https://github.com/google/gson/blob/main/UserGuide.md">`gson`</a> do Google oferece uma gama de funções para tratar manipulação de dados em JSON. Ela utiliza a _annotation_ `@SerializedName("NomeDoCampoJSON")` em cima de um atributo da classe para definir a qual campo de um Json coletado ela será relacionada, facilitando a desserialização do JSON para dado bruto (Serializar é transformar o dado bruto em texto e desserializar é o contrário). A função fromJson(jsonResposta, ClasseTal.class) irá tentar transformar o JSON em uma objeto de uma classe 'ClasseTal'. Não é uma boa alternativa dado que o nome dos atributos tanto no JSON quanto na própria classe podem mudar.
+    - O Gson já encontra detecta JSONs aninhados (ttambém chamado de tipos complexos), bastando então definir o objeto que será relacionado a esse item. Esta é sua <a href="https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/Gson.html">documentação oficial</a>.
+
+- Existem classes que são usadas apenas para traduzir dados de um lugar para criar um outro modelo já existente no projeto atual. Elas não necessitariam de ser instanciadas ou ter seus dados guardados,  servem apenas serem utilizadas para este fim. Elas se chamam _records_ e já possuem getters , setters,construtor e outas funções já previamente implementados. Elas são **imutáveis**, ou sejam seus atributos, uma vez instanciado o objeto, não podem ser modificados.
+
+- Exceções x Erros: Exceções podem ser antecipadas, erros não.
+
+- Para verificar mais de uma exceção por vez, ao invés de usar vários _catch_ com diferentes classes de exceções, podemos usar um único _catch_ com `catch(ClasseExcecao1 | ClasseExcecao2)`.
+
+- Pode-se criar classes de exceções manualmente dentro de um projeto Java. Elas irão **herdar** de _Throwable_. Caso se deseje criar uma exceção mais específica e que **não precise ser checada com try-catch**, pode-se herdar de outra classe de exceção, como a da _RuntimeException_.
+
